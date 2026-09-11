@@ -8,7 +8,7 @@ import { useMotionTier } from "./motion-provider";
 import { buildCloudinaryImageUrl } from "@/lib/cloudinary/url";
 
 /**
- * RitualFilm — Cinematic editorial section
+ * RitualFilm  Cinematic editorial section
  *
  * Since no video is available yet, this renders the ritual cinematic still
  * with a slow Ken Burns zoom + parallax scroll effect that feels like a
@@ -138,7 +138,7 @@ export function RitualFilm({ className = "" }: RitualFilmProps) {
             {mounted && ritualSrc ? (
               <Image
                 src={ritualSrc}
-                alt="The fragrance ritual — a mist of gold against darkness"
+                alt="The fragrance ritual  a mist of gold against darkness"
                 fill
                 className="object-cover opacity-80"
                 sizes="(min-width: 1024px) 80vw, 100vw"
@@ -164,7 +164,7 @@ export function RitualFilm({ className = "" }: RitualFilmProps) {
             </h2>
             <p className="mt-3 text-xs sm:text-sm text-parchment/70 font-sans tracking-wide">
               The gesture. The pulse point. The mist blooming gold against
-              darkness — two scents meeting to form one shared memory.
+              darkness  two scents meeting to form one shared memory.
             </p>
           </div>
         </div>

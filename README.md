@@ -11,7 +11,7 @@ A cinematic, mobile-first luxury fragrance brand experience built for WhatsApp-b
 
 ## Project Overview
 
-HIS & HER'S SCENTS is a paired fragrance brand. The platform presents two complementary fragrances as a shared signature — one for him, one for her — united by shared accords. The experience is structured around ten named cinematic moments that unfold as the visitor scrolls.
+HIS & HER'S SCENTS is a paired fragrance brand. The platform presents two complementary fragrances as a shared signature one for him, one for her united by shared accords. The experience is structured around ten named cinematic moments that unfold as the visitor scrolls.
 
 **Phase 1 (current):** Cinematic brand storytelling, WhatsApp concierge ordering, Cloudinary media delivery, capability-based motion tiers.
 
@@ -75,7 +75,7 @@ cp .env.example .env.local
 | ----------------------------------- | ------------------ | ---------------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL`              | No                 | Full site URL. Defaults to `https://thescentpair.com`.                                   |
 | `NEXT_PUBLIC_WHATSAPP_PHONE`        | Yes (for ordering) | WhatsApp Business number, digits only, including country code. Example: `2348012345678`. |
-| `NEXT_PUBLIC_TWITTER_URL`           | No                 | Full Twitter / X profile URL. |
+| `NEXT_PUBLIC_TWITTER_URL`           | No                 | Full Twitter / X profile URL.                                                            |
 | `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | Yes (for media)    | Cloudinary cloud name. Currently `u7scxp7o`.                                             |
 | `NEXT_PUBLIC_ANALYTICS_DOMAIN`      | No                 | Domain string for Plausible Analytics. Example: `thescentpair.com`.                      |
 | `NEXT_PUBLIC_ANALYTICS_SRC`         | No                 | Override Plausible script URL for self-hosted instances.                                 |

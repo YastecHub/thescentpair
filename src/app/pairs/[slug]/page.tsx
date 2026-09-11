@@ -164,7 +164,7 @@ export default async function PairPage({
                         <p className="font-semibold text-parchment">
                           {hisVariant
                             ? `${hisVariant.size}${hisVariant.unit}`
-                            : "—"}{" "}
+                            : ""}{" "}
                           each
                         </p>
                         <p className="mt-1 text-parchment/55">
@@ -270,7 +270,7 @@ export default async function PairPage({
           Where the two scents meet.
         </h2>
         <BodyText className="mt-5 type-supporting">
-          {pair.name} is united by a shared thread — a note or accord present in
+          {pair.name} is united by a shared thread  a note or accord present in
           both fragrances that creates continuity without making them identical.
         </BodyText>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

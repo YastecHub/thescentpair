@@ -102,7 +102,7 @@ export function CollectionFilters({
 
   return (
     <div>
-      <div className="border border-onyx-700/80 bg-onyx-800/70 p-4 sm:p-5">
+      <div className="bg-onyx-800/70 p-4 sm:p-5">
         <div className="mb-5 flex flex-col gap-3 border-b border-onyx-700/70 pb-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="type-eyebrow text-gold-300">Refine the collection</p>
@@ -115,11 +115,11 @@ export function CollectionFilters({
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-3">
-          <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
+          <label className="grid min-w-0 gap-2 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-parchment/60 sm:text-[0.68rem] sm:tracking-[0.16em]">
             For
             <select
-              className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
+              className="min-h-11 w-full min-w-0 rounded-full border border-onyx-700 bg-onyx-900 px-2 text-xs normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0 sm:px-4 sm:text-sm"
               value={filters.audience ?? ""}
               onChange={(e) => updateFilter("for", e.target.value)}
             >
@@ -130,10 +130,10 @@ export function CollectionFilters({
             </select>
           </label>
 
-          <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
+          <label className="grid min-w-0 gap-2 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-parchment/60 sm:text-[0.68rem] sm:tracking-[0.16em]">
             Scent family
             <select
-              className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
+              className="min-h-11 w-full min-w-0 rounded-full border border-onyx-700 bg-onyx-900 px-2 text-xs normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0 sm:px-4 sm:text-sm"
               value={filters.family ?? ""}
               onChange={(e) => updateFilter("family", e.target.value)}
             >
@@ -146,10 +146,10 @@ export function CollectionFilters({
             </select>
           </label>
 
-          <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
+          <label className="grid min-w-0 gap-2 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-parchment/60 sm:text-[0.68rem] sm:tracking-[0.16em]">
             Availability
             <select
-              className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
+              className="min-h-11 w-full min-w-0 rounded-full border border-onyx-700 bg-onyx-900 px-2 text-xs normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0 sm:px-4 sm:text-sm"
               value={filters.availability ?? ""}
               onChange={(e) => updateFilter("availability", e.target.value)}
             >
@@ -173,7 +173,7 @@ export function CollectionFilters({
         </div>
       </div>
 
-      {/* Live result count — announced to screen readers on change */}
+      {/* Live result count  announced to screen readers on change */}
       <div className="mt-6 flex flex-col gap-4 text-sm text-parchment/68 sm:flex-row sm:items-center sm:justify-between">
         <p aria-live="polite" aria-atomic="true">
           {filtered.length} fragrance{filtered.length === 1 ? "" : "s"} shown

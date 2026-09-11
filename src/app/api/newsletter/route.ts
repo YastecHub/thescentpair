@@ -3,9 +3,9 @@ import { z } from "zod";
 
 const newsletterSchema = z.object({
   email: z.string().email("Enter a valid email address.").max(254),
-  // Honeypot — must be empty
+  // Honeypot  must be empty
   _hp: z.string().max(0, "Bot detected."),
-  // Time-to-submit in ms — must be > 2s
+  // Time-to-submit in ms  must be > 2s
   _ts: z.coerce.number().min(2000, "Submission too fast."),
 });
 
@@ -48,7 +48,7 @@ async function subscribeViaAdapter(email: string): Promise<void> {
     return;
   }
 
-  // No provider configured — log in dev, silently succeed in prod
+  // No provider configured  log in dev, silently succeed in prod
   if (process.env.NODE_ENV === "development") {
     console.info("[newsletter] No provider configured. Email:", email);
   }

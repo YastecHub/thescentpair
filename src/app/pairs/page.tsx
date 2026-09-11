@@ -9,9 +9,9 @@ import { getAllPairs } from "@/lib/content/repository";
 import { createPageMetadata } from "@/lib/seo/page-metadata";
 
 export const metadata = createPageMetadata({
-  title: "Pairs — Two Signatures, Made for Two",
+  title: "Pairs  Two Signatures, Made for Two",
   description:
-    "Fragrance pairs from His & Her's Scents. Two complementary scents — distinct identities, one shared accord.",
+    "Fragrance pairs from His & Her's Scents. Two complementary scents  distinct identities, one shared accord.",
   path: "/pairs",
 });
 

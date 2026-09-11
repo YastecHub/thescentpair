@@ -6,7 +6,7 @@ import { getAllStories } from "@/lib/content/repository";
 import { createPageMetadata } from "@/lib/seo/page-metadata";
 
 export const metadata = createPageMetadata({
-  title: "Stories — Scent, Memory and Connection",
+  title: "Stories  Scent, Memory and Connection",
   description:
     "Editorial stories exploring fragrance, identity and what it means to share a scent with someone.",
   path: "/stories",
@@ -23,7 +23,7 @@ export default function StoriesPage() {
           Fragrance, memory and the people we carry with us.
         </h1>
         <BodyText className="mt-5 type-supporting">
-          Editorial pieces on the nature of scent — how it marks moments, holds
+          Editorial pieces on the nature of scent  how it marks moments, holds
           memories and connects two people to something shared.
         </BodyText>
       </div>

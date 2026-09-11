@@ -83,7 +83,7 @@ export default function ContactPage() {
           </h1>
           <BodyText className="mt-5 type-supporting">
             Whether you have a question about a scent, want to place an order or
-            are exploring something bespoke — we&apos;re here.
+            are exploring something bespoke  we&apos;re here.
           </BodyText>
         </div>
       </Section>

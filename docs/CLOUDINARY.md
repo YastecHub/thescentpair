@@ -1,4 +1,4 @@
-﻿# Cloudinary Media Upload Guide — HIS & HER'S SCENTS
+﻿# Cloudinary Media Upload Guide HIS & HER'S SCENTS
 
 ## Configuration Status ✓
 

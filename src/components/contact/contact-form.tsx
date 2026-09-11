@@ -102,7 +102,7 @@ export function ContactForm() {
       noValidate
       aria-label="Contact enquiry form"
     >
-      {/* Honeypot — hidden from real users */}
+      {/* Honeypot  hidden from real users */}
       <input
         name="_hp"
         type="text"

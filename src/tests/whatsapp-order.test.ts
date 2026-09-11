@@ -19,7 +19,7 @@ describe("WhatsApp Order URL & Message Generation", () => {
   it("generates a structured message with all required brand details", () => {
     const message = buildWhatsAppOrderMessage(sampleDetails, "TEST-REF-99");
 
-    expect(message).toContain("*HIS & HER'S SCENTS — Order Inquiry*");
+    expect(message).toContain("*HIS & HER'S SCENTS  Order Inquiry*");
     expect(message).toContain("#TEST-REF-99");
     expect(message).toContain("Midnight Oath");
     expect(message).toContain("Individual Fragrance");

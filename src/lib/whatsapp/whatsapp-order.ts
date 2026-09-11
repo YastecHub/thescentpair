@@ -14,7 +14,7 @@ export interface WhatsAppOrderDetails {
   pagePath: string;
 }
 
-// WhatsApp Business Number — must be set via NEXT_PUBLIC_WHATSAPP_PHONE env var.
+// WhatsApp Business Number  must be set via NEXT_PUBLIC_WHATSAPP_PHONE env var.
 // Format: digits only, including country code, no plus sign (e.g. 2348012345678).
 export const DEFAULT_WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "";
@@ -36,7 +36,7 @@ export function buildWhatsAppOrderMessage(
   }).format(totalAmount);
 
   return [
-    `*HIS & HER'S SCENTS — Order Inquiry*`,
+    `*HIS & HER'S SCENTS  Order Inquiry*`,
     `Order Reference: #${reference}`,
     `----------------------------------------`,
     `*Item:* ${details.itemName}`,

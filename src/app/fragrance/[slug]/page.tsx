@@ -80,15 +80,15 @@ export default async function FragrancePage({
   const galleryImages = [
     {
       publicId: fragrance.media.heroLight,
-      alt: `${fragrance.name} — light presentation`,
+      alt: `${fragrance.name}  light presentation`,
     },
     {
       publicId: fragrance.media.heroDark,
-      alt: `${fragrance.name} — dark presentation`,
+      alt: `${fragrance.name}  dark presentation`,
     },
     ...fragrance.media.gallery.map((publicId, index) => ({
       publicId,
-      alt: `${fragrance.name} — detail view ${index + 1}`,
+      alt: `${fragrance.name}  detail view ${index + 1}`,
     })),
   ];
 

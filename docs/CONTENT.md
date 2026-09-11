@@ -1,6 +1,6 @@
-# Content Editing Guide — HIS & HER'S SCENTS
+# Content Editing Guide HIS & HER'S SCENTS
 
-All product content is stored as typed TypeScript arrays under `src/content/`. Every field is validated by Zod schemas at startup — if a value is wrong, the build fails with a clear error message telling you exactly which field and why.
+All product content is stored as typed TypeScript arrays under `src/content/`. Every field is validated by Zod schemas at startup if a value is wrong, the build fails with a clear error message telling you exactly which field and why.
 
 ---
 
@@ -13,7 +13,7 @@ All product content is stored as typed TypeScript arrays under `src/content/`. E
 | Notes (ingredients) | `src/content/notes/sample-notes.ts`           |
 | Stories             | `src/content/stories/sample-stories.ts`       |
 
-The word "sample" in the filenames is intentional — these files contain demonstration data. Replace the objects inside them with real client-approved content before launch. Do not rename the files or change the export names (`fragrances`, `pairs`, `notes`, `stories`).
+The word "sample" in the filenames is intentional these files contain demonstration data. Replace the objects inside them with real client-approved content before launch. Do not rename the files or change the export names (`fragrances`, `pairs`, `notes`, `stories`).
 
 ---
 
@@ -31,7 +31,7 @@ Open `src/content/fragrances/sample-fragrances.ts` and add a new object to the `
   tagline: "Cedar, smoke and a quiet resolve.",
   description: "Full editorial description shown on the fragrance page.",
   notes: {
-    top: ["bergamot", "pink-pepper"],   // Note IDs — must exist in sample-notes.ts
+    top: ["bergamot", "pink-pepper"],   // Note IDs  must exist in sample-notes.ts
     heart: ["oud"],
     base: ["amber", "musk"],
   },
@@ -45,7 +45,7 @@ Open `src/content/fragrances/sample-fragrances.ts` and add a new object to the `
       sku: "CP-50",           // See SKU rules below
       size: 50,
       unit: "ml",
-      price: 45000,           // Integer in NGN — no decimals, no formatting
+      price: 45000,           // Integer in NGN  no decimals, no formatting
       currency: "NGN",
       inStock: true,
     },
@@ -56,7 +56,7 @@ Open `src/content/fragrances/sample-fragrances.ts` and add a new object to the `
     gallery: [
       "hhs/fragrance/cedar-promise/detail-cap",
     ],
-    turntable: {                                          // Optional — omit if no turntable
+    turntable: {                                          // Optional  omit if no turntable
       publicIdBase: "hhs/turntable/cedar-promise/frame",
       frameCount: 36,
       startIndex: 1,
@@ -187,7 +187,7 @@ Set `published: false` to save a draft without it appearing on the site.
 
 ## How to Add or Replace Cloudinary Media
 
-All media fields store Cloudinary **public IDs** — not full URLs. The site builds the URL automatically using your cloud name.
+All media fields store Cloudinary **public IDs** not full URLs. The site builds the URL automatically using your cloud name.
 
 A public ID looks like: `hhs/fragrance/midnight-oath/hero-dark`
 
@@ -196,7 +196,7 @@ The full URL becomes: `https://res.cloudinary.com/u7scxp7o/image/upload/f_auto,q
 **To replace an image:**
 
 1. Upload the new image to Cloudinary using the exact same public ID as the old one. Cloudinary will overwrite it.
-2. No code changes needed — the URL is built from the public ID already in the content file.
+2. No code changes needed the URL is built from the public ID already in the content file.
 
 **To add a new image:**
 

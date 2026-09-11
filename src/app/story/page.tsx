@@ -7,7 +7,7 @@ import { BrandLogo } from "@/components/brand/brand-logo";
 import { createPageMetadata } from "@/lib/seo/page-metadata";
 
 export const metadata = createPageMetadata({
-  title: "Our Story — His & Her's Scents",
+  title: "Our Story  His & Her's Scents",
   description:
     "The founding story of His & Her's Scents. Why we created a fragrance house built around two people sharing one signature scent.",
   path: "/story",
@@ -68,7 +68,7 @@ export default function StoryPage() {
               <p>
                 We created HIS &amp; HER&apos;S because we believed fragrance
                 could mean more. Not just a scent you choose from a shelf, but
-                something that reflects who you are — and more importantly, the
+                something that reflects who you are  and more importantly, the
                 connections that matter to you.
               </p>
               <p>
@@ -92,7 +92,7 @@ export default function StoryPage() {
               </p>
               <p>
                 A signature fragrance becomes the invisible part of how people
-                know you — what lingers in a room after you leave, what someone
+                know you  what lingers in a room after you leave, what someone
                 remembers when they think of you long after a moment has passed.
               </p>
             </div>
@@ -110,7 +110,7 @@ export default function StoryPage() {
               <p>
                 Every pair in HIS &amp; HER&apos;S begins with a question: what
                 would it mean for two people to choose a fragrance together? Not
-                the same fragrance — but two that belong alongside each other.
+                the same fragrance  but two that belong alongside each other.
               </p>
               <p>
                 We were inspired by the quiet intimacy of that. Two people
@@ -133,7 +133,7 @@ export default function StoryPage() {
               <p>
                 Our pairs are never two versions of the same fragrance. His is
                 darker, drier, more resinous. Her&apos;s is warmer, softer, more
-                layered. But both carry the same base note — the accord that
+                layered. But both carry the same base note  the accord that
                 makes them feel like they were made for each other.
               </p>
               <p>
@@ -169,7 +169,7 @@ export default function StoryPage() {
             </blockquote>
             <p className="mt-6 text-body text-ink-600 leading-relaxed">
               That is our promise. Two fragrances with their own character,
-              their own story — and a shared thread that makes them unmistakably
+              their own story  and a shared thread that makes them unmistakably
               a pair.
             </p>
           </div>

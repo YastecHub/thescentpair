@@ -1,4 +1,4 @@
-# Media Asset Guide — HIS & HER'S SCENTS
+# Media Asset Guide HIS & HER'S SCENTS
 
 All media is delivered through Cloudinary. The site never stores images or videos locally in the repository. This document covers everything needed to upload, name, and manage assets correctly.
 
@@ -11,7 +11,7 @@ All media is delivered through Cloudinary. The site never stores images or video
 - **Image URL pattern:** `https://res.cloudinary.com/u7scxp7o/image/upload/{transformation}/{publicId}`
 - **Video URL pattern:** `https://res.cloudinary.com/u7scxp7o/video/upload/{transformation}/{publicId}`
 
-The site builds all URLs automatically from the public ID stored in the content files. You never write full URLs in code — only the public ID path.
+The site builds all URLs automatically from the public ID stored in the content files. You never write full URLs in code only the public ID path.
 
 ---
 
@@ -135,7 +135,7 @@ The turntable (Moment 03) requires a sequence of 36 photographs of the bottle ro
 - Format: WebP (preferred) or JPEG.
 - Maximum 70 KB per frame after optimisation. Total sequence must be under 2.5 MB.
 - Dimensions: 800 × 800 px minimum, 1:1 square crop.
-- Naming: `frame001`, `frame002`, … `frame036` (no file extension in the public ID — Cloudinary handles format negotiation).
+- Naming: `frame001`, `frame002`, … `frame036` (no file extension in the public ID Cloudinary handles format negotiation).
 
 **Upload path:** `hhs/turntable/[fragrance-slug]/frame001` through `frame036`.
 
@@ -150,13 +150,13 @@ turntable: {
 }
 ```
 
-The component builds frame URLs as `{publicIdBase}{zeroPadded(index, pad)}` — e.g. `hhs/turntable/midnight-oath/frame001`.
+The component builds frame URLs as `{publicIdBase}{zeroPadded(index, pad)}` e.g. `hhs/turntable/midnight-oath/frame001`.
 
 On Tier B, the component loads every other frame (18 frames) for performance. Ensure the sequence is evenly spaced so every-other-frame still produces a smooth rotation.
 
 ---
 
-## Video Requirements (Moment 06 — The Ritual)
+## Video Requirements (Moment 06 The Ritual)
 
 **Content:**
 

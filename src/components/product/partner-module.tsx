@@ -88,7 +88,7 @@ export function PartnerModule({
                 {sharedNotes.map((n) => n.name).join(" + ")}
               </p>
               <p className="mt-2 text-sm text-parchment/62">
-                {fragrance.name} and {partner.name} meet here — different
+                {fragrance.name} and {partner.name} meet here  different
                 characters, one thread of accord.
               </p>
             </div>

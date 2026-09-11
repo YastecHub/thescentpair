@@ -1,4 +1,4 @@
-# Animation Engineering — HIS & HER'S SCENTS
+# Animation Engineering HIS & HER'S SCENTS
 
 The site is built around ten named cinematic moments. Each moment has a defined component, trigger, timing, and behaviour across three capability tiers. This document is the authoritative reference for anyone modifying animation code.
 
@@ -33,7 +33,7 @@ The tier is read in components via the `useMotionTier()` hook from `motion-provi
 
 ---
 
-## Moment 01 — The Overture
+## Moment 01 The Overture
 
 **Component:** `src/components/motion/overture-preloader.tsx`
 **Trigger:** Mounts on first page load. Checks `sessionStorage` for `hhs_overture_seen`.
@@ -45,7 +45,7 @@ The tier is read in components via the `useMotionTier()` hook from `motion-provi
 | ------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 0 ms    | `drawing`   | Black overlay appears. Gold hairline SVG path animates via `strokeDashoffset` from 400 to 0 over 1.2 s, drawing the interlocked H&H monogram.      |
 | 800 ms  | `resolving` | Brand crest image fades and scales in from `opacity-0 scale-90 blur-sm` to `opacity-90 scale-100 blur-0`. Radial gold gradient fades in behind it. |
-| 1600 ms | `lifting`   | Overlay translates `-translate-y-full` with `opacity-0` over 700 ms — the curtain lift.                                                            |
+| 1600 ms | `lifting`   | Overlay translates `-translate-y-full` with `opacity-0` over 700 ms the curtain lift.                                                              |
 | 2200 ms | `done`      | Component unmounts. `sessionStorage.setItem("hhs_overture_seen", "true")` is written so repeat navigation skips immediately.                       |
 
 ### Reduced-motion fallback
@@ -58,11 +58,11 @@ Three `setTimeout` handles are cleared in the `useEffect` return function.
 
 ### Adjusting timing safely
 
-Change the three timeout values (`800`, `1600`, `2200`) proportionally. The CSS transition on the curtain lift is `duration-700` — if you extend the lift stage, increase this value to match. The SVG stroke animation duration (`1.2s`) is set inline in the `style` prop and must be updated separately.
+Change the three timeout values (`800`, `1600`, `2200`) proportionally. The CSS transition on the curtain lift is `duration-700` if you extend the lift stage, increase this value to match. The SVG stroke animation duration (`1.2s`) is set inline in the `style` prop and must be updated separately.
 
 ---
 
-## Moment 02 — The Meeting
+## Moment 02 The Meeting
 
 **Component:** `src/components/motion/meeting-hero.tsx`
 **Trigger:** Mounts on the homepage. GSAP timeline runs once on mount (no scroll trigger).
@@ -88,11 +88,11 @@ Tier C: all elements render at their final visible state. No GSAP runs.
 
 ### Adjusting timing safely
 
-All durations are inside the `gsap.timeline()` call. Adjust individual `duration` values. The `stagger: 0.1` on the bottle entrance controls the offset between His and Her's bottles — increase it for a more dramatic sequential feel.
+All durations are inside the `gsap.timeline()` call. Adjust individual `duration` values. The `stagger: 0.1` on the bottle entrance controls the offset between His and Her's bottles increase it for a more dramatic sequential feel.
 
 ---
 
-## Moment 03 — The Unveiling
+## Moment 03 The Unveiling
 
 **Component:** `src/components/motion/bottle-unveiling.tsx`
 **Trigger:** ScrollTrigger pinned section. Starts when the section reaches the top of the viewport, ends after 120% of viewport height scrolled.
@@ -120,7 +120,7 @@ Tier C: `<BottleSilhouette>` SVG component is rendered instead of the canvas. No
 
 ---
 
-## Moment 04 — The Sillage
+## Moment 04 The Sillage
 
 **Component:** `src/components/motion/sillage-ambient.tsx`
 **Trigger:** Continuous RAF loop. Responds to `mousemove`, `touchmove`, and `scroll` events.
@@ -147,7 +147,7 @@ All event listeners are removed and `cancelAnimationFrame` is called in the `use
 
 ---
 
-## Moment 05 — The Notes
+## Moment 05 The Notes
 
 **Component:** `src/components/motion/fragrance-notes-graph.tsx`
 **Trigger:** IntersectionObserver at 20% visibility threshold. Clicking a note button opens the spotlight drawer.
@@ -171,7 +171,7 @@ The entrance transition is a CSS `transition-all duration-slow` class. Adjust th
 
 ---
 
-## Moment 06 — The Ritual
+## Moment 06 The Ritual
 
 **Component:** `src/components/motion/ritual-film.tsx`
 **Trigger (Tier A):** ScrollTrigger from `top bottom` to `bottom top` scrubs `video.currentTime`.
@@ -208,7 +208,7 @@ Tier B: IntersectionObserver disconnected, `timeupdate` listener removed.
 
 ---
 
-## Moment 07 — Two Halves
+## Moment 07 Two Halves
 
 **Component:** `src/components/motion/two-halves-split.tsx`
 **Trigger:** Pointer events (drag) and keyboard events on the slider handle.
@@ -236,7 +236,7 @@ The return tween ref (`returnTweenRef`) is killed before starting a new one. No 
 
 ---
 
-## Moment 08 — The Reveal
+## Moment 08 The Reveal
 
 **Component:** `src/components/motion/collection-reveal.tsx`
 **Trigger:** IntersectionObserver at 15% threshold per card. Staggered by `(index % 4) * 120ms`.
@@ -258,11 +258,11 @@ IntersectionObserver is disconnected after the first intersection.
 
 - Shimmer sweep duration: `duration-1000` Tailwind class on the shimmer div.
 - Content fade duration: `duration-700` on the content wrapper.
-- Stagger delay: `(index % 4) * 120` — change `120` to increase or decrease the stagger interval.
+- Stagger delay: `(index % 4) * 120` change `120` to increase or decrease the stagger interval.
 
 ---
 
-## Moment 09 — The Letter
+## Moment 09 The Letter
 
 **Component:** `src/components/motion/editorial-letter.tsx`
 **Trigger:** ScrollTrigger per line element. Each `.letter-line` has its own scrubbed animation.
@@ -288,7 +288,7 @@ Tier B and Tier C: no GSAP runs. Lines render at full opacity. Gold keyword high
 
 ---
 
-## Moment 10 — The Close
+## Moment 10 The Close
 
 **Component:** `src/components/motion/footer-close.tsx`
 **Trigger:** IntersectionObserver at 10% threshold on the container div.
@@ -309,5 +309,5 @@ IntersectionObserver is disconnected after the first intersection.
 ### Adjusting timing safely
 
 - Fill duration: `duration-[1600ms]` inline Tailwind class on the fill div. Change the ms value.
-- Pulse duration: the `animate-pulse` class uses the default Tailwind pulse (2 s). The `duration-[4000ms]` class alongside it overrides the animation duration — change this value.
-- Intersection threshold: `{ threshold: 0.1 }` — increase to trigger later as more of the footer is visible.
+- Pulse duration: the `animate-pulse` class uses the default Tailwind pulse (2 s). The `duration-[4000ms]` class alongside it overrides the animation duration change this value.
+- Intersection threshold: `{ threshold: 0.1 }` increase to trigger later as more of the footer is visible.

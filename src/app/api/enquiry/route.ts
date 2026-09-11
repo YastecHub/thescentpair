@@ -16,9 +16,9 @@ const enquirySchema = z.object({
     .string()
     .min(10, "Message must be at least 10 characters.")
     .max(2000),
-  // Honeypot — must be empty
+  // Honeypot  must be empty
   _hp: z.string().max(0, "Bot detected."),
-  // Time-to-submit in ms — must be > 3s to filter instant bots
+  // Time-to-submit in ms  must be > 3s to filter instant bots
   _ts: z.coerce.number().min(3000, "Submission too fast."),
 });
 
@@ -77,7 +77,7 @@ async function sendViaAdapter(data: {
       body: JSON.stringify({
         from: "His & Her's Scents <noreply@thescentpair.com>",
         to: [recipient],
-        subject: `Enquiry: ${data.topic} — ${data.name}`,
+        subject: `Enquiry: ${data.topic}  ${data.name}`,
         text: `Name: ${data.name}\nContact: ${data.contact}\nTopic: ${data.topic}\n\n${data.message}`,
       }),
     });
@@ -85,7 +85,7 @@ async function sendViaAdapter(data: {
     return;
   }
 
-  // No provider configured — log in dev, silently succeed in prod
+  // No provider configured  log in dev, silently succeed in prod
   if (process.env.NODE_ENV === "development") {
     console.info("[enquiry] No provider configured. Payload:", data);
   }
