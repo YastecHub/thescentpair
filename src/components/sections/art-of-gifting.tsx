@@ -1,9 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import { Section } from "@/components/layout/section";
 import { Eyebrow } from "@/components/typography/typography";
 import { ButtonLink } from "@/components/ui/button-link";
-import { GoldRule } from "@/components/ui/gold-rule";
 
 export function ArtOfGifting({ className = "" }: { className?: string }) {
   return (
@@ -11,7 +9,7 @@ export function ArtOfGifting({ className = "" }: { className?: string }) {
       labelledBy="gifting-title"
       className={`border-t border-onyx-700 bg-onyx-900 text-parchment ${className}`}
     >
-      <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div className="max-w-3xl">
         {/* Left: Editorial & Promises */}
         <div className="max-w-xl">
           <Eyebrow className="text-gold-300">The Art of Gifting</Eyebrow>
@@ -82,25 +80,6 @@ export function ArtOfGifting({ className = "" }: { className?: string }) {
           </div>
         </div>
 
-        {/* Right: Visual Presentation Showcase */}
-        <div className="relative flex flex-col items-center justify-center border border-onyx-700 bg-onyx-800/60 p-8 sm:p-12 shadow-[0_0_40px_rgba(0,0,0,0.6)]">
-          <div className="relative h-64 w-64 sm:h-80 sm:w-80 transition-transform duration-slow hover:scale-105">
-            <Image
-              src="/brand/logo-lockup.png"
-              alt="His & Her's Scents Gift Box Presentation"
-              fill
-              sizes="(max-width: 768px) 256px, 320px"
-              className="object-contain drop-shadow-[0_0_30px_rgba(217,188,106,0.4)]"
-            />
-          </div>
-
-          <div className="mt-6 w-full text-center">
-            <GoldRule className="my-4 max-w-[120px] mx-auto opacity-60" />
-            <p className="type-eyebrow text-[10px] tracking-[0.35em] text-gold-300 uppercase">
-              Bespoke Couple Presentation · Nationwide Delivery
-            </p>
-          </div>
-        </div>
       </div>
     </Section>
   );

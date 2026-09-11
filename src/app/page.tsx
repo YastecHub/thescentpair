@@ -7,12 +7,11 @@ import { MeetingHero } from "@/components/motion/meeting-hero";
 import { BottleUnveiling } from "@/components/motion/bottle-unveiling";
 import { TwoHalvesSplit } from "@/components/motion/two-halves-split";
 import { OverturePreloader } from "@/components/motion/overture-preloader";
-import { FragranceNotesGraph } from "@/components/motion/fragrance-notes-graph";
 import { RitualFilm } from "@/components/motion/ritual-film";
 import { CollectionReveal } from "@/components/motion/collection-reveal";
 import { EditorialLetter } from "@/components/motion/editorial-letter";
 import { ArtOfGifting } from "@/components/sections/art-of-gifting";
-import { BodyText, Eyebrow } from "@/components/typography/typography";
+import { Eyebrow } from "@/components/typography/typography";
 import { ButtonLink } from "@/components/ui/button-link";
 import { createPageMetadata } from "@/lib/seo/page-metadata";
 import { getFeaturedFragrances, getAllPairs, getPartnerFragrance } from "@/lib/content/repository";
@@ -61,21 +60,6 @@ export default function HomePage() {
         />
       ) : null}
 
-      {/* Moment 05: The Notes */}
-      {featuredFragrance ? (
-        <Section labelledBy="notes-title" className="bg-onyx-800" data-motion="notes">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-start">
-            <div>
-              <Eyebrow>Notes</Eyebrow>
-              <h2 id="notes-title" className="type-section-heading mt-4">How a scent unfolds.</h2>
-              <BodyText className="mt-5 type-supporting">Top notes introduce the first impression. Heart notes carry the character. Base notes remain close to skin and memory.</BodyText>
-              <ButtonLink href={`/fragrance/${featuredFragrance.slug}`} className="mt-8">Explore the notes</ButtonLink>
-            </div>
-            <FragranceNotesGraph notes={featuredFragrance.notes} fragranceName={featuredFragrance.name} />
-          </div>
-        </Section>
-      ) : null}
-
       {/* Moment 06: The Ritual */}
       <RitualFilm />
 
@@ -93,7 +77,7 @@ export default function HomePage() {
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {getAllPairs().map((pair, index) => (
             <CollectionReveal key={pair.slug} index={index}>
-              <PairCard pair={pair} />
+              <PairCard pair={pair} useFragranceImages />
             </CollectionReveal>
           ))}
         </div>

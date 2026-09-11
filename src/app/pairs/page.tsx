@@ -37,7 +37,7 @@ export default function PairsPage() {
         <div className="mt-12 grid gap-8 lg:gap-12">
           {pairs.map((pair, index) => (
             <CollectionReveal key={pair.slug} index={index}>
-              <PairCard pair={pair} />
+              <PairCard pair={pair} useFragranceImages />
 
               {/* Preview the split world for each pair on the index */}
               <div className="mt-4">

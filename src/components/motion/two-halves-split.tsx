@@ -4,7 +4,7 @@ import React, { useState, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { useMotionTier } from "@/components/motion/motion-provider";
 import { StaticSplitWorld } from "@/components/sections/static-split-world";
-import { BottleSilhouette } from "@/components/media/bottle-silhouette";
+import { ProductImage } from "@/components/media/responsive-media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { getFragranceBySlug, getSharedNotes } from "@/lib/content/repository";
 import type { Pair } from "@/lib/content/schemas";
@@ -103,7 +103,7 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
 
   // If Tier C, render the static accessible 50/50 world directly
   if (tier === "tier-c") {
-    return <StaticSplitWorld pair={pair} />;
+    return <StaticSplitWorld pair={pair} useCollectionImages />;
   }
 
   return (
@@ -141,9 +141,13 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
             <p className="mt-3 text-sm text-parchment/75 md:text-base">
               {hers?.tagline}
             </p>
-            <div className="mt-6 h-56 w-36 md:h-72 md:w-44">
-              <BottleSilhouette type="hers" name={hers?.name} id="twohalves" />
-            </div>
+            {hers ? (
+              <ProductImage
+                media={{ publicId: hers.media.heroLight, alt: `${hers.name} fragrance bottle` }}
+                ratio="4 / 5"
+                className="mt-6 h-56 w-36 md:h-72 md:w-44"
+              />
+            ) : null}
             <p className="mt-4 text-xs tracking-wider uppercase text-gold-300">
               {hers?.family.replace("-", " ")}
             </p>
@@ -171,9 +175,13 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
             <p className="mt-3 text-sm text-parchment/75 md:text-base">
               {his?.tagline}
             </p>
-            <div className="mt-6 h-56 w-36 md:h-72 md:w-44">
-              <BottleSilhouette type="his" name={his?.name} id="twohalves" />
-            </div>
+            {his ? (
+              <ProductImage
+                media={{ publicId: his.media.heroLight, alt: `${his.name} fragrance bottle` }}
+                ratio="4 / 5"
+                className="mt-6 h-56 w-36 md:h-72 md:w-44"
+              />
+            ) : null}
             <p className="mt-4 text-xs tracking-wider uppercase text-gold-300">
               {his?.family.replace("-", " ")}
             </p>

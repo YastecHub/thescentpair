@@ -2,11 +2,10 @@
 
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Image from "next/image";
 import { useMotionTier } from "@/components/motion/motion-provider";
+import { ProductImage } from "@/components/media/responsive-media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Eyebrow, BodyText } from "@/components/typography/typography";
-import { buildCloudinaryImageUrl } from "@/lib/cloudinary/url";
 
 interface MeetingHeroProps {
   hisName?: string;
@@ -24,19 +23,6 @@ export function MeetingHero({
   const seamRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const scrollCueRef = useRef<HTMLDivElement>(null);
-
-  const hisHeroSrc = buildCloudinaryImageUrl(
-    "hhs/fragrance/midnight-oath/hero-dark",
-    "f_auto,q_auto:good,c_fill,w_600,h_800,g_center",
-  );
-  const hersHeroSrc = buildCloudinaryImageUrl(
-    "hhs/fragrance/velvet-vow/hero-dark",
-    "f_auto,q_auto:good,c_fill,w_600,h_800,g_center",
-  );
-  const pairCompositionSrc = buildCloudinaryImageUrl(
-    "hhs/hero/pair-composition",
-    "f_auto,q_auto:good,c_fill,w_1200,h_1200,g_center",
-  );
 
   useEffect(() => {
     if (tier === "tier-c") return;
@@ -130,51 +116,7 @@ export function MeetingHero({
 
         {/* Right Column: Real Product Photo Composition */}
         <div className="relative flex w-full items-center justify-center p-2 sm:p-6">
-          {/* Use the pair composition image if available, fallback to side-by-side */}
-          {pairCompositionSrc ? (
-            <div className="relative w-full max-w-[560px] overflow-hidden border border-onyx-700/80 bg-onyx-800/60 backdrop-blur-sm">
-              {/* Ambient inner glow */}
-              <div
-                className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-transparent via-onyx-900/30 to-onyx-900/80"
-                aria-hidden="true"
-              />
-              {/* Corner hairlines */}
-              <div className="pointer-events-none absolute inset-0 z-20 overflow-hidden" aria-hidden="true">
-                <div className="absolute top-0 left-0 h-6 w-px bg-gold-300/40" />
-                <div className="absolute top-0 left-0 h-px w-6 bg-gold-300/40" />
-                <div className="absolute top-0 right-0 h-6 w-px bg-gold-300/40" />
-                <div className="absolute top-0 right-0 h-px w-6 bg-gold-300/40" />
-                <div className="absolute bottom-0 left-0 h-6 w-px bg-gold-300/40" />
-                <div className="absolute bottom-0 left-0 h-px w-6 bg-gold-300/40" />
-                <div className="absolute bottom-0 right-0 h-6 w-px bg-gold-300/40" />
-                <div className="absolute bottom-0 right-0 h-px w-6 bg-gold-300/40" />
-              </div>
-
-              <Image
-                src={pairCompositionSrc}
-                alt={`${hisName} and ${hersName} bottles — The Meeting`}
-                width={1024}
-                height={1024}
-                className="w-full object-cover"
-                priority
-                unoptimized
-              />
-
-              {/* Labels overlay */}
-              <div className="absolute bottom-0 left-0 right-0 z-20 flex justify-between px-6 pb-5">
-                <span className="type-eyebrow text-xs tracking-[0.3em] text-gold-300/80 uppercase">His</span>
-                <span className="type-eyebrow text-xs tracking-[0.3em] text-gold-300/80 uppercase">Her&apos;s</span>
-              </div>
-
-              <div className="absolute bottom-12 left-1/2 z-20 -translate-x-1/2 text-center">
-                <p className="type-eyebrow text-[8px] tracking-[0.4em] text-gold-300/50 uppercase">
-                  The&nbsp;Pair
-                </p>
-              </div>
-            </div>
-          ) : (
-            /* Fallback: side-by-side product images */
-            <div className="relative flex w-full max-w-[560px] items-end justify-between gap-4 border border-onyx-700/80 bg-onyx-800/60 p-4 backdrop-blur-sm sm:p-8">
+          <div className="relative flex w-full max-w-[560px] items-end justify-between gap-4 border border-onyx-700/80 bg-onyx-800/60 p-4 backdrop-blur-sm sm:p-8">
               <div
                 className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-onyx-900/40 to-onyx-900/90"
                 aria-hidden="true"
@@ -184,19 +126,10 @@ export function MeetingHero({
                 <div className="mb-2 text-center">
                   <span className="type-eyebrow text-gold-300">His</span>
                 </div>
-                {hisHeroSrc ? (
-                  <Image
-                    src={hisHeroSrc}
-                    alt={`${hisName} bottle`}
-                    width={300}
-                    height={400}
-                    className="w-full object-cover"
-                    priority
-                    unoptimized
-                  />
-                ) : (
-                  <div className="aspect-[3/4] w-full bg-onyx-700" />
-                )}
+                <ProductImage
+                  media={{ publicId: "hhs/fragrance/midnight-oath/hero-light", alt: `${hisName} bottle` }}
+                  ratio="3 / 4"
+                />
               </div>
 
               {/* Gold Seam */}
@@ -211,24 +144,14 @@ export function MeetingHero({
               {/* Her's bottle */}
               <div ref={hersImgRef} className="relative z-10 w-[44%]">
                 <div className="mb-2 text-center">
-                  <span className="type-eyebrow text-gold-300">Her&apos;s</span>
+                  <span className="type-eyebrow text-gold-300">Her’s</span>
                 </div>
-                {hersHeroSrc ? (
-                  <Image
-                    src={hersHeroSrc}
-                    alt={`${hersName} bottle`}
-                    width={300}
-                    height={400}
-                    className="w-full object-cover"
-                    priority
-                    unoptimized
-                  />
-                ) : (
-                  <div className="aspect-[3/4] w-full bg-onyx-700" />
-                )}
+                <ProductImage
+                  media={{ publicId: "hhs/fragrance/velvet-vow/hero-light", alt: `${hersName} bottle` }}
+                  ratio="3 / 4"
+                />
               </div>
-            </div>
-          )}
+          </div>
         </div>
       </div>
 

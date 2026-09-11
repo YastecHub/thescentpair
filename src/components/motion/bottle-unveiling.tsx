@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMotionTier } from "@/components/motion/motion-provider";
-import { BottleSilhouette } from "@/components/media/bottle-silhouette";
+import { ProductImage } from "@/components/media/responsive-media";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Eyebrow, BodyText } from "@/components/typography/typography";
 import { formatPrice, getStartingPrice } from "@/lib/content/repository";
@@ -27,7 +27,6 @@ export function BottleUnveiling({
   const sectionRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const currentFrameRef = useRef<number>(0);
-  const [framesReady, setFramesReady] = useState<boolean>(false);
 
   const isTierA = tier === "tier-a";
   const totalFrames = isTierA ? 36 : 18;
@@ -191,7 +190,6 @@ export function BottleUnveiling({
 
     // Draw initial frame
     drawBottleFrame(ctx, 0, canvas.width, canvas.height);
-    setFramesReady(true);
 
     const scrollCtx = gsap.context(() => {
       ScrollTrigger.create({
@@ -231,34 +229,16 @@ export function BottleUnveiling({
       <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-8 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
         {/* Left Column: Bottle Presentation (Static for Tier C, Canvas Turntable for Tier A/B) */}
         <div className="relative flex items-center justify-center p-4">
-          {tier === "tier-c" ? (
-            <div className="w-full max-w-[340px]">
-              <BottleSilhouette
-                type={fragrance.audience === "his" ? "his" : "hers"}
-                name={fragrance.name}
-                id="unveiling-static"
-              />
-            </div>
-          ) : (
-            <>
-              <canvas
-                ref={canvasRef}
-                width={480}
-                height={680}
-                className="h-auto max-h-[560px] w-full max-w-[380px] drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)]"
-                aria-label={`${fragrance.name} interactive rotating bottle presentation`}
-                role="img"
-              />
-              {!framesReady ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-onyx-900">
-                  <div className="h-6 w-6 animate-spin rounded-full border-2 border-gold-300 border-t-transparent" />
-                </div>
-              ) : null}
-              <div className="pointer-events-none absolute bottom-2 flex items-center gap-2 rounded border border-onyx-700 bg-onyx-800/80 px-3 py-1 text-xs text-gold-300">
-                <span>Scroll to rotate bottle</span>
-              </div>
-            </>
-          )}
+          <div className="w-full max-w-[380px]">
+            <ProductImage
+              media={{
+                publicId: fragrance.media.heroLight,
+                alt: `${fragrance.name} fragrance bottle`,
+                priority: true,
+              }}
+              ratio="4 / 5"
+            />
+          </div>
         </div>
 
         {/* Right Column: Editorial Story Column */}

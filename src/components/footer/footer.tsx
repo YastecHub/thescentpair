@@ -53,6 +53,9 @@ export function Footer() {
               </div>
             </div>
             <div className="grid gap-2 text-sm text-parchment/68">
+              <p className="text-xs tracking-[0.2em] text-gold-300 uppercase">
+                Bespoke couple presentation · Nationwide delivery
+              </p>
               <TextLink href="/contact">Contact and enquiries →</TextLink>
             </div>
           </div>

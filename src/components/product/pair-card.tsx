@@ -11,7 +11,10 @@ import {
 } from "@/lib/content/repository";
 import type { Pair } from "@/lib/content/schemas";
 
-export function PairCard({ pair }: Readonly<{ pair: Pair }>) {
+export function PairCard({
+  pair,
+  useFragranceImages = false,
+}: Readonly<{ pair: Pair; useFragranceImages?: boolean }>) {
   const his = getFragranceBySlug(pair.hisFragranceSlug);
   const hers = getFragranceBySlug(pair.hersFragranceSlug);
   const sharedNotes = getSharedNotes(pair);
@@ -25,11 +28,11 @@ export function PairCard({ pair }: Readonly<{ pair: Pair }>) {
         className="block focus-visible:outline-offset-4"
       >
         {/* Dual world imagery */}
-        <div className="grid sm:grid-cols-2 overflow-hidden">
+        <div className="grid grid-cols-2 overflow-hidden">
           <div className="overflow-hidden">
             <ProductImage
               media={{
-                publicId: pair.media.hisWorld,
+                publicId: useFragranceImages ? his?.media.heroLight : pair.media.hisWorld,
                 alt: `${his?.name ?? "His fragrance"} world`,
               }}
               ratio="4 / 5"
@@ -39,7 +42,7 @@ export function PairCard({ pair }: Readonly<{ pair: Pair }>) {
           <div className="overflow-hidden">
             <ProductImage
               media={{
-                publicId: pair.media.hersWorld,
+                publicId: useFragranceImages ? hers?.media.heroLight : pair.media.hersWorld,
                 alt: `${hers?.name ?? "Her's fragrance"} world`,
               }}
               ratio="4 / 5"

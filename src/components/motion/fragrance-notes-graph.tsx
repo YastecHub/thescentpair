@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import { useMotionTier } from "./motion-provider";
 
 interface NotesStructure {
@@ -72,7 +71,7 @@ export function FragranceNotesGraph({
 }: FragranceNotesGraphProps) {
   const tier = useMotionTier();
   const [activeNote, setActiveNote] = useState<string | null>(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(() => tier === "tier-c");
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -80,7 +79,6 @@ export function FragranceNotesGraph({
     if (!el) return;
 
     if (tier === "tier-c") {
-      setInView(true);
       return;
     }
 
@@ -97,12 +95,6 @@ export function FragranceNotesGraph({
     observer.observe(el);
     return () => observer.disconnect();
   }, [tier]);
-
-  const allNotes = [
-    ...notes.top.map((n) => ({ name: n, stage: "Top" as const })),
-    ...notes.heart.map((n) => ({ name: n, stage: "Heart" as const })),
-    ...notes.base.map((n) => ({ name: n, stage: "Base" as const })),
-  ];
 
   const getDetail = (name: string) => {
     const key = name.toLowerCase();
@@ -156,23 +148,18 @@ export function FragranceNotesGraph({
               </div>
             </div>
 
-            {/* Central Radiant Bottle Symbol */}
+            {/* Central scent profile marker */}
             <div className="relative my-2 flex flex-col items-center">
               <div
-                className={`relative h-24 w-24 sm:h-28 sm:w-28 transition-all duration-slow ${
+                className={`flex h-20 w-28 items-center justify-center border border-gold-300/70 bg-onyx-900 px-3 text-center transition-all duration-slow sm:h-24 sm:w-36 ${
                   inView ? "scale-100 opacity-100" : "scale-95 opacity-60"
                 }`}
               >
-                <Image
-                  src="/brand/logo-crest.png"
-                  alt={fragranceName}
-                  fill
-                  sizes="112px"
-                  className="object-contain drop-shadow-[0_0_20px_rgba(217,188,106,0.35)]"
-                />
+                <span className="px-2 font-display text-sm leading-tight text-gold-200 sm:text-base">
+                  {fragranceName}
+                </span>
               </div>
 
-              {/* Radiant hairline glow */}
               <div
                 className={`h-[1px] w-48 bg-gradient-to-r from-transparent via-gold-300/60 to-transparent transition-all duration-1000 ${
                   inView ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"

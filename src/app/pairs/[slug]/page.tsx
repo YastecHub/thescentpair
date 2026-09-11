@@ -91,13 +91,22 @@ export default async function PairPage({
 
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           {/* Pair hero image */}
-          <div>
+          <div className="grid grid-cols-2 gap-px overflow-hidden border border-onyx-700 bg-onyx-700">
             <ProductImage
               media={{
-                publicId: pair.media.heroPair,
-                alt: `${pair.name} — the pair together`,
+                publicId: his?.media.heroLight,
+                alt: `${his?.name ?? "His fragrance"} from ${pair.name}`,
               }}
-              ratio="1 / 1"
+              ratio="4 / 5"
+              className="bg-his-500"
+            />
+            <ProductImage
+              media={{
+                publicId: hers?.media.heroLight,
+                alt: `${hers?.name ?? "Her's fragrance"} from ${pair.name}`,
+              }}
+              ratio="4 / 5"
+              className="bg-hers-500"
             />
           </div>
 

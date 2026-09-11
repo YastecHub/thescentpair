@@ -107,11 +107,24 @@ export function CollectionFilters({
 
   return (
     <div>
-      <div className="grid gap-4 border border-onyx-700 bg-onyx-800 p-5 md:grid-cols-[repeat(3,minmax(0,1fr))_auto] md:items-end">
-        <label className="grid gap-2 text-sm font-semibold text-parchment">
-          Audience
+      <div className="border border-onyx-700/80 bg-onyx-800/70 p-4 sm:p-5">
+        <div className="mb-5 flex flex-col gap-3 border-b border-onyx-700/70 pb-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="type-eyebrow text-gold-300">Refine the collection</p>
+            <p className="mt-2 font-display text-2xl text-parchment">
+              Find the scent that feels like you.
+            </p>
+          </div>
+          <p className="text-xs uppercase tracking-[0.18em] text-parchment/50">
+            {filtered.length} of {fragrances.length} shown
+          </p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-3">
+        <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
+          For
           <select
-            className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment focus:border-gold-300 focus:outline-none"
+            className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
             value={filters.audience ?? ""}
             onChange={(e) => updateFilter("for", e.target.value)}
           >
@@ -122,10 +135,10 @@ export function CollectionFilters({
           </select>
         </label>
 
-        <label className="grid gap-2 text-sm font-semibold text-parchment">
+        <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
           Scent family
           <select
-            className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment focus:border-gold-300 focus:outline-none"
+            className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
             value={filters.family ?? ""}
             onChange={(e) => updateFilter("family", e.target.value)}
           >
@@ -138,10 +151,10 @@ export function CollectionFilters({
           </select>
         </label>
 
-        <label className="grid gap-2 text-sm font-semibold text-parchment">
+        <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
           Availability
           <select
-            className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment focus:border-gold-300 focus:outline-none"
+            className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
             value={filters.availability ?? ""}
             onChange={(e) => updateFilter("availability", e.target.value)}
           >
@@ -151,12 +164,19 @@ export function CollectionFilters({
           </select>
         </label>
 
-        <Link
-          href="/collection"
-          className="inline-flex min-h-11 items-center justify-center rounded-full border border-gold-300 px-5 type-button text-gold-300 hover:bg-gold-300 hover:text-ink-900"
-        >
-          Reset filters
-        </Link>
+        </div>
+
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-xs text-parchment/45">
+            Select a lens to narrow your discovery.
+          </p>
+          <Link
+            href="/collection"
+            className="inline-flex min-h-10 items-center justify-center rounded-full border border-gold-300/70 px-5 type-button text-gold-300 transition-colors hover:bg-gold-300 hover:text-ink-900"
+          >
+            Reset filters
+          </Link>
+        </div>
       </div>
 
       {/* Live result count — announced to screen readers on change */}
