@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const siteUrl = "https://thescentpair.com";
+const siteUrl = "https://www.thescentpair.com";
 
 export function createPageMetadata({
   title,

@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { useMotionTier } from "./motion-provider";
-
-const SESSION_KEY = "hhs_overture_seen";
 
 export function OverturePreloader() {
   const tier = useMotionTier();
@@ -17,16 +14,6 @@ export function OverturePreloader() {
   useEffect(() => {
     // Only run on Tier A or Tier B; instantly bypass on Tier C or SSR
     if (tier === "tier-c") {
-      return;
-    }
-
-    // Check if previously played in this browser session
-    try {
-      if (sessionStorage.getItem(SESSION_KEY)) {
-        return;
-      }
-    } catch {
-      // Storage unavailable fallback
       return;
     }
 
@@ -50,11 +37,6 @@ export function OverturePreloader() {
     const tDone = setTimeout(() => {
       setStage("done");
       setActive(false);
-      try {
-        sessionStorage.setItem(SESSION_KEY, "true");
-      } catch {
-        // Ignore
-      }
     }, 2200);
 
     return () => {
@@ -80,6 +62,20 @@ export function OverturePreloader() {
           : "translate-y-0 opacity-100"
       }`}
     >
+      {/* Split curtains give the reveal a physical, theatrical finish. */}
+      <div
+        className={`pointer-events-none absolute inset-y-0 left-0 w-1/2 origin-left bg-onyx-900 transition-transform duration-1000 ease-[cubic-bezier(0.77,0,0.18,1)] ${
+          stage === "lifting" ? "-translate-x-full" : "translate-x-0"
+        }`}
+        aria-hidden="true"
+      />
+      <div
+        className={`pointer-events-none absolute inset-y-0 right-0 w-1/2 origin-right bg-onyx-900 transition-transform duration-1000 ease-[cubic-bezier(0.77,0,0.18,1)] ${
+          stage === "lifting" ? "translate-x-full" : "translate-x-0"
+        }`}
+        aria-hidden="true"
+      />
+
       {/* Background radial gold warmth */}
       <div
         className={`absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(217,188,106,0.12)_0%,rgba(8,7,6,0)_70%)] transition-opacity duration-1000 ${
@@ -87,26 +83,47 @@ export function OverturePreloader() {
         }`}
       />
 
-      {/* Bottle resolving out of the darkness */}
+      {/* His and Hers bottles fill with liquid before the reveal. */}
       <div
-        className={`relative h-40 w-40 sm:h-52 sm:w-52 transition-all duration-1000 ease-out ${
+        className={`relative z-[1] flex items-end gap-5 sm:gap-8 transition-all duration-1000 ease-out ${
           stage === "resolving" || stage === "lifting"
-            ? "scale-100 opacity-90 blur-0"
+            ? "scale-100 opacity-100 blur-0"
             : "scale-90 opacity-0 blur-sm"
         }`}
       >
-        <Image
-          src="/brand/logo-crest.png"
-          alt="His & Her's Scents Crest"
-          fill
-          sizes="208px"
-          className="object-contain drop-shadow-[0_0_35px_rgba(217,188,106,0.45)]"
-          priority
-        />
+        {[
+          { label: "His", tone: "bg-onyx-800", liquid: "bg-gold-500" },
+          { label: "Hers", tone: "bg-gold-100", liquid: "bg-rose-200" },
+        ].map((bottle) => (
+          <div key={bottle.label} className="flex flex-col items-center">
+            <div
+              className={`h-3 w-8 rounded-t-sm border border-gold-300/60 ${bottle.tone}`}
+            />
+            <div
+              className={`relative h-36 w-20 overflow-hidden rounded-[0.7rem] border border-gold-300/70 shadow-[0_12px_35px_rgba(0,0,0,0.35)] sm:h-44 sm:w-24 ${bottle.tone}`}
+            >
+              <div
+                className={`absolute inset-x-0 bottom-0 transition-[height] duration-1000 ease-out ${
+                  stage === "drawing"
+                    ? "h-0"
+                    : stage === "resolving"
+                      ? "h-[58%]"
+                      : "h-[82%]"
+                } ${bottle.liquid}`}
+              />
+              <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 border border-gold-300/50 bg-onyx-900/40 px-1 py-2 text-center">
+                <span className="font-display text-[0.65rem] tracking-[0.22em] text-gold-100 uppercase">
+                  {bottle.label}
+                </span>
+              </div>
+              <div className="absolute inset-y-2 left-2 w-px bg-white/25" />
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Single gold hairline traveling across and drawing monogram */}
-      <div className="absolute flex flex-col items-center">
+      {/* Gold hairline monogram floats above the filling bottles. */}
+      <div className="absolute z-[2] flex -translate-y-28 flex-col items-center sm:-translate-y-36">
         <svg
           viewBox="0 0 160 160"
           className="h-28 w-28 sm:h-36 sm:w-36 overflow-visible"

@@ -10,14 +10,22 @@ export function getOrganizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "His & Her's Scents",
-    url: "https://thescentpair.com",
-    logo: "https://thescentpair.com/brand/logo.png",
+    url: "https://www.thescentpair.com",
+    logo: "https://www.thescentpair.com/brand/logo.png",
     description:
       "Signature scents, made for two. Cinematic luxury fragrance house built around paired identities.",
     sameAs: [
-      "https://instagram.com/thescentpair",
+      "https://www.instagram.com/the_sent_pair",
       "https://tiktok.com/@thescentpair",
+      "https://x.com/thescentpair",
     ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer service",
+      telephone: "+2349162773137",
+      email: "thescentpair@gmail.com",
+      availableLanguage: ["English"],
+    },
   };
 }
 
@@ -30,7 +38,7 @@ export function getProductJsonLd(fragrance: Fragrance) {
     "@type": "Product",
     name: fragrance.name,
     description: fragrance.description,
-    image: `https://thescentpair.com/brand/logo.png`,
+    image: `https://www.thescentpair.com/brand/logo.png`,
     brand: {
       "@type": "Brand",
       name: "His & Her's Scents",
@@ -44,7 +52,7 @@ export function getProductJsonLd(fragrance: Fragrance) {
       availability: fragrance.variants.some((v) => v.inStock)
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
-      url: `https://thescentpair.com/fragrance/${fragrance.slug}`,
+      url: `https://www.thescentpair.com/fragrance/${fragrance.slug}`,
     },
   };
 }
@@ -58,7 +66,7 @@ export function getPairJsonLd(pair: Pair) {
     "@type": "Product",
     name: pair.name,
     description: pair.story,
-    image: `https://thescentpair.com/brand/logo.png`,
+    image: `https://www.thescentpair.com/brand/logo.png`,
     brand: {
       "@type": "Brand",
       name: "His & Her's Scents",
@@ -72,7 +80,7 @@ export function getPairJsonLd(pair: Pair) {
       availability: pair.setVariants.some((v) => v.inStock)
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
-      url: `https://thescentpair.com/pairs/${pair.slug}`,
+      url: `https://www.thescentpair.com/pairs/${pair.slug}`,
     },
   };
 }
