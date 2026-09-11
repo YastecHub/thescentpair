@@ -6,7 +6,7 @@ export function createPageMetadata({
   title,
   description,
   path,
-  ogImage,
+  ogImage = "/brand/logo-lockup.png",
   type = "website",
 }: Readonly<{
   title: string;

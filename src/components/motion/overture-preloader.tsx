@@ -1,7 +1,22 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
+import { buildCloudinaryImageUrl } from "@/lib/cloudinary/url";
 import { useMotionTier } from "./motion-provider";
+
+const bottleImages = [
+  {
+    label: "His",
+    publicId: "hhs/fragrance/midnight-oath/hero-light",
+    liquid: "bg-amber-500/70",
+  },
+  {
+    label: "Hers",
+    publicId: "hhs/fragrance/velvet-vow/hero-light",
+    liquid: "bg-rose-300/60",
+  },
+] as const;
 
 export function OverturePreloader() {
   const tier = useMotionTier();
@@ -91,17 +106,28 @@ export function OverturePreloader() {
             : "scale-90 opacity-0 blur-sm"
         }`}
       >
-        {[
-          { label: "His", tone: "bg-onyx-800", liquid: "bg-gold-500" },
-          { label: "Hers", tone: "bg-gold-100", liquid: "bg-rose-200" },
-        ].map((bottle) => (
+        {bottleImages.map((bottle) => (
           <div key={bottle.label} className="flex flex-col items-center">
             <div
-              className={`h-3 w-8 rounded-t-sm border border-gold-300/60 ${bottle.tone}`}
+              className="h-3 w-8 rounded-t-sm border border-gold-300/60 bg-onyx-800"
             />
             <div
-              className={`relative h-36 w-20 overflow-hidden rounded-[0.7rem] border border-gold-300/70 shadow-[0_12px_35px_rgba(0,0,0,0.35)] sm:h-44 sm:w-24 ${bottle.tone}`}
+              className="relative h-36 w-20 overflow-hidden rounded-[0.7rem] border border-gold-300/70 bg-onyx-800 shadow-[0_12px_35px_rgba(0,0,0,0.35)] sm:h-44 sm:w-24"
             >
+              <Image
+                src={
+                  buildCloudinaryImageUrl(
+                    bottle.publicId,
+                    "f_auto,q_auto:good,c_limit,w_480",
+                  ) ?? "/brand/logo-lockup.png"
+                }
+                alt={`${bottle.label} perfume bottle`}
+                fill
+                sizes="96px"
+                className="z-0 object-contain"
+                priority
+                unoptimized
+              />
               <div
                 className={`absolute inset-x-0 bottom-0 transition-[height] duration-1000 ease-out ${
                   stage === "drawing"
@@ -109,7 +135,7 @@ export function OverturePreloader() {
                     : stage === "resolving"
                       ? "h-[58%]"
                       : "h-[82%]"
-                } ${bottle.liquid}`}
+                } ${bottle.liquid} z-[1]`}
               />
               <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 border border-gold-300/50 bg-onyx-900/40 px-1 py-2 text-center">
                 <span className="font-display text-[0.65rem] tracking-[0.22em] text-gold-100 uppercase">

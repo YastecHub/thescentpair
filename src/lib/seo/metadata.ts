@@ -32,11 +32,20 @@ export const siteMetadata: Metadata = {
     siteName: "His & Her's Scents",
     title,
     description,
+    images: [
+      {
+        url: "/brand/logo-lockup.png",
+        width: 914,
+        height: 914,
+        alt: "His & Her's Scents signature perfume house",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
+    images: ["/brand/logo-lockup.png"],
   },
   robots: {
     index: true,
