@@ -36,23 +36,24 @@ export function OverturePreloader() {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Animation activation: standard mount-based state initialization
     setActive(true);
 
-    // Sequence timing (total <= 2.3 seconds)
+    // Sequence timing (total 5 seconds)
     // 0ms: Hairline draws monogram
-    // 800ms: Bottle resolves out of darkness
-    // 1600ms: Curtain lifts
-    // 2200ms: Complete and unmount
+    // 1200ms: Bottles resolve out of darkness
+    // 2400ms: Liquid reaches its presentation level
+    // 3900ms: Curtain lifts
+    // 5000ms: Complete and unmount
     const tResolve = setTimeout(() => {
       setStage("resolving");
-    }, 800);
+    }, 1200);
 
     const tLift = setTimeout(() => {
       setStage("lifting");
-    }, 1600);
+    }, 3900);
 
     const tDone = setTimeout(() => {
       setStage("done");
       setActive(false);
-    }, 2200);
+    }, 5000);
 
     return () => {
       clearTimeout(tResolve);
