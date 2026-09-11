@@ -91,7 +91,10 @@ export function SillageAmbient() {
     const onScroll = () => {
       resetIdleTimer();
       const currentScrollY = window.scrollY;
-      scrollVelocity = Math.min(Math.max((currentScrollY - lastScrollY) * 0.15, -6), 6);
+      scrollVelocity = Math.min(
+        Math.max((currentScrollY - lastScrollY) * 0.15, -6),
+        6,
+      );
       lastScrollY = currentScrollY;
     };
 
@@ -120,8 +123,12 @@ export function SillageAmbient() {
         if (p.life > p.maxLife) {
           // Re-seed particle
           p.life = 0;
-          p.x = hasPointer ? pointerX + (Math.random() - 0.5) * 120 : Math.random() * width;
-          p.y = hasPointer ? pointerY + (Math.random() - 0.5) * 120 : Math.random() * height;
+          p.x = hasPointer
+            ? pointerX + (Math.random() - 0.5) * 120
+            : Math.random() * width;
+          p.y = hasPointer
+            ? pointerY + (Math.random() - 0.5) * 120
+            : Math.random() * height;
           p.vx = (Math.random() - 0.5) * 0.4;
           p.vy = (Math.random() - 0.5) * 0.4 - 0.2;
         }

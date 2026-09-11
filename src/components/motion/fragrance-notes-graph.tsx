@@ -16,50 +16,62 @@ interface FragranceNotesGraphProps {
 }
 
 // Editorial descriptors for key ingredients
-const INGREDIENT_DETAILS: Record<string, { role: string; description: string; mood: string }> = {
+const INGREDIENT_DETAILS: Record<
+  string,
+  { role: string; description: string; mood: string }
+> = {
   "pink-pepper": {
     role: "Top Note",
-    description: "Dry, sparkling piquancy that provides an effervescent top before the deeper resins arrive.",
+    description:
+      "Dry, sparkling piquancy that provides an effervescent top before the deeper resins arrive.",
     mood: "Bright · Peppery · Intrigued",
   },
   bergamot: {
     role: "Top Note",
-    description: "Cold-pressed Calabrian citrus offering sharp, luminous vitality that cuts through darkness.",
+    description:
+      "Cold-pressed Calabrian citrus offering sharp, luminous vitality that cuts through darkness.",
     mood: "Luminous · Crisp · Awakening",
   },
   cardamom: {
     role: "Top Note",
-    description: "Crushed green pods with an aromatic, spicy heat that immediately quickens the pulse.",
+    description:
+      "Crushed green pods with an aromatic, spicy heat that immediately quickens the pulse.",
     mood: "Warm · Resinous · Electric",
   },
   rose: {
     role: "Heart Note",
-    description: "Velvety Damask rose petals picked at dusk, rich with honeyed dew and deep romantic gravity.",
+    description:
+      "Velvety Damask rose petals picked at dusk, rich with honeyed dew and deep romantic gravity.",
     mood: "Intimate · Velvety · Seductive",
   },
   jasmine: {
     role: "Heart Note",
-    description: "Night-blooming white florals suspended in the midnight air, opulent and hauntingly memorable.",
+    description:
+      "Night-blooming white florals suspended in the midnight air, opulent and hauntingly memorable.",
     mood: "Sensual · Opulent · Lingering",
   },
   oud: {
     role: "Base Note",
-    description: "Aged agarwood smoked over embers, giving profound timber structure and indelible presence.",
+    description:
+      "Aged agarwood smoked over embers, giving profound timber structure and indelible presence.",
     mood: "Smoky · Sacred · Enduring",
   },
   amber: {
     role: "Base Note",
-    description: "Golden molten resin melted close to warm skin, radiating comfort, luxury, and magnetic warmth.",
+    description:
+      "Golden molten resin melted close to warm skin, radiating comfort, luxury, and magnetic warmth.",
     mood: "Golden · Enveloping · Close",
   },
   vanilla: {
     role: "Base Note",
-    description: "Dark Bourbon vanilla bean with smoky wood accents rather than confectionary sweetness.",
+    description:
+      "Dark Bourbon vanilla bean with smoky wood accents rather than confectionary sweetness.",
     mood: "Dark · Hypnotic · Intimate",
   },
   sandalwood: {
     role: "Base Note",
-    description: "Creamy Mysore wood providing a serene, grounded architecture that stays with you until morning.",
+    description:
+      "Creamy Mysore wood providing a serene, grounded architecture that stays with you until morning.",
     mood: "Creamy · Architectural · Serene",
   },
 };
@@ -89,7 +101,7 @@ export function FragranceNotesGraph({
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(el);
@@ -103,7 +115,8 @@ export function FragranceNotesGraph({
     }
     return {
       role: `${name} Accord`,
-      description: "Carefully sourced botanical essence chosen to harmonise perfectly between both partners.",
+      description:
+        "Carefully sourced botanical essence chosen to harmonise perfectly between both partners.",
       mood: "Subtle · Refined · Harmonious",
     };
   };
@@ -251,7 +264,9 @@ export function FragranceNotesGraph({
                 Touch a note to reveal its essence.
               </h3>
               <p className="mt-3 text-xs leading-relaxed text-parchment/60">
-                Each fragrance evolves from first spray through drydown, creating a living scent signature that interacts uniquely with your skin.
+                Each fragrance evolves from first spray through drydown,
+                creating a living scent signature that interacts uniquely with
+                your skin.
               </p>
             </div>
           )}

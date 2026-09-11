@@ -40,9 +40,12 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     getMotionServerSnapshot,
   );
 
-  const downgradeTier = useCallback((newTier: MotionTier, reason: string, avgFps?: number) => {
-    downgradeMotionStore(newTier, reason, avgFps);
-  }, []);
+  const downgradeTier = useCallback(
+    (newTier: MotionTier, reason: string, avgFps?: number) => {
+      downgradeMotionStore(newTier, reason, avgFps);
+    },
+    [],
+  );
 
   // Fire tier_assigned once after hydration (capabilities will differ from SSR default)
   const assignedRef = useRef(false);

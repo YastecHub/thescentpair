@@ -201,7 +201,8 @@ export function getStoryBySlug(
   options: { includeUnpublished?: boolean } = {},
 ) {
   return stories.find(
-    (story) => story.slug === slug && (options.includeUnpublished || story.published),
+    (story) =>
+      story.slug === slug && (options.includeUnpublished || story.published),
   );
 }
 

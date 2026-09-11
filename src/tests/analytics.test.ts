@@ -67,6 +67,9 @@ describe("Analytics Event Dispatcher", () => {
 
     trackEvent("list_signup", { source: "footer" });
 
-    expect(dataLayer[0]).toMatchObject({ event: "list_signup", source: "footer" });
+    expect(dataLayer[0]).toMatchObject({
+      event: "list_signup",
+      source: "footer",
+    });
   });
 });

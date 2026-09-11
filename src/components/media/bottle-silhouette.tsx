@@ -94,13 +94,41 @@ export function BottleSilhouette({
 
         {/* Bottle main body (clipped to receive highlight) */}
         <g clipPath={`url(#bottleClip-${type}-${id || "def"})`}>
-          <rect x="60" y="90" width="120" height="290" fill={`url(#${glassGradId})`} />
+          <rect
+            x="60"
+            y="90"
+            width="120"
+            height="290"
+            fill={`url(#${glassGradId})`}
+          />
           {/* Internal fragrance liquid volume */}
-          <rect x="66" y="140" width="108" height="234" fill={`url(#${liquidGradId})`} />
+          <rect
+            x="66"
+            y="140"
+            width="108"
+            height="234"
+            fill={`url(#${liquidGradId})`}
+          />
 
           {/* Facet internal reflections */}
-          <line x1="72" y1="90" x2="72" y2="370" stroke="#D9BC6A" strokeWidth="0.5" strokeOpacity="0.25" />
-          <line x1="168" y1="90" x2="168" y2="370" stroke="#D9BC6A" strokeWidth="0.5" strokeOpacity="0.25" />
+          <line
+            x1="72"
+            y1="90"
+            x2="72"
+            y2="370"
+            stroke="#D9BC6A"
+            strokeWidth="0.5"
+            strokeOpacity="0.25"
+          />
+          <line
+            x1="168"
+            y1="90"
+            x2="168"
+            y2="370"
+            stroke="#D9BC6A"
+            strokeWidth="0.5"
+            strokeOpacity="0.25"
+          />
 
           {/* Travelling highlight beam (controlled via GSAP or CSS transform) */}
           <rect
@@ -151,7 +179,14 @@ export function BottleSilhouette({
           >
             H &amp; H
           </text>
-          <line x1="95" y1="232" x2="145" y2="232" stroke="#8A6C22" strokeWidth="0.5" />
+          <line
+            x1="95"
+            y1="232"
+            x2="145"
+            y2="232"
+            stroke="#8A6C22"
+            strokeWidth="0.5"
+          />
           {/* Label Fragrance Name */}
           <text
             x="120"
@@ -211,8 +246,23 @@ export function BottleSilhouette({
           strokeWidth="0.5"
         />
         {/* Cap bevel detailing */}
-        <line x1="94" y1="32" x2="146" y2="32" stroke="#FFF3CE" strokeWidth="0.5" strokeOpacity="0.7" />
-        <line x1="94" y1="68" x2="146" y2="68" stroke="#8A6C22" strokeWidth="0.5" />
+        <line
+          x1="94"
+          y1="32"
+          x2="146"
+          y2="32"
+          stroke="#FFF3CE"
+          strokeWidth="0.5"
+          strokeOpacity="0.7"
+        />
+        <line
+          x1="94"
+          y1="68"
+          x2="146"
+          y2="68"
+          stroke="#8A6C22"
+          strokeWidth="0.5"
+        />
       </svg>
     </div>
   );

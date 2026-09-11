@@ -51,11 +51,7 @@ export function MeetingHero({
       });
 
       tl.to(hisImgRef.current, { x: 0, y: 0, opacity: 1, duration: 1.4 }, 0)
-        .to(
-          hersImgRef.current,
-          { x: 0, y: 0, opacity: 1, duration: 1.4 },
-          0.15,
-        )
+        .to(hersImgRef.current, { x: 0, y: 0, opacity: 1, duration: 1.4 }, 0.15)
         .to(
           seamRef.current,
           { scaleY: 1, opacity: 1, duration: 0.8, ease: "power2.inOut" },
@@ -66,11 +62,7 @@ export function MeetingHero({
           { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
           0.6,
         )
-        .to(
-          scrollCueRef.current,
-          { opacity: 1, duration: 0.6 },
-          1.4,
-        );
+        .to(scrollCueRef.current, { opacity: 1, duration: 0.6 }, 1.4);
     }, rootRef);
 
     return () => ctx.revert();
@@ -91,10 +83,7 @@ export function MeetingHero({
 
       <div className="grid w-full max-w-content grid-cols-1 items-center gap-10 px-5 md:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
         {/* Left Column: Brand Typography & Call to Action */}
-        <div
-          ref={contentRef}
-          className="opacity-100"
-        >
+        <div ref={contentRef} className="opacity-100">
           <Eyebrow>His &amp; Her&apos;s Scents</Eyebrow>
           <h1
             id="home-title"
@@ -117,40 +106,46 @@ export function MeetingHero({
         {/* Right Column: Real Product Photo Composition */}
         <div className="relative flex w-full items-center justify-center p-2 sm:p-6">
           <div className="relative flex w-full max-w-[560px] items-end justify-between gap-4 border border-onyx-700/80 bg-onyx-800/60 p-4 backdrop-blur-sm sm:p-8">
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-onyx-900/40 to-onyx-900/90"
-                aria-hidden="true"
+            <div
+              className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-onyx-900/40 to-onyx-900/90"
+              aria-hidden="true"
+            />
+            {/* His bottle */}
+            <div ref={hisImgRef} className="relative z-10 w-[44%]">
+              <div className="mb-2 text-center">
+                <span className="type-eyebrow text-gold-300">His</span>
+              </div>
+              <ProductImage
+                media={{
+                  publicId: "hhs/fragrance/midnight-oath/hero-light",
+                  alt: `${hisName} bottle`,
+                }}
+                ratio="3 / 4"
               />
-              {/* His bottle */}
-              <div ref={hisImgRef} className="relative z-10 w-[44%]">
-                <div className="mb-2 text-center">
-                  <span className="type-eyebrow text-gold-300">His</span>
-                </div>
-                <ProductImage
-                  media={{ publicId: "hhs/fragrance/midnight-oath/hero-light", alt: `${hisName} bottle` }}
-                  ratio="3 / 4"
-                />
-              </div>
+            </div>
 
-              {/* Gold Seam */}
-              <div
-                ref={seamRef}
-                className="relative z-20 flex h-[78%] w-px origin-center flex-col items-center justify-center bg-[var(--foil)] shadow-[0_0_10px_rgba(217,188,106,0.5)]"
-                aria-hidden="true"
-              >
-                <div className="h-2 w-2 rounded-full border border-gold-300 bg-onyx-900 shadow-[0_0_6px_rgba(240,226,184,0.8)]" />
-              </div>
+            {/* Gold Seam */}
+            <div
+              ref={seamRef}
+              className="relative z-20 flex h-[78%] w-px origin-center flex-col items-center justify-center bg-[var(--foil)] shadow-[0_0_10px_rgba(217,188,106,0.5)]"
+              aria-hidden="true"
+            >
+              <div className="h-2 w-2 rounded-full border border-gold-300 bg-onyx-900 shadow-[0_0_6px_rgba(240,226,184,0.8)]" />
+            </div>
 
-              {/* Her's bottle */}
-              <div ref={hersImgRef} className="relative z-10 w-[44%]">
-                <div className="mb-2 text-center">
-                  <span className="type-eyebrow text-gold-300">Her’s</span>
-                </div>
-                <ProductImage
-                  media={{ publicId: "hhs/fragrance/velvet-vow/hero-light", alt: `${hersName} bottle` }}
-                  ratio="3 / 4"
-                />
+            {/* Her's bottle */}
+            <div ref={hersImgRef} className="relative z-10 w-[44%]">
+              <div className="mb-2 text-center">
+                <span className="type-eyebrow text-gold-300">Her’s</span>
               </div>
+              <ProductImage
+                media={{
+                  publicId: "hhs/fragrance/velvet-vow/hero-light",
+                  alt: `${hersName} bottle`,
+                }}
+                ratio="3 / 4"
+              />
+            </div>
           </div>
         </div>
       </div>

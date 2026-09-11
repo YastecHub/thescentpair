@@ -15,7 +15,10 @@ export const metadata = createPageMetadata({
 export default function TermsPage() {
   return (
     <article aria-labelledby="terms-title">
-      <Section labelledBy="terms-title" className="bg-parchment text-ink-900 light-surface">
+      <Section
+        labelledBy="terms-title"
+        className="bg-parchment text-ink-900 light-surface"
+      >
         <div className="max-w-readable">
           <Eyebrow className="text-gold-700">Legal</Eyebrow>
           <h1 id="terms-title" className="type-page-heading mt-4">
@@ -30,9 +33,7 @@ export default function TermsPage() {
 
           <div className="grid gap-10 text-body text-ink-600 leading-relaxed">
             <div className="border-l-2 border-gold-700 pl-6 py-2 bg-gold-100/30">
-              <p className="text-sm font-semibold text-ink-900">
-                Draft notice
-              </p>
+              <p className="text-sm font-semibold text-ink-900">Draft notice</p>
               <p className="mt-2 text-sm">
                 These terms are a draft structure prepared for review. They do
                 not constitute a final legal document. All sections marked
@@ -42,7 +43,10 @@ export default function TermsPage() {
             </div>
 
             <section aria-labelledby="terms-general">
-              <h2 id="terms-general" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-general"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 About this website
               </h2>
               <p>
@@ -53,7 +57,10 @@ export default function TermsPage() {
             </section>
 
             <section aria-labelledby="terms-ordering">
-              <h2 id="terms-ordering" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-ordering"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 How to order
               </h2>
               <p>
@@ -62,25 +69,26 @@ export default function TermsPage() {
               </p>
               <ul className="mt-4 grid gap-2 list-disc pl-6">
                 <li>
-                  You select your fragrance and size on the product page and
-                  tap &ldquo;Order on WhatsApp&rdquo;
+                  You select your fragrance and size on the product page and tap
+                  &ldquo;Order on WhatsApp&rdquo;
                 </li>
                 <li>
-                  A brand representative will confirm the item, availability
-                  and total price before payment
+                  A brand representative will confirm the item, availability and
+                  total price before payment
                 </li>
                 <li>
                   Payment details will be provided by the brand representative
                   [PENDING: payment methods accepted]
                 </li>
-                <li>
-                  Your order is confirmed once payment is received
-                </li>
+                <li>Your order is confirmed once payment is received</li>
               </ul>
             </section>
 
             <section aria-labelledby="terms-pricing">
-              <h2 id="terms-pricing" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-pricing"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Pricing
               </h2>
               <p>
@@ -96,34 +104,43 @@ export default function TermsPage() {
             </section>
 
             <section aria-labelledby="terms-delivery">
-              <h2 id="terms-delivery" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-delivery"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Delivery
               </h2>
               <p>
                 [PENDING: Delivery policy including: zones covered, estimated
-                timeframes, courier partners, handling for failed deliveries
-                and risk of loss]
+                timeframes, courier partners, handling for failed deliveries and
+                risk of loss]
               </p>
             </section>
 
             <section aria-labelledby="terms-returns">
-              <h2 id="terms-returns" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-returns"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Returns and exchanges
               </h2>
               <p>
-                Due to the nature of fragrance products, opened and used
-                bottles cannot be accepted for return or exchange unless the
-                product is faulty or was incorrectly supplied.
+                Due to the nature of fragrance products, opened and used bottles
+                cannot be accepted for return or exchange unless the product is
+                faulty or was incorrectly supplied.
               </p>
               <p className="mt-4">
                 [PENDING: Final returns window for unopened items, process for
-                faulty goods and any applicable statutory consumer rights in
-                the operating jurisdiction]
+                faulty goods and any applicable statutory consumer rights in the
+                operating jurisdiction]
               </p>
             </section>
 
             <section aria-labelledby="terms-authenticity">
-              <h2 id="terms-authenticity" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-authenticity"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Product authenticity
               </h2>
               <p>
@@ -138,17 +155,23 @@ export default function TermsPage() {
             </section>
 
             <section aria-labelledby="terms-liability">
-              <h2 id="terms-liability" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-liability"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Limitation of liability
               </h2>
               <p>
-                [PENDING: Limitation of liability clause to be provided by
-                legal counsel before launch]
+                [PENDING: Limitation of liability clause to be provided by legal
+                counsel before launch]
               </p>
             </section>
 
             <section aria-labelledby="terms-contact">
-              <h2 id="terms-contact" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="terms-contact"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Contact
               </h2>
               <p>

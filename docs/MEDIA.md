@@ -84,37 +84,37 @@ hhs/
 
 ### Fragrance Hero Images
 
-| Asset | Public ID suffix | Dimensions | Aspect ratio | Notes |
-|---|---|---|---|---|
-| Hero dark | `hero-dark` | 1200 × 1500 px minimum | 4:5 | Bottle on pure black with dramatic side lighting |
-| Hero light | `hero-light` | 1200 × 1500 px minimum | 4:5 | Bottle on white or light parchment, clean shadow |
-| Detail cap | `detail-cap` | 800 × 800 px minimum | 1:1 | Close-up of cap engraving |
-| Detail label | `detail-label` | 800 × 800 px minimum | 1:1 | Close-up of label tactile texture |
+| Asset        | Public ID suffix | Dimensions             | Aspect ratio | Notes                                            |
+| ------------ | ---------------- | ---------------------- | ------------ | ------------------------------------------------ |
+| Hero dark    | `hero-dark`      | 1200 × 1500 px minimum | 4:5          | Bottle on pure black with dramatic side lighting |
+| Hero light   | `hero-light`     | 1200 × 1500 px minimum | 4:5          | Bottle on white or light parchment, clean shadow |
+| Detail cap   | `detail-cap`     | 800 × 800 px minimum   | 1:1          | Close-up of cap engraving                        |
+| Detail label | `detail-label`   | 800 × 800 px minimum   | 1:1          | Close-up of label tactile texture                |
 
 ### Pair Images
 
-| Asset | Public ID suffix | Dimensions | Aspect ratio | Notes |
-|---|---|---|---|---|
-| Pair hero | `hero` | 1200 × 1200 px minimum | 1:1 | Both bottles together on black with gold reflection |
-| His world | `his` | 800 × 1000 px minimum | 4:5 | His bottle in his colour world |
-| Her's world | `hers` | 800 × 1000 px minimum | 4:5 | Her's bottle in her colour world |
+| Asset       | Public ID suffix | Dimensions             | Aspect ratio | Notes                                               |
+| ----------- | ---------------- | ---------------------- | ------------ | --------------------------------------------------- |
+| Pair hero   | `hero`           | 1200 × 1200 px minimum | 1:1          | Both bottles together on black with gold reflection |
+| His world   | `his`            | 800 × 1000 px minimum  | 4:5          | His bottle in his colour world                      |
+| Her's world | `hers`           | 800 × 1000 px minimum  | 4:5          | Her's bottle in her colour world                    |
 
 ### Story Cover Images
 
-| Asset | Dimensions | Aspect ratio | Notes |
-|---|---|---|---|
-| Cover | 1600 × 700 px minimum | ~16:7 | Full-bleed editorial cover image |
+| Asset | Dimensions            | Aspect ratio | Notes                            |
+| ----- | --------------------- | ------------ | -------------------------------- |
+| Cover | 1600 × 700 px minimum | ~16:7        | Full-bleed editorial cover image |
 
 ### Note Images
 
-| Asset | Dimensions | Notes |
-|---|---|---|
+| Asset           | Dimensions           | Notes                                                  |
+| --------------- | -------------------- | ------------------------------------------------------ |
 | Note ingredient | 400 × 400 px minimum | Botanical or abstract representation of the ingredient |
 
 ### Open Graph / Social Images
 
-| Asset | Dimensions | Notes |
-|---|---|---|
+| Asset    | Dimensions            | Notes                                                        |
+| -------- | --------------------- | ------------------------------------------------------------ |
 | OG image | 1200 × 630 px exactly | Used for social sharing previews. Must be exactly this size. |
 
 ---
@@ -124,12 +124,14 @@ hhs/
 The turntable (Moment 03) requires a sequence of 36 photographs of the bottle rotating 360°.
 
 **Photography requirements:**
+
 - 36 frames at exactly 10° intervals (0°, 10°, 20°, … 350°).
 - Locked tripod. Identical camera exposure, focal distance, and white balance on all 36 frames.
 - Bottle on pure black background with consistent single-source side lighting.
 - Frame 1 should be the front-facing position (label visible).
 
 **File requirements:**
+
 - Format: WebP (preferred) or JPEG.
 - Maximum 70 KB per frame after optimisation. Total sequence must be under 2.5 MB.
 - Dimensions: 800 × 800 px minimum, 1:1 square crop.
@@ -138,6 +140,7 @@ The turntable (Moment 03) requires a sequence of 36 photographs of the bottle ro
 **Upload path:** `hhs/turntable/[fragrance-slug]/frame001` through `frame036`.
 
 **Content file entry:**
+
 ```ts
 turntable: {
   publicIdBase: "hhs/turntable/midnight-oath/frame",
@@ -156,11 +159,13 @@ On Tier B, the component loads every other frame (18 frames) for performance. En
 ## Video Requirements (Moment 06 — The Ritual)
 
 **Content:**
+
 - Slow-motion fragrance ceremony: wrist application, atomiser press, golden mist, neck gesture.
 - Backlit spray so mist catches light in warm gold against darkness.
 - Duration: 15–25 seconds of edited, loopable footage.
 
 **Technical requirements:**
+
 - Format: MP4 (H.264 or H.265) and WebM (VP9 or AV1).
 - **No audio track.** Remove with `ffmpeg -an` flag. An audio track will cause mobile browsers to block autoplay.
 - Aspect ratio: 16:9 widescreen.
@@ -179,11 +184,11 @@ The site uses Cloudinary's `vc_auto` transformation to serve the best format for
 
 The site applies these transformations automatically. You do not need to apply them manually when uploading.
 
-| Use | Transformation string |
-|---|---|
-| Standard image | `f_auto,q_auto:good,c_limit,w_1200` |
-| Video | `f_auto,q_auto,vc_auto` |
-| Video poster | `f_auto,q_auto:good,c_limit,w_1440,so_0` |
+| Use            | Transformation string                    |
+| -------------- | ---------------------------------------- |
+| Standard image | `f_auto,q_auto:good,c_limit,w_1200`      |
+| Video          | `f_auto,q_auto,vc_auto`                  |
+| Video poster   | `f_auto,q_auto:good,c_limit,w_1440,so_0` |
 
 - `f_auto`: serves WebP or AVIF where the browser supports it, falling back to JPEG/PNG.
 - `q_auto:good`: Cloudinary's automatic quality optimisation at the "good" level.

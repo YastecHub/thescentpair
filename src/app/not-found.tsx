@@ -33,12 +33,8 @@ export default function NotFound() {
           <ButtonLink href="/" variant="primary">
             Return home
           </ButtonLink>
-          <ButtonLink href="/collection">
-            Browse the collection
-          </ButtonLink>
-          <ButtonLink href="/pairs">
-            Explore pairs
-          </ButtonLink>
+          <ButtonLink href="/collection">Browse the collection</ButtonLink>
+          <ButtonLink href="/pairs">Explore pairs</ButtonLink>
         </div>
       </section>
     </Container>

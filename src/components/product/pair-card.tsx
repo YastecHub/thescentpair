@@ -22,7 +22,10 @@ export function PairCard({
   const inStock = hasAvailableVariant(pair.setVariants);
 
   return (
-    <article className="group overflow-hidden border border-onyx-700 bg-onyx-800 text-parchment transition-colors hover:border-gold-300/50" data-cursor="discover">
+    <article
+      className="group overflow-hidden border border-onyx-700 bg-onyx-800 text-parchment transition-colors hover:border-gold-300/50"
+      data-cursor="discover"
+    >
       <Link
         href={`/pairs/${pair.slug}`}
         className="block focus-visible:outline-offset-4"
@@ -32,7 +35,9 @@ export function PairCard({
           <div className="overflow-hidden">
             <ProductImage
               media={{
-                publicId: useFragranceImages ? his?.media.heroLight : pair.media.hisWorld,
+                publicId: useFragranceImages
+                  ? his?.media.heroLight
+                  : pair.media.hisWorld,
                 alt: `${his?.name ?? "His fragrance"} world`,
               }}
               ratio="4 / 5"
@@ -42,7 +47,9 @@ export function PairCard({
           <div className="overflow-hidden">
             <ProductImage
               media={{
-                publicId: useFragranceImages ? hers?.media.heroLight : pair.media.hersWorld,
+                publicId: useFragranceImages
+                  ? hers?.media.heroLight
+                  : pair.media.hersWorld,
                 alt: `${hers?.name ?? "Her's fragrance"} world`,
               }}
               ratio="4 / 5"

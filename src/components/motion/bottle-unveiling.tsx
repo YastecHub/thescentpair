@@ -41,143 +41,176 @@ export function BottleUnveiling({
     ) => {
       ctx.clearRect(0, 0, width, height);
 
-    const progress = frameIndex / (totalFrames - 1); // 0 to 1
-    const angle = progress * Math.PI * 2; // Full 360 degree rotation
+      const progress = frameIndex / (totalFrames - 1); // 0 to 1
+      const angle = progress * Math.PI * 2; // Full 360 degree rotation
 
-    const centerX = width / 2;
-    const baseY = height * 0.85;
-    const bottleWidth = width * 0.45;
-    const bottleHeight = height * 0.6;
-    const topY = baseY - bottleHeight;
+      const centerX = width / 2;
+      const baseY = height * 0.85;
+      const bottleWidth = width * 0.45;
+      const bottleHeight = height * 0.6;
+      const topY = baseY - bottleHeight;
 
-    // Cap lift near end of rotation (progress > 0.75)
-    const capLift = progress > 0.75 ? (progress - 0.75) * 4 * (height * 0.08) : 0;
+      // Cap lift near end of rotation (progress > 0.75)
+      const capLift =
+        progress > 0.75 ? (progress - 0.75) * 4 * (height * 0.08) : 0;
 
-    ctx.save();
-
-    // 1. Ambient shadow under bottle
-    const shadowGrad = ctx.createRadialGradient(
-      centerX,
-      baseY + 10,
-      10,
-      centerX,
-      baseY + 10,
-      bottleWidth * 0.7,
-    );
-    shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0.8)");
-    shadowGrad.addColorStop(0.5, "rgba(176, 141, 58, 0.15)");
-    shadowGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
-    ctx.fillStyle = shadowGrad;
-    ctx.beginPath();
-    ctx.ellipse(centerX, baseY + 10, bottleWidth * 0.7, 18, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // 2. Glass bottle body
-    const bodyX = centerX - bottleWidth / 2;
-    const bodyY = topY + bottleHeight * 0.18;
-    const bodyH = bottleHeight * 0.82;
-
-    // Perspective depth based on rotation angle cosine
-    const cosAngle = Math.cos(angle);
-    const sinAngle = Math.sin(angle);
-
-    // Body glass gradient with dynamic specular reflection
-    const glassGrad = ctx.createLinearGradient(bodyX, bodyY, bodyX + bottleWidth, bodyY);
-    const highlightPos = 0.5 + 0.4 * sinAngle;
-    glassGrad.addColorStop(0, "#1F1B15");
-    glassGrad.addColorStop(Math.max(0, highlightPos - 0.15), "#0B0A09");
-    glassGrad.addColorStop(highlightPos, "#F0E2B8");
-    glassGrad.addColorStop(Math.min(1, highlightPos + 0.15), "#16130F");
-    glassGrad.addColorStop(1, "#1F1B15");
-
-    ctx.fillStyle = glassGrad;
-    ctx.strokeStyle = "#B08D3A";
-    ctx.lineWidth = 1.5;
-
-    // Rounded bottle base
-    ctx.beginPath();
-    ctx.roundRect(bodyX, bodyY, bottleWidth, bodyH, [2, 2, 8, 8]);
-    ctx.fill();
-    ctx.stroke();
-
-    // 3. Liquid volume inside
-    const liquidY = bodyY + bodyH * 0.15;
-    const liquidH = bodyH * 0.82;
-    const liquidGrad = ctx.createLinearGradient(bodyX, liquidY, bodyX, liquidY + liquidH);
-    const isHis = fragrance.audience === "his";
-    liquidGrad.addColorStop(0, isHis ? "rgba(27, 36, 48, 0.4)" : "rgba(124, 74, 69, 0.4)");
-    liquidGrad.addColorStop(1, isHis ? "rgba(11, 10, 9, 0.95)" : "rgba(18, 12, 14, 0.95)");
-    ctx.fillStyle = liquidGrad;
-    ctx.beginPath();
-    ctx.roundRect(bodyX + 8, liquidY, bottleWidth - 16, liquidH, [0, 0, 6, 6]);
-    ctx.fill();
-
-    // 4. Label (visible when front-facing: cosAngle > 0)
-    if (cosAngle > -0.2) {
-      const labelAlpha = Math.max(0, Math.min(1, (cosAngle + 0.2) * 1.5));
       ctx.save();
-      ctx.globalAlpha = labelAlpha;
 
-      const labelW = bottleWidth * 0.68 * Math.max(0.2, cosAngle);
-      const labelH = bodyH * 0.45;
-      const labelX = centerX - labelW / 2 + sinAngle * (bottleWidth * 0.1);
-      const labelY = bodyY + bodyH * 0.25;
-
-      ctx.fillStyle = "#0B0A09";
-      ctx.strokeStyle = "#B08D3A";
-      ctx.lineWidth = 0.8;
+      // 1. Ambient shadow under bottle
+      const shadowGrad = ctx.createRadialGradient(
+        centerX,
+        baseY + 10,
+        10,
+        centerX,
+        baseY + 10,
+        bottleWidth * 0.7,
+      );
+      shadowGrad.addColorStop(0, "rgba(0, 0, 0, 0.8)");
+      shadowGrad.addColorStop(0.5, "rgba(176, 141, 58, 0.15)");
+      shadowGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = shadowGrad;
       ctx.beginPath();
-      ctx.rect(labelX, labelY, labelW, labelH);
+      ctx.ellipse(
+        centerX,
+        baseY + 10,
+        bottleWidth * 0.7,
+        18,
+        0,
+        0,
+        Math.PI * 2,
+      );
+      ctx.fill();
+
+      // 2. Glass bottle body
+      const bodyX = centerX - bottleWidth / 2;
+      const bodyY = topY + bottleHeight * 0.18;
+      const bodyH = bottleHeight * 0.82;
+
+      // Perspective depth based on rotation angle cosine
+      const cosAngle = Math.cos(angle);
+      const sinAngle = Math.sin(angle);
+
+      // Body glass gradient with dynamic specular reflection
+      const glassGrad = ctx.createLinearGradient(
+        bodyX,
+        bodyY,
+        bodyX + bottleWidth,
+        bodyY,
+      );
+      const highlightPos = 0.5 + 0.4 * sinAngle;
+      glassGrad.addColorStop(0, "#1F1B15");
+      glassGrad.addColorStop(Math.max(0, highlightPos - 0.15), "#0B0A09");
+      glassGrad.addColorStop(highlightPos, "#F0E2B8");
+      glassGrad.addColorStop(Math.min(1, highlightPos + 0.15), "#16130F");
+      glassGrad.addColorStop(1, "#1F1B15");
+
+      ctx.fillStyle = glassGrad;
+      ctx.strokeStyle = "#B08D3A";
+      ctx.lineWidth = 1.5;
+
+      // Rounded bottle base
+      ctx.beginPath();
+      ctx.roundRect(bodyX, bodyY, bottleWidth, bodyH, [2, 2, 8, 8]);
       ctx.fill();
       ctx.stroke();
 
-      if (labelW > bottleWidth * 0.35) {
-        ctx.fillStyle = "#D9BC6A";
-        ctx.font = "bold 12px var(--font-display), serif";
-        ctx.textAlign = "center";
-        ctx.fillText("H & H", centerX, labelY + 24);
+      // 3. Liquid volume inside
+      const liquidY = bodyY + bodyH * 0.15;
+      const liquidH = bodyH * 0.82;
+      const liquidGrad = ctx.createLinearGradient(
+        bodyX,
+        liquidY,
+        bodyX,
+        liquidY + liquidH,
+      );
+      const isHis = fragrance.audience === "his";
+      liquidGrad.addColorStop(
+        0,
+        isHis ? "rgba(27, 36, 48, 0.4)" : "rgba(124, 74, 69, 0.4)",
+      );
+      liquidGrad.addColorStop(
+        1,
+        isHis ? "rgba(11, 10, 9, 0.95)" : "rgba(18, 12, 14, 0.95)",
+      );
+      ctx.fillStyle = liquidGrad;
+      ctx.beginPath();
+      ctx.roundRect(
+        bodyX + 8,
+        liquidY,
+        bottleWidth - 16,
+        liquidH,
+        [0, 0, 6, 6],
+      );
+      ctx.fill();
 
-        ctx.fillStyle = "#F6F2EA";
-        ctx.font = "500 10px var(--font-sans), sans-serif";
-        ctx.fillText(fragrance.name.toUpperCase(), centerX, labelY + 44);
+      // 4. Label (visible when front-facing: cosAngle > 0)
+      if (cosAngle > -0.2) {
+        const labelAlpha = Math.max(0, Math.min(1, (cosAngle + 0.2) * 1.5));
+        ctx.save();
+        ctx.globalAlpha = labelAlpha;
 
-        ctx.fillStyle = "#8A6C22";
-        ctx.font = "8px var(--font-sans), sans-serif";
-        ctx.fillText("EXTRAIT DE PARFUM", centerX, labelY + 60);
+        const labelW = bottleWidth * 0.68 * Math.max(0.2, cosAngle);
+        const labelH = bodyH * 0.45;
+        const labelX = centerX - labelW / 2 + sinAngle * (bottleWidth * 0.1);
+        const labelY = bodyY + bodyH * 0.25;
+
+        ctx.fillStyle = "#0B0A09";
+        ctx.strokeStyle = "#B08D3A";
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.rect(labelX, labelY, labelW, labelH);
+        ctx.fill();
+        ctx.stroke();
+
+        if (labelW > bottleWidth * 0.35) {
+          ctx.fillStyle = "#D9BC6A";
+          ctx.font = "bold 12px var(--font-display), serif";
+          ctx.textAlign = "center";
+          ctx.fillText("H & H", centerX, labelY + 24);
+
+          ctx.fillStyle = "#F6F2EA";
+          ctx.font = "500 10px var(--font-sans), sans-serif";
+          ctx.fillText(fragrance.name.toUpperCase(), centerX, labelY + 44);
+
+          ctx.fillStyle = "#8A6C22";
+          ctx.font = "8px var(--font-sans), sans-serif";
+          ctx.fillText("EXTRAIT DE PARFUM", centerX, labelY + 60);
+        }
+        ctx.restore();
       }
+
+      // 5. Collar ring
+      const collarW = bottleWidth * 0.36;
+      const collarH = bottleHeight * 0.08;
+      const collarX = centerX - collarW / 2;
+      const collarY = topY + bottleHeight * 0.1;
+      ctx.fillStyle = "#B08D3A";
+      ctx.fillRect(collarX, collarY, collarW, collarH);
+
+      // 6. Cap (lifts when capLift > 0)
+      const capW = bottleWidth * 0.48;
+      const capH = bottleHeight * 0.18;
+      const capX = centerX - capW / 2;
+      const capY = topY - capLift;
+
+      const capGrad = ctx.createLinearGradient(capX, capY, capX + capW, capY);
+      capGrad.addColorStop(0, "#8A6C22");
+      capGrad.addColorStop(0.35, "#FFF3CE");
+      capGrad.addColorStop(0.7, "#D9BC6A");
+      capGrad.addColorStop(1, "#8A6C22");
+
+      ctx.fillStyle = capGrad;
+      ctx.strokeStyle = "#8A6C22";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(capX, capY, capW, capH, [2, 2, 1, 1]);
+      ctx.fill();
+      ctx.stroke();
+
       ctx.restore();
-    }
-
-    // 5. Collar ring
-    const collarW = bottleWidth * 0.36;
-    const collarH = bottleHeight * 0.08;
-    const collarX = centerX - collarW / 2;
-    const collarY = topY + bottleHeight * 0.1;
-    ctx.fillStyle = "#B08D3A";
-    ctx.fillRect(collarX, collarY, collarW, collarH);
-
-    // 6. Cap (lifts when capLift > 0)
-    const capW = bottleWidth * 0.48;
-    const capH = bottleHeight * 0.18;
-    const capX = centerX - capW / 2;
-    const capY = topY - capLift;
-
-    const capGrad = ctx.createLinearGradient(capX, capY, capX + capW, capY);
-    capGrad.addColorStop(0, "#8A6C22");
-    capGrad.addColorStop(0.35, "#FFF3CE");
-    capGrad.addColorStop(0.7, "#D9BC6A");
-    capGrad.addColorStop(1, "#8A6C22");
-
-    ctx.fillStyle = capGrad;
-    ctx.strokeStyle = "#8A6C22";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.roundRect(capX, capY, capW, capH, [2, 2, 1, 1]);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.restore();
-  }, [totalFrames, fragrance.audience, fragrance.name]);
+    },
+    [totalFrames, fragrance.audience, fragrance.name],
+  );
 
   useEffect(() => {
     if (tier === "tier-c") return;

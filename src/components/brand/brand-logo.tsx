@@ -16,7 +16,9 @@ export function BrandLogo({
 }: BrandLogoProps) {
   if (variant === "crest") {
     return (
-      <div className={`relative flex flex-col items-center text-center ${className}`}>
+      <div
+        className={`relative flex flex-col items-center text-center ${className}`}
+      >
         <div className="relative h-28 w-28 md:h-36 md:w-36 drop-shadow-[0_0_25px_rgba(217,188,106,0.4)] transition-transform duration-slow hover:scale-105">
           <Image
             src="/brand/logo-crest.png"
@@ -43,7 +45,9 @@ export function BrandLogo({
 
   if (variant === "lockup") {
     return (
-      <div className={`relative flex flex-col items-center text-center ${className}`}>
+      <div
+        className={`relative flex flex-col items-center text-center ${className}`}
+      >
         <div className="relative w-48 sm:w-60 md:w-72 aspect-[924/820] drop-shadow-[0_0_30px_rgba(217,188,106,0.35)]">
           <Image
             src="/brand/logo-lockup.png"

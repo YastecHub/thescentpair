@@ -39,6 +39,7 @@ export function RitualFilm({ className = "" }: RitualFilmProps) {
   );
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Client-mount detection for SSR-safe rendering
     setMounted(true);
   }, []);
 
@@ -129,10 +130,7 @@ export function RitualFilm({ className = "" }: RitualFilmProps) {
           />
 
           {/* The ritual image with Ken Burns zoom */}
-          <div
-            ref={imageRef}
-            className="absolute inset-0"
-          >
+          <div ref={imageRef} className="absolute inset-0">
             {/* Always render gradient as SSR-safe base */}
             <div className="h-full w-full bg-[radial-gradient(ellipse_at_center,rgba(217,188,106,0.12),transparent_70%)]" />
 
@@ -165,7 +163,8 @@ export function RitualFilm({ className = "" }: RitualFilmProps) {
               A fragrance becomes personal in the moment it meets the skin.
             </h2>
             <p className="mt-3 text-xs sm:text-sm text-parchment/70 font-sans tracking-wide">
-              The gesture. The pulse point. The mist blooming gold against darkness — two scents meeting to form one shared memory.
+              The gesture. The pulse point. The mist blooming gold against
+              darkness — two scents meeting to form one shared memory.
             </p>
           </div>
         </div>

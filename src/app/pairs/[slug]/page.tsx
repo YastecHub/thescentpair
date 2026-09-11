@@ -150,8 +150,8 @@ export default async function PairPage({
               </legend>
               {pair.setVariants.map((variant) => {
                 const hisFragrance = his;
-                const hisVariant = hisFragrance?.variants.find(
-                  (v) => variant.contents.includes(v.sku),
+                const hisVariant = hisFragrance?.variants.find((v) =>
+                  variant.contents.includes(v.sku),
                 );
 
                 return (
@@ -210,10 +210,7 @@ export default async function PairPage({
       </Section>
 
       {/* Individual fragrance summaries */}
-      <Section
-        labelledBy="individual-fragrances-title"
-        className="bg-onyx-800"
-      >
+      <Section labelledBy="individual-fragrances-title" className="bg-onyx-800">
         <Eyebrow>The individual scents</Eyebrow>
         <h2
           id="individual-fragrances-title"

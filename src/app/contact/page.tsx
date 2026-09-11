@@ -15,6 +15,7 @@ export const metadata = createPageMetadata({
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? null;
 const INSTAGRAM_HANDLE = process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE ?? null;
 const TIKTOK_HANDLE = process.env.NEXT_PUBLIC_TIKTOK_HANDLE ?? null;
+const TWITTER_URL = process.env.NEXT_PUBLIC_TWITTER_URL ?? null;
 const EMAIL_ADDRESS = process.env.NEXT_PUBLIC_EMAIL_ADDRESS ?? null;
 
 export default function ContactPage() {
@@ -33,18 +34,33 @@ export default function ContactPage() {
     {
       id: "instagram",
       label: "Instagram",
-      description: "Follow the brand for new launches, editorial content and scent stories.",
-      href: INSTAGRAM_HANDLE ? `https://instagram.com/${INSTAGRAM_HANDLE}` : null,
-      display: INSTAGRAM_HANDLE ? `@${INSTAGRAM_HANDLE}` : "[PENDING: Instagram handle]",
+      description:
+        "Follow the brand for new launches, editorial content and scent stories.",
+      href: INSTAGRAM_HANDLE
+        ? `https://instagram.com/${INSTAGRAM_HANDLE}`
+        : null,
+      display: INSTAGRAM_HANDLE
+        ? `@${INSTAGRAM_HANDLE}`
+        : "[PENDING: Instagram handle]",
       available: Boolean(INSTAGRAM_HANDLE),
     },
     {
       id: "tiktok",
       label: "TikTok",
-      description: "Short-form fragrance content, behind-the-scenes and scent education.",
+      description:
+        "Short-form fragrance content, behind-the-scenes and scent education.",
       href: TIKTOK_HANDLE ? `https://tiktok.com/@${TIKTOK_HANDLE}` : null,
       display: TIKTOK_HANDLE ? `@${TIKTOK_HANDLE}` : "[PENDING: TikTok handle]",
       available: Boolean(TIKTOK_HANDLE),
+    },
+    {
+      id: "twitter",
+      label: "Twitter / X",
+      description:
+        "Follow along for launch updates, fragrance thoughts and brand news.",
+      href: TWITTER_URL,
+      display: TWITTER_URL ? "@thescentpair" : "[PENDING: Twitter / X profile]",
+      available: Boolean(TWITTER_URL),
     },
     {
       id: "email",
@@ -66,8 +82,8 @@ export default function ContactPage() {
             Start the fragrance conversation.
           </h1>
           <BodyText className="mt-5 type-supporting">
-            Whether you have a question about a scent, want to place an order
-            or are exploring something bespoke — we&apos;re here.
+            Whether you have a question about a scent, want to place an order or
+            are exploring something bespoke — we&apos;re here.
           </BodyText>
         </div>
       </Section>
@@ -78,12 +94,16 @@ export default function ContactPage() {
         <h2 id="channels-title" className="type-section-heading mt-4 text-foil">
           How to reach us.
         </h2>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {channels.map((channel) => (
             <div
               key={channel.id}
-              className="border border-onyx-700 bg-onyx-900 p-6"
+              className="group relative overflow-hidden border border-onyx-700 bg-onyx-900 p-5 transition-colors hover:border-gold-300/50 md:p-6"
             >
+              <div
+                className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-300/70 to-transparent opacity-70"
+                aria-hidden="true"
+              />
               <p className="type-eyebrow text-gold-300">{channel.label}</p>
               <p className="mt-3 text-sm text-parchment/68 leading-relaxed">
                 {channel.description}
@@ -94,7 +114,9 @@ export default function ContactPage() {
                     href={channel.href}
                     className="text-sm font-semibold text-gold-300 underline underline-offset-4 hover:text-gold-100"
                     target={channel.id !== "email" ? "_blank" : undefined}
-                    rel={channel.id !== "email" ? "noopener noreferrer" : undefined}
+                    rel={
+                      channel.id !== "email" ? "noopener noreferrer" : undefined
+                    }
                   >
                     {channel.display}
                   </a>
@@ -114,7 +136,10 @@ export default function ContactPage() {
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <Eyebrow>Enquiry form</Eyebrow>
-            <h2 id="enquiry-title" className="type-section-heading mt-4 text-foil">
+            <h2
+              id="enquiry-title"
+              className="type-section-heading mt-4 text-foil"
+            >
               Send us a message.
             </h2>
             <BodyText className="mt-5 type-supporting">

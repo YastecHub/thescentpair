@@ -20,6 +20,7 @@ export function CollectionReveal({
 
   useEffect(() => {
     if (tier === "tier-c") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Tier-c fallback: reveal immediately without intersection observer
       setRevealed(true);
       return;
     }
@@ -38,7 +39,7 @@ export function CollectionReveal({
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
 
     observer.observe(el);

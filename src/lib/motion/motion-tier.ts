@@ -30,7 +30,9 @@ export function detectMotionCapabilities(): MotionCapabilities {
   }
 
   // 1. Reduced Motion -> Tier C
-  const reducedMotionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const reducedMotionMedia = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  );
   const hasReducedMotion = reducedMotionMedia.matches;
   if (hasReducedMotion) {
     return {

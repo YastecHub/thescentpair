@@ -44,7 +44,9 @@ export function CustomCursor() {
 
       // Read cursor intent from the hovered element or its ancestors
       const target = e.target as HTMLElement | null;
-      const cursorAttr = target?.closest("[data-cursor]")?.getAttribute("data-cursor");
+      const cursorAttr = target
+        ?.closest("[data-cursor]")
+        ?.getAttribute("data-cursor");
       const next = (cursorAttr as CursorState | null) ?? "default";
 
       if (next !== currentState) {
@@ -107,7 +109,10 @@ export function CustomCursor() {
   if (!canCustomCursor || tier !== "tier-a") return null;
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-cursor">
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed inset-0 z-cursor"
+    >
       {/* Inner dot */}
       <div
         ref={dotRef}

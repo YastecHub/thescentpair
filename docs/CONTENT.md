@@ -6,12 +6,12 @@ All product content is stored as typed TypeScript arrays under `src/content/`. E
 
 ## Where Everything Lives
 
-| Content type | File |
-|---|---|
-| Fragrances | `src/content/fragrances/sample-fragrances.ts` |
-| Pairs | `src/content/pairs/sample-pairs.ts` |
-| Notes (ingredients) | `src/content/notes/sample-notes.ts` |
-| Stories | `src/content/stories/sample-stories.ts` |
+| Content type        | File                                          |
+| ------------------- | --------------------------------------------- |
+| Fragrances          | `src/content/fragrances/sample-fragrances.ts` |
+| Pairs               | `src/content/pairs/sample-pairs.ts`           |
+| Notes (ingredients) | `src/content/notes/sample-notes.ts`           |
+| Stories             | `src/content/stories/sample-stories.ts`       |
 
 The word "sample" in the filenames is intentional — these files contain demonstration data. Replace the objects inside them with real client-approved content before launch. Do not rename the files or change the export names (`fragrances`, `pairs`, `notes`, `stories`).
 
@@ -194,10 +194,12 @@ A public ID looks like: `hhs/fragrance/midnight-oath/hero-dark`
 The full URL becomes: `https://res.cloudinary.com/u7scxp7o/image/upload/f_auto,q_auto:good,c_limit,w_1200/hhs/fragrance/midnight-oath/hero-dark`
 
 **To replace an image:**
+
 1. Upload the new image to Cloudinary using the exact same public ID as the old one. Cloudinary will overwrite it.
 2. No code changes needed — the URL is built from the public ID already in the content file.
 
 **To add a new image:**
+
 1. Upload to Cloudinary with a public ID following the folder structure in `docs/CLOUDINARY.md`.
 2. Add the public ID string to the relevant `media` field in the content file.
 
@@ -232,12 +234,14 @@ If no turntable is provided, the component falls back to the SVG bottle silhouet
 SKUs identify specific orderable variants. They are used in WhatsApp order messages, analytics events, and pair set contents.
 
 **Rules:**
+
 - Uppercase letters and numbers only, separated by hyphens.
 - Format: `[FRAGRANCE-CODE]-[SIZE]` for individual fragrances, `[PAIR-CODE]-SET-[SIZE]` for pair sets.
 - Must be globally unique across all fragrances and pairs.
 - Never reuse a SKU, even if a product is discontinued.
 
 **Examples:**
+
 ```
 MO-50        Midnight Oath 50ml
 MO-100       Midnight Oath 100ml

@@ -20,7 +20,10 @@ export function StoryCard({ story }: Readonly<{ story: Story }>) {
         {/* Cover image */}
         <div className="overflow-hidden">
           <ProductImage
-            media={{ publicId: story.coverMedia, alt: `${story.title} cover image` }}
+            media={{
+              publicId: story.coverMedia,
+              alt: `${story.title} cover image`,
+            }}
             ratio="16 / 10"
             className="transition-transform duration-[800ms] ease-out group-hover:scale-[1.03]"
           />
@@ -30,7 +33,10 @@ export function StoryCard({ story }: Readonly<{ story: Story }>) {
         <div className="p-5 grid gap-3">
           {/* Dateline with gold dot */}
           <div className="flex items-center gap-2">
-            <div className="h-1.5 w-1.5 rounded-full bg-gold-300/70" aria-hidden="true" />
+            <div
+              className="h-1.5 w-1.5 rounded-full bg-gold-300/70"
+              aria-hidden="true"
+            />
             <time
               className="type-eyebrow text-gold-300 text-xs"
               dateTime={story.publishedAt}

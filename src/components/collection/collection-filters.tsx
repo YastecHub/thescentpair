@@ -45,9 +45,7 @@ export function CollectionFilters({
   const router = useRouter();
   const pathname = usePathname();
 
-  const families = [
-    ...new Set(fragrances.map((f) => f.family)),
-  ].sort();
+  const families = [...new Set(fragrances.map((f) => f.family))].sort();
 
   const queryAudience = searchParams.get("for");
   const queryFamily = searchParams.get("family");
@@ -68,10 +66,7 @@ export function CollectionFilters({
 
   const filtered = filterFragrances(fragrances, filters);
 
-  function updateFilter(
-    key: "for" | "family" | "availability",
-    value: string,
-  ) {
+  function updateFilter(key: "for" | "family" | "availability", value: string) {
     const next = new URLSearchParams(searchParams.toString());
 
     if (value) {
@@ -121,49 +116,48 @@ export function CollectionFilters({
         </div>
 
         <div className="grid gap-3 sm:grid-cols-3">
-        <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
-          For
-          <select
-            className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
-            value={filters.audience ?? ""}
-            onChange={(e) => updateFilter("for", e.target.value)}
-          >
-            <option value="">All</option>
-            <option value="his">His</option>
-            <option value="hers">Her&apos;s</option>
-            <option value="unisex">Unisex</option>
-          </select>
-        </label>
+          <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
+            For
+            <select
+              className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
+              value={filters.audience ?? ""}
+              onChange={(e) => updateFilter("for", e.target.value)}
+            >
+              <option value="">All</option>
+              <option value="his">His</option>
+              <option value="hers">Her&apos;s</option>
+              <option value="unisex">Unisex</option>
+            </select>
+          </label>
 
-        <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
-          Scent family
-          <select
-            className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
-            value={filters.family ?? ""}
-            onChange={(e) => updateFilter("family", e.target.value)}
-          >
-            <option value="">All families</option>
-            {families.map((family) => (
-              <option key={family} value={family}>
-                {family.replaceAll("-", " ")}
-              </option>
-            ))}
-          </select>
-        </label>
+          <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
+            Scent family
+            <select
+              className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
+              value={filters.family ?? ""}
+              onChange={(e) => updateFilter("family", e.target.value)}
+            >
+              <option value="">All families</option>
+              {families.map((family) => (
+                <option key={family} value={family}>
+                  {family.replaceAll("-", " ")}
+                </option>
+              ))}
+            </select>
+          </label>
 
-        <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
-          Availability
-          <select
-            className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
-            value={filters.availability ?? ""}
-            onChange={(e) => updateFilter("availability", e.target.value)}
-          >
-            <option value="">Any</option>
-            <option value="available">Available</option>
-            <option value="unavailable">Unavailable</option>
-          </select>
-        </label>
-
+          <label className="grid gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-parchment/60">
+            Availability
+            <select
+              className="min-h-11 w-full rounded-full border border-onyx-700 bg-onyx-900 px-4 text-sm normal-case tracking-normal text-parchment transition-colors focus:border-gold-300 focus:outline-none focus:ring-0"
+              value={filters.availability ?? ""}
+              onChange={(e) => updateFilter("availability", e.target.value)}
+            >
+              <option value="">Any</option>
+              <option value="available">Available</option>
+              <option value="unavailable">Unavailable</option>
+            </select>
+          </label>
         </div>
 
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">

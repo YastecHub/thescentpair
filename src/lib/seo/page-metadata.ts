@@ -26,7 +26,9 @@ export function createPageMetadata({
       description,
       url,
       type,
-      images: ogImage ? [{ url: ogImage, width: 1200, height: 630 }] : undefined,
+      images: ogImage
+        ? [{ url: ogImage, width: 1200, height: 630 }]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",

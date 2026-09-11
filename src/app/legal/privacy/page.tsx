@@ -16,7 +16,10 @@ export const metadata = createPageMetadata({
 export default function PrivacyPage() {
   return (
     <article aria-labelledby="privacy-title">
-      <Section labelledBy="privacy-title" className="bg-parchment text-ink-900 light-surface">
+      <Section
+        labelledBy="privacy-title"
+        className="bg-parchment text-ink-900 light-surface"
+      >
         <div className="max-w-readable">
           <Eyebrow className="text-gold-700">Legal</Eyebrow>
           <h1 id="privacy-title" className="type-page-heading mt-4">
@@ -31,19 +34,20 @@ export default function PrivacyPage() {
 
           <div className="grid gap-10 text-body text-ink-600 leading-relaxed">
             <div className="border-l-2 border-gold-700 pl-6 py-2 bg-gold-100/30">
-              <p className="text-sm font-semibold text-ink-900">
-                Draft notice
-              </p>
+              <p className="text-sm font-semibold text-ink-900">Draft notice</p>
               <p className="mt-2 text-sm">
-                This privacy policy is a draft structure prepared for review.
-                It does not constitute a final legal document. All sections
-                marked [PENDING] require client information, legal review and
-                approval before this page can be published.
+                This privacy policy is a draft structure prepared for review. It
+                does not constitute a final legal document. All sections marked
+                [PENDING] require client information, legal review and approval
+                before this page can be published.
               </p>
             </div>
 
             <section aria-labelledby="privacy-who">
-              <h2 id="privacy-who" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="privacy-who"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Who we are
               </h2>
               <p>
@@ -58,7 +62,10 @@ export default function PrivacyPage() {
             </section>
 
             <section aria-labelledby="privacy-collect">
-              <h2 id="privacy-collect" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="privacy-collect"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 What information we collect
               </h2>
               <p>
@@ -66,8 +73,14 @@ export default function PrivacyPage() {
                 website or contact us:
               </p>
               <ul className="mt-4 grid gap-2 list-disc pl-6">
-                <li>Your name and email address if you sign up for our mailing list</li>
-                <li>Your name, email, phone number and message if you submit an enquiry</li>
+                <li>
+                  Your name and email address if you sign up for our mailing
+                  list
+                </li>
+                <li>
+                  Your name, email, phone number and message if you submit an
+                  enquiry
+                </li>
                 <li>Order details when you place an order via WhatsApp</li>
                 <li>
                   Usage data collected automatically if analytics are enabled
@@ -77,14 +90,20 @@ export default function PrivacyPage() {
             </section>
 
             <section aria-labelledby="privacy-use">
-              <h2 id="privacy-use" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="privacy-use"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 How we use your information
               </h2>
               <p>We use the information we collect to:</p>
               <ul className="mt-4 grid gap-2 list-disc pl-6">
                 <li>Process and fulfil your orders</li>
                 <li>Respond to enquiries</li>
-                <li>Send launch announcements and mailing-list updates, if you opted in</li>
+                <li>
+                  Send launch announcements and mailing-list updates, if you
+                  opted in
+                </li>
                 <li>Improve our website and services</li>
               </ul>
               <p className="mt-4">
@@ -94,7 +113,10 @@ export default function PrivacyPage() {
             </section>
 
             <section aria-labelledby="privacy-storage">
-              <h2 id="privacy-storage" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="privacy-storage"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 How we store your data
               </h2>
               <p>
@@ -104,12 +126,13 @@ export default function PrivacyPage() {
             </section>
 
             <section aria-labelledby="privacy-rights">
-              <h2 id="privacy-rights" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="privacy-rights"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Your rights
               </h2>
-              <p>
-                Depending on your location, you may have rights including:
-              </p>
+              <p>Depending on your location, you may have rights including:</p>
               <ul className="mt-4 grid gap-2 list-disc pl-6">
                 <li>The right to access the personal data we hold about you</li>
                 <li>The right to correct inaccurate data</li>
@@ -123,7 +146,10 @@ export default function PrivacyPage() {
             </section>
 
             <section aria-labelledby="privacy-cookies">
-              <h2 id="privacy-cookies" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="privacy-cookies"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Cookies
               </h2>
               <p>
@@ -134,13 +160,16 @@ export default function PrivacyPage() {
             </section>
 
             <section aria-labelledby="privacy-changes">
-              <h2 id="privacy-changes" className="type-section-heading mb-4 text-ink-900">
+              <h2
+                id="privacy-changes"
+                className="type-section-heading mb-4 text-ink-900"
+              >
                 Changes to this policy
               </h2>
               <p>
-                We may update this privacy policy from time to time. Any
-                changes will be posted on this page with an updated review
-                date. We recommend checking this page periodically.
+                We may update this privacy policy from time to time. Any changes
+                will be posted on this page with an updated review date. We
+                recommend checking this page periodically.
               </p>
             </section>
           </div>

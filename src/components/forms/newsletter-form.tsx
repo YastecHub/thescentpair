@@ -16,6 +16,7 @@ export function NewsletterForm({
 }: NewsletterFormProps) {
   const [state, setState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  // eslint-disable-next-line react-hooks/purity -- Date.now() is stored in a ref for anti-spam timing, not used in render output
   const mountedAt = useRef(Date.now());
   const idSuffix = compact ? "footer" : "main";
 
@@ -65,9 +66,20 @@ export function NewsletterForm({
 
   if (compact) {
     return (
-      <form className="grid gap-3" onSubmit={handleSubmit} aria-label="Mailing list signup">
+      <form
+        className="grid gap-3"
+        onSubmit={handleSubmit}
+        aria-label="Mailing list signup"
+      >
         {/* Honeypot */}
-        <input name="_hp" type="text" tabIndex={-1} aria-hidden="true" className="sr-only" autoComplete="off" />
+        <input
+          name="_hp"
+          type="text"
+          tabIndex={-1}
+          aria-hidden="true"
+          className="sr-only"
+          autoComplete="off"
+        />
 
         <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
           <label className="sr-only" htmlFor={`newsletter-email-${idSuffix}`}>
@@ -88,10 +100,18 @@ export function NewsletterForm({
             disabled={state === "loading" || state === "success"}
             type="submit"
           >
-            {state === "loading" ? "…" : state === "success" ? "✓ Joined" : "Join"}
+            {state === "loading"
+              ? "…"
+              : state === "success"
+                ? "✓ Joined"
+                : "Join"}
           </button>
         </div>
-        <p id={statusId} className="min-h-4 text-xs text-gold-300" aria-live="polite">
+        <p
+          id={statusId}
+          className="min-h-4 text-xs text-gold-300"
+          aria-live="polite"
+        >
           {state === "success" ? "You're on the list." : null}
           {state === "error" ? errorMsg : null}
         </p>
@@ -100,12 +120,26 @@ export function NewsletterForm({
   }
 
   return (
-    <form className="grid gap-4" onSubmit={handleSubmit} aria-label="Mailing list signup">
+    <form
+      className="grid gap-4"
+      onSubmit={handleSubmit}
+      aria-label="Mailing list signup"
+    >
       {/* Honeypot */}
-      <input name="_hp" type="text" tabIndex={-1} aria-hidden="true" className="sr-only" autoComplete="off" />
+      <input
+        name="_hp"
+        type="text"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="sr-only"
+        autoComplete="off"
+      />
 
       <div className="grid gap-2">
-        <label className="text-sm font-semibold text-parchment" htmlFor={`newsletter-email-${idSuffix}`}>
+        <label
+          className="text-sm font-semibold text-parchment"
+          htmlFor={`newsletter-email-${idSuffix}`}
+        >
           Email address
         </label>
         <input
@@ -125,14 +159,25 @@ export function NewsletterForm({
         disabled={state === "loading" || state === "success"}
         type="submit"
       >
-        {state === "loading" ? "Preparing…" : state === "success" ? "You're on the list" : "Join the list"}
+        {state === "loading"
+          ? "Preparing…"
+          : state === "success"
+            ? "You're on the list"
+            : "Join the list"}
       </button>
 
-      <p id={`newsletter-help-${idSuffix}`} className="text-sm text-parchment/58">
+      <p
+        id={`newsletter-help-${idSuffix}`}
+        className="text-sm text-parchment/58"
+      >
         First access to new pairs and scent stories. Unsubscribe any time.
       </p>
 
-      <p id={statusId} className="min-h-6 text-sm text-gold-300" aria-live="polite">
+      <p
+        id={statusId}
+        className="min-h-6 text-sm text-gold-300"
+        aria-live="polite"
+      >
         {state === "error" ? errorMsg : null}
       </p>
     </form>

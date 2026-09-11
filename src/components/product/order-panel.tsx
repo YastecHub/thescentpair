@@ -10,7 +10,9 @@ import { trackEvent } from "@/lib/analytics/analytics";
 type OrderVariant = FragranceVariant | PairVariant;
 
 function variantLabel(variant: OrderVariant) {
-  return "size" in variant ? `${variant.size}${variant.unit}` : `Set: ${variant.contents.join(" + ")}`;
+  return "size" in variant
+    ? `${variant.size}${variant.unit}`
+    : `Set: ${variant.contents.join(" + ")}`;
 }
 
 export function OrderPanel({
@@ -26,12 +28,18 @@ export function OrderPanel({
   pagePath: string;
   supportingText?: string;
 }>) {
-  const [selectedSku, setSelectedSku] = useState(variants.find((variant) => variant.inStock)?.sku ?? variants[0]?.sku);
+  const [selectedSku, setSelectedSku] = useState(
+    variants.find((variant) => variant.inStock)?.sku ?? variants[0]?.sku,
+  );
   const [quantity, setQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const selectedVariant = useMemo(() => variants.find((variant) => variant.sku === selectedSku) ?? variants[0], [selectedSku, variants]);
+  const selectedVariant = useMemo(
+    () =>
+      variants.find((variant) => variant.sku === selectedSku) ?? variants[0],
+    [selectedSku, variants],
+  );
   const canOrder = Boolean(selectedVariant?.inStock);
 
   const orderData = useMemo(() => {
@@ -85,11 +93,17 @@ export function OrderPanel({
   };
 
   return (
-    <section className="border border-onyx-700 bg-onyx-800 p-5 md:p-6" aria-labelledby="order-panel-title">
+    <section
+      className="border border-onyx-700 bg-onyx-800 p-5 md:p-6"
+      aria-labelledby="order-panel-title"
+    >
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="type-eyebrow text-gold-300">Order via WhatsApp</p>
-          <h2 id="order-panel-title" className="mt-2 font-display text-3xl leading-none text-parchment">
+          <h2
+            id="order-panel-title"
+            className="mt-2 font-display text-3xl leading-none text-parchment"
+          >
             Reserve Your Signature
           </h2>
         </div>
@@ -107,15 +121,23 @@ export function OrderPanel({
               key={variant.sku}
               className={clsx(
                 "grid min-h-11 cursor-pointer gap-2 border p-4 transition-colors sm:grid-cols-[1fr_auto] sm:items-center",
-                checked ? "border-gold-300 bg-onyx-900" : "border-onyx-700 hover:border-gold-300/55",
+                checked
+                  ? "border-gold-300 bg-onyx-900"
+                  : "border-onyx-700 hover:border-gold-300/55",
                 !variant.inStock && "cursor-not-allowed opacity-55",
               )}
             >
               <span>
-                <span className="block font-semibold text-parchment">{variantLabel(variant)}</span>
-                <span className="block text-sm text-parchment/55">SKU {variant.sku}</span>
+                <span className="block font-semibold text-parchment">
+                  {variantLabel(variant)}
+                </span>
+                <span className="block text-sm text-parchment/55">
+                  SKU {variant.sku}
+                </span>
               </span>
-              <span className="type-price">{formatPrice(variant.price, variant.currency)}</span>
+              <span className="type-price">
+                {formatPrice(variant.price, variant.currency)}
+              </span>
               <input
                 className="sr-only"
                 type="radio"
@@ -130,7 +152,10 @@ export function OrderPanel({
         })}
       </fieldset>
 
-      <label className="mt-5 grid gap-2 text-sm font-semibold text-parchment" htmlFor={`${itemType}-quantity`}>
+      <label
+        className="mt-5 grid gap-2 text-sm font-semibold text-parchment"
+        htmlFor={`${itemType}-quantity`}
+      >
         Quantity
         <select
           id={`${itemType}-quantity`}
@@ -150,15 +175,26 @@ export function OrderPanel({
         <dl className="mt-5 grid gap-2 border-t border-onyx-700 pt-5 text-sm text-parchment/68">
           <div className="flex justify-between gap-4">
             <dt>Selected SKU</dt>
-            <dd className="font-semibold text-gold-300">{selectedVariant.sku}</dd>
+            <dd className="font-semibold text-gold-300">
+              {selectedVariant.sku}
+            </dd>
           </div>
           <div className="flex justify-between gap-4">
             <dt>Unit price</dt>
-            <dd className="font-semibold text-gold-300">{formatPrice(selectedVariant.price, selectedVariant.currency)}</dd>
+            <dd className="font-semibold text-gold-300">
+              {formatPrice(selectedVariant.price, selectedVariant.currency)}
+            </dd>
           </div>
           <div className="flex justify-between gap-4">
-            <dt>Total ({quantity} item{quantity > 1 ? "s" : ""})</dt>
-            <dd className="font-semibold text-foil text-base">{formatPrice(selectedVariant.price * quantity, selectedVariant.currency)}</dd>
+            <dt>
+              Total ({quantity} item{quantity > 1 ? "s" : ""})
+            </dt>
+            <dd className="font-semibold text-foil text-base">
+              {formatPrice(
+                selectedVariant.price * quantity,
+                selectedVariant.currency,
+              )}
+            </dd>
           </div>
         </dl>
       ) : null}
@@ -195,11 +231,17 @@ export function OrderPanel({
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
         >
           <div className="relative w-full max-w-lg border border-onyx-700 bg-onyx-900 p-6 md:p-8 shadow-2xl">
-            <h3 id="order-modal-title" className="font-display text-2xl font-semibold text-foil">
+            <h3
+              id="order-modal-title"
+              className="font-display text-2xl font-semibold text-foil"
+            >
               Your WhatsApp Order Message
             </h3>
             <p className="mt-2 text-xs text-parchment/70">
-              Reference code: <span className="font-mono text-gold-300">{orderData.refCode}</span>
+              Reference code:{" "}
+              <span className="font-mono text-gold-300">
+                {orderData.refCode}
+              </span>
             </p>
 
             <pre className="mt-4 max-h-56 overflow-y-auto whitespace-pre-wrap rounded border border-onyx-700 bg-onyx-800 p-4 font-mono text-xs text-parchment/90">

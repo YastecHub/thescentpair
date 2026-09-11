@@ -6,7 +6,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMotionTier } from "./motion-provider";
 
 const safeRegisterScrollTrigger = () => {
-  if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
+  if (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function"
+  ) {
     gsap.registerPlugin(ScrollTrigger);
   }
 };
@@ -38,7 +41,8 @@ export function EditorialLetter({
     safeRegisterScrollTrigger();
 
     const ctx = gsap.context(() => {
-      const lineElements = containerRef.current?.querySelectorAll(".letter-line");
+      const lineElements =
+        containerRef.current?.querySelectorAll(".letter-line");
       if (!lineElements || lineElements.length === 0) return;
 
       lineElements.forEach((el) => {
@@ -55,7 +59,7 @@ export function EditorialLetter({
               end: "top 60%",
               scrub: 0.5,
             },
-          }
+          },
         );
       });
     }, containerRef);
@@ -70,7 +74,9 @@ export function EditorialLetter({
     const parts = text.split(regex);
 
     return parts.map((part, i) => {
-      const isGold = goldWords.some((w) => w.toLowerCase() === part.toLowerCase());
+      const isGold = goldWords.some(
+        (w) => w.toLowerCase() === part.toLowerCase(),
+      );
       if (isGold) {
         return (
           <span

@@ -24,7 +24,7 @@ export const DEFAULT_WHATSAPP_NUMBER =
  */
 export function buildWhatsAppOrderMessage(
   details: WhatsAppOrderDetails,
-  refCode?: string
+  refCode?: string,
 ): string {
   const reference =
     refCode || `HHS-${Math.floor(100000 + Math.random() * 900000)}`;
@@ -59,7 +59,7 @@ export function buildWhatsAppOrderMessage(
  */
 export function buildWhatsAppOrderUrl(
   details: WhatsAppOrderDetails,
-  phone: string = DEFAULT_WHATSAPP_NUMBER
+  phone: string = DEFAULT_WHATSAPP_NUMBER,
 ): { url: string; message: string; refCode: string } {
   const refCode = `HHS-${Math.floor(100000 + Math.random() * 900000)}`;
   const message = buildWhatsAppOrderMessage(details, refCode);

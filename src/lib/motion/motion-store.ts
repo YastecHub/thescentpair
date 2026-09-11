@@ -53,7 +53,11 @@ export function getMotionServerSnapshot(): MotionCapabilities {
   return DEFAULT_MOTION_CAPABILITIES;
 }
 
-export function downgradeMotionStore(newTier: MotionTier, reason: string, avgFps = 0): void {
+export function downgradeMotionStore(
+  newTier: MotionTier,
+  reason: string,
+  avgFps = 0,
+): void {
   const current = getMotionSnapshot();
   if (current.tier === "tier-c") return;
 

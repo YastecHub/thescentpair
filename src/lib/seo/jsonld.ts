@@ -12,7 +12,8 @@ export function getOrganizationJsonLd() {
     name: "His & Her's Scents",
     url: "https://thescentpair.com",
     logo: "https://thescentpair.com/brand/logo.png",
-    description: "Signature scents, made for two. Cinematic luxury fragrance house built around paired identities.",
+    description:
+      "Signature scents, made for two. Cinematic luxury fragrance house built around paired identities.",
     sameAs: [
       "https://instagram.com/thescentpair",
       "https://tiktok.com/@thescentpair",

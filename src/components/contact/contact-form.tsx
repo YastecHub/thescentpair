@@ -18,6 +18,7 @@ export function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
   const [serverError, setServerError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
+  // eslint-disable-next-line react-hooks/purity -- Date.now() is stored in a ref for anti-spam timing, not used in render output
   const mountedAt = useRef(Date.now());
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -59,21 +60,29 @@ export function ContactForm() {
         setFieldErrors(json.fieldErrors);
         setState("error");
       } else {
-        setServerError(json.error ?? "Something went wrong. Please try WhatsApp instead.");
+        setServerError(
+          json.error ?? "Something went wrong. Please try WhatsApp instead.",
+        );
         setState("error");
       }
     } catch {
-      setServerError("Network error. Please check your connection and try again.");
+      setServerError(
+        "Network error. Please check your connection and try again.",
+      );
       setState("error");
     }
   }
 
   if (state === "success") {
     return (
-      <div className="border border-onyx-700 bg-onyx-900 p-8 text-center" role="status">
+      <div
+        className="border border-onyx-700 bg-onyx-900 p-8 text-center"
+        role="status"
+      >
         <p className="font-display text-2xl text-foil">Message received.</p>
         <p className="mt-3 text-sm text-parchment/68">
-          We'll respond as quickly as possible. For urgent questions, WhatsApp is faster.
+          We&apos;ll respond as quickly as possible. For urgent questions,
+          WhatsApp is faster.
         </p>
         <button
           type="button"
@@ -103,7 +112,10 @@ export function ContactForm() {
         autoComplete="off"
       />
 
-      <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-name">
+      <label
+        className="grid gap-2 text-sm font-semibold text-parchment"
+        htmlFor="contact-name"
+      >
         Name
         <input
           id="contact-name"
@@ -114,30 +126,46 @@ export function ContactForm() {
           aria-invalid={Boolean(fieldErrors.name)}
         />
         {fieldErrors.name ? (
-          <span id="contact-name-error" role="alert" className="text-xs text-gold-300">
+          <span
+            id="contact-name-error"
+            role="alert"
+            className="text-xs text-gold-300"
+          >
             {fieldErrors.name[0]}
           </span>
         ) : null}
       </label>
 
-      <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-contact">
+      <label
+        className="grid gap-2 text-sm font-semibold text-parchment"
+        htmlFor="contact-contact"
+      >
         Email or phone
         <input
           id="contact-contact"
           name="contact"
           autoComplete="email"
           className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment placeholder:text-parchment/40 focus:border-gold-300 focus:outline-none"
-          aria-describedby={fieldErrors.contact ? "contact-contact-error" : undefined}
+          aria-describedby={
+            fieldErrors.contact ? "contact-contact-error" : undefined
+          }
           aria-invalid={Boolean(fieldErrors.contact)}
         />
         {fieldErrors.contact ? (
-          <span id="contact-contact-error" role="alert" className="text-xs text-gold-300">
+          <span
+            id="contact-contact-error"
+            role="alert"
+            className="text-xs text-gold-300"
+          >
             {fieldErrors.contact[0]}
           </span>
         ) : null}
       </label>
 
-      <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-topic">
+      <label
+        className="grid gap-2 text-sm font-semibold text-parchment"
+        htmlFor="contact-topic"
+      >
         Enquiry topic
         <select
           id="contact-topic"
@@ -150,18 +178,27 @@ export function ContactForm() {
         </select>
       </label>
 
-      <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-message">
+      <label
+        className="grid gap-2 text-sm font-semibold text-parchment"
+        htmlFor="contact-message"
+      >
         Message
         <textarea
           id="contact-message"
           name="message"
           rows={5}
           className="border border-onyx-700 bg-onyx-900 px-4 py-3 text-parchment placeholder:text-parchment/40 focus:border-gold-300 focus:outline-none"
-          aria-describedby={fieldErrors.message ? "contact-message-error" : undefined}
+          aria-describedby={
+            fieldErrors.message ? "contact-message-error" : undefined
+          }
           aria-invalid={Boolean(fieldErrors.message)}
         />
         {fieldErrors.message ? (
-          <span id="contact-message-error" role="alert" className="text-xs text-gold-300">
+          <span
+            id="contact-message-error"
+            role="alert"
+            className="text-xs text-gold-300"
+          >
             {fieldErrors.message[0]}
           </span>
         ) : null}

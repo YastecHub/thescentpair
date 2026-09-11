@@ -69,13 +69,19 @@ export async function POST(request: NextRequest) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid request body." },
+      { status: 400 },
+    );
   }
 
   const parsed = newsletterSchema.safeParse(body);
   if (!parsed.success) {
     const fieldErrors = parsed.error.flatten().fieldErrors;
-    return NextResponse.json({ error: "Validation failed.", fieldErrors }, { status: 422 });
+    return NextResponse.json(
+      { error: "Validation failed.", fieldErrors },
+      { status: 422 },
+    );
   }
 
   try {

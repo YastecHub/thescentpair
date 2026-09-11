@@ -24,17 +24,17 @@ describe("MeetingHero Component", () => {
     );
 
     expect(
-      screen.getByRole("heading", { name: /signature scents, made for two\./i }),
+      screen.getByRole("heading", {
+        name: /signature scents, made for two\./i,
+      }),
     ).toBeInTheDocument();
     expect(screen.getByText("His & Her's Scents")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /explore collection/i })).toHaveAttribute(
-      "href",
-      "/collection",
-    );
-    expect(screen.getByRole("link", { name: /explore pairs/i })).toHaveAttribute(
-      "href",
-      "/pairs",
-    );
+    expect(
+      screen.getByRole("link", { name: /explore collection/i }),
+    ).toHaveAttribute("href", "/collection");
+    expect(
+      screen.getByRole("link", { name: /explore pairs/i }),
+    ).toHaveAttribute("href", "/pairs");
 
     // Verify the pair composition image or fallback labels are present
     expect(screen.getByText("His")).toBeInTheDocument();
@@ -60,7 +60,9 @@ describe("MeetingHero Component", () => {
     );
 
     expect(
-      screen.getByRole("heading", { name: /signature scents, made for two\./i }),
+      screen.getByRole("heading", {
+        name: /signature scents, made for two\./i,
+      }),
     ).toBeInTheDocument();
   });
 });

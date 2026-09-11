@@ -20,7 +20,9 @@ export function ArtOfGifting({ className = "" }: { className?: string }) {
             A gesture of devotion, sealed in gold.
           </h2>
           <p className="mt-6 font-sans text-base leading-relaxed text-parchment/80">
-            Inspired by the grand French parfumeries and the intimate tradition of romantic gift-giving, every HIS &amp; HER’S order arrives as a complete sensory ceremony.
+            Inspired by the grand French parfumeries and the intimate tradition
+            of romantic gift-giving, every HIS &amp; HER’S order arrives as a
+            complete sensory ceremony.
           </p>
 
           <div className="mt-8 space-y-6">
@@ -33,7 +35,8 @@ export function ArtOfGifting({ className = "" }: { className?: string }) {
                   The Dual Coffret
                 </h3>
                 <p className="mt-1 text-xs text-parchment/65 leading-relaxed">
-                  Rigid Onyx collector’s box lined with midnight velvet, hot-stamped with the royal HSH crest.
+                  Rigid Onyx collector’s box lined with midnight velvet,
+                  hot-stamped with the royal HSH crest.
                 </p>
               </div>
             </div>
@@ -47,7 +50,8 @@ export function ArtOfGifting({ className = "" }: { className?: string }) {
                   The Handwritten Dedication
                 </h3>
                 <p className="mt-1 text-xs text-parchment/65 leading-relaxed">
-                  Heavy deckle-edged parchment card inscribed with your personal message and sealed in gold foil.
+                  Heavy deckle-edged parchment card inscribed with your personal
+                  message and sealed in gold foil.
                 </p>
               </div>
             </div>
@@ -61,7 +65,8 @@ export function ArtOfGifting({ className = "" }: { className?: string }) {
                   Concierge Delivery &amp; Surprises
                 </h3>
                 <p className="mt-1 text-xs text-parchment/65 leading-relaxed">
-                  Discreet personal coordination on WhatsApp. Exact delivery timing, gift wrapping, and receipt concealment.
+                  Discreet personal coordination on WhatsApp. Exact delivery
+                  timing, gift wrapping, and receipt concealment.
                 </p>
               </div>
             </div>
@@ -74,12 +79,9 @@ export function ArtOfGifting({ className = "" }: { className?: string }) {
             >
               Order via Gift Concierge
             </ButtonLink>
-            <ButtonLink href="/pairs">
-              Explore Pair Sets
-            </ButtonLink>
+            <ButtonLink href="/pairs">Explore Pair Sets</ButtonLink>
           </div>
         </div>
-
       </div>
     </Section>
   );

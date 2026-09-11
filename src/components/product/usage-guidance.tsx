@@ -29,7 +29,9 @@ export function UsageGuidance() {
       ].map(({ heading, body }) => (
         <div key={heading} className="border-l border-gold-300/35 pl-5">
           <h3 className="font-semibold text-parchment text-sm">{heading}</h3>
-          <p className="mt-2 text-sm text-parchment/62 leading-relaxed">{body}</p>
+          <p className="mt-2 text-sm text-parchment/62 leading-relaxed">
+            {body}
+          </p>
         </div>
       ))}
     </div>

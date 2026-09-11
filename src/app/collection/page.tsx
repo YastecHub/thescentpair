@@ -7,7 +7,8 @@ import { createPageMetadata } from "@/lib/seo/page-metadata";
 
 export const metadata = createPageMetadata({
   title: "Collection",
-  description: "Explore His, Her's and unisex demonstration fragrances prepared for paired scent discovery.",
+  description:
+    "Explore His, Her's and unisex demonstration fragrances prepared for paired scent discovery.",
   path: "/collection",
 });
 
@@ -25,10 +26,13 @@ export default function CollectionPage() {
           Discover the scents that carry the story.
         </h1>
         <BodyText className="mt-5 type-supporting">
-          Explore individual signatures by mood, audience and availability. Pair sets remain the heart of the brand.
+          Explore individual signatures by mood, audience and availability. Pair
+          sets remain the heart of the brand.
         </BodyText>
       </div>
-      <Suspense fallback={<p className="mt-8 text-parchment/68">Loading filters...</p>}>
+      <Suspense
+        fallback={<p className="mt-8 text-parchment/68">Loading filters...</p>}
+      >
         <CollectionFilters fragrances={fragrances} />
       </Suspense>
     </Section>

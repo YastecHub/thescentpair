@@ -5,7 +5,9 @@ test.describe("Critical User Journeys", () => {
     await page.goto("/");
 
     // Wait for hero title to be visible
-    const heroTitle = page.locator("h1:has-text('Signature scents, made for two')");
+    const heroTitle = page.locator(
+      "h1:has-text('Signature scents, made for two')",
+    );
     await expect(heroTitle).toBeVisible();
 
     // Verify key sections are present
@@ -43,7 +45,9 @@ test.describe("Critical User Journeys", () => {
 
     // Verify fragrance name and details
     await expect(page.locator("h1:has-text('Midnight Oath')")).toBeVisible();
-    await expect(page.locator("text=Smoke, oud and a promise kept close")).toBeVisible();
+    await expect(
+      page.locator("text=Smoke, oud and a promise kept close"),
+    ).toBeVisible();
 
     // Verify pricing is displayed
     await expect(page.locator("text=/From ₦/")).toBeVisible();
@@ -154,7 +158,9 @@ test.describe("Critical User Journeys", () => {
     await submitButton.click();
 
     // Verify success state
-    await expect(page.locator("text=You're on the list")).toBeVisible({ timeout: 5000 });
+    await expect(page.locator("text=You're on the list")).toBeVisible({
+      timeout: 5000,
+    });
   });
 
   test("Contact form validation works", async ({ page }) => {
@@ -166,19 +172,25 @@ test.describe("Critical User Journeys", () => {
 
     // Verify error messages appear
     await expect(page.locator("text=Enter your name")).toBeVisible();
-    await expect(page.locator("text=Enter an email address or phone number")).toBeVisible();
+    await expect(
+      page.locator("text=Enter an email address or phone number"),
+    ).toBeVisible();
     await expect(page.locator("text=Enter a message")).toBeVisible();
 
     // Fill form correctly
     await page.locator("input[name='name']").fill("Test User");
     await page.locator("input[name='contact']").fill("test@example.com");
     await page.locator("select[name='topic']").selectOption("General enquiry");
-    await page.locator("textarea[name='message']").fill("This is a test message for the contact form.");
+    await page
+      .locator("textarea[name='message']")
+      .fill("This is a test message for the contact form.");
 
     // Submit
     await submitButton.click();
 
     // Verify success state
-    await expect(page.locator("text=Message received")).toBeVisible({ timeout: 5000 });
+    await expect(page.locator("text=Message received")).toBeVisible({
+      timeout: 5000,
+    });
   });
 });

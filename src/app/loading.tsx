@@ -3,7 +3,11 @@ import { Container } from "@/components/layout/container";
 export default function Loading() {
   return (
     <Container className="py-24">
-      <div className="animate-pulse space-y-6" aria-label="Loading…" role="status">
+      <div
+        className="animate-pulse space-y-6"
+        aria-label="Loading…"
+        role="status"
+      >
         {/* Eyebrow */}
         <div className="h-3 w-24 rounded bg-onyx-700" />
         {/* Heading */}

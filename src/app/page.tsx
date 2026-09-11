@@ -14,11 +14,16 @@ import { ArtOfGifting } from "@/components/sections/art-of-gifting";
 import { Eyebrow } from "@/components/typography/typography";
 import { ButtonLink } from "@/components/ui/button-link";
 import { createPageMetadata } from "@/lib/seo/page-metadata";
-import { getFeaturedFragrances, getAllPairs, getPartnerFragrance } from "@/lib/content/repository";
+import {
+  getFeaturedFragrances,
+  getAllPairs,
+  getPartnerFragrance,
+} from "@/lib/content/repository";
 
 export const metadata = createPageMetadata({
   title: "His & Her's Scents - Signature Scents, Made for Two",
-  description: "A cinematic fragrance experience for two people sharing one signature scent story.",
+  description:
+    "A cinematic fragrance experience for two people sharing one signature scent story.",
   path: "/",
 });
 
@@ -26,7 +31,9 @@ export default function HomePage() {
   const featuredFragrances = getFeaturedFragrances();
   const featuredFragrance = featuredFragrances[0];
   const featuredPair = getAllPairs()[0];
-  const partner = featuredFragrance ? getPartnerFragrance(featuredFragrance) : undefined;
+  const partner = featuredFragrance
+    ? getPartnerFragrance(featuredFragrance)
+    : undefined;
 
   return (
     <>
@@ -34,21 +41,36 @@ export default function HomePage() {
       <OverturePreloader />
 
       {/* Moment 02: The Meeting */}
-      <MeetingHero
-        hisName={featuredFragrance?.name}
-        hersName={partner?.name}
-      />
+      <MeetingHero hisName={featuredFragrance?.name} hersName={partner?.name} />
 
-      <Section labelledBy="premise-title" className="bg-parchment text-ink-900 light-surface">
+      <Section
+        labelledBy="premise-title"
+        className="bg-parchment text-ink-900 light-surface"
+      >
         <div data-motion="letter" className="max-w-readable">
           <Eyebrow className="text-gold-700">The premise</Eyebrow>
-          <h2 id="premise-title" className="type-section-heading mt-4">Fragrance as identity, connection and memory.</h2>
+          <h2 id="premise-title" className="type-section-heading mt-4">
+            Fragrance as identity, connection and memory.
+          </h2>
           <div className="mt-6 grid gap-5 text-body text-ink-600">
-            <p>We created HIS &amp; HER&apos;S to make fragrance feel more personal: something that reflects who you are and the connections that matter to you.</p>
-            <p>Inspired by the beauty of two people sharing something special, our scents are made to complement, connect and create lasting memories.</p>
-            <p>Because sometimes, a scent is more than a fragrance. It becomes part of your story.</p>
+            <p>
+              We created HIS &amp; HER&apos;S to make fragrance feel more
+              personal: something that reflects who you are and the connections
+              that matter to you.
+            </p>
+            <p>
+              Inspired by the beauty of two people sharing something special,
+              our scents are made to complement, connect and create lasting
+              memories.
+            </p>
+            <p>
+              Because sometimes, a scent is more than a fragrance. It becomes
+              part of your story.
+            </p>
           </div>
-          <ButtonLink href="/story" className="mt-8">Read our story</ButtonLink>
+          <ButtonLink href="/story" className="mt-8">
+            Read our story
+          </ButtonLink>
         </div>
       </Section>
 
@@ -71,9 +93,14 @@ export default function HomePage() {
       ) : null}
 
       {/* Moment 08: The Reveal (Pairs) */}
-      <Section labelledBy="featured-pairs-title" className="bg-parchment text-ink-900 light-surface">
+      <Section
+        labelledBy="featured-pairs-title"
+        className="bg-parchment text-ink-900 light-surface"
+      >
         <Eyebrow className="text-gold-700">Featured pairs</Eyebrow>
-        <h2 id="featured-pairs-title" className="type-section-heading mt-4">Two signatures, chosen to belong together.</h2>
+        <h2 id="featured-pairs-title" className="type-section-heading mt-4">
+          Two signatures, chosen to belong together.
+        </h2>
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {getAllPairs().map((pair, index) => (
             <CollectionReveal key={pair.slug} index={index}>
@@ -86,7 +113,12 @@ export default function HomePage() {
       {/* Moment 08: The Reveal (Fragrances) */}
       <Section labelledBy="featured-fragrances-title">
         <Eyebrow>Featured fragrances</Eyebrow>
-        <h2 id="featured-fragrances-title" className="type-section-heading mt-4 text-foil">Individual scents with a shared world.</h2>
+        <h2
+          id="featured-fragrances-title"
+          className="type-section-heading mt-4 text-foil"
+        >
+          Individual scents with a shared world.
+        </h2>
         <ContentGrid className="mt-8">
           {featuredFragrances.slice(0, 2).map((fragrance, index) => (
             <CollectionReveal key={fragrance.slug} index={index}>
@@ -94,11 +126,17 @@ export default function HomePage() {
             </CollectionReveal>
           ))}
         </ContentGrid>
-        <ButtonLink href="/collection" className="mt-8">View full collection</ButtonLink>
+        <ButtonLink href="/collection" className="mt-8">
+          View full collection
+        </ButtonLink>
       </Section>
 
       {/* Moment 09: The Letter (Teaser) */}
-      <Section labelledBy="story-teaser-title" className="bg-onyx-800" data-motion="letter">
+      <Section
+        labelledBy="story-teaser-title"
+        className="bg-onyx-800"
+        data-motion="letter"
+      >
         <EditorialLetter
           eyebrow="Our Story"
           lines={[
@@ -128,7 +166,12 @@ export default function HomePage() {
         <div className="grid gap-8 border border-onyx-700 bg-onyx-800 p-6 md:p-10 lg:grid-cols-2 lg:items-start">
           <div>
             <Eyebrow>Stay close</Eyebrow>
-            <h2 id="newsletter-title" className="type-section-heading mt-4 text-foil">First access to new pairs and scent stories.</h2>
+            <h2
+              id="newsletter-title"
+              className="type-section-heading mt-4 text-foil"
+            >
+              First access to new pairs and scent stories.
+            </h2>
           </div>
           <NewsletterForm source="homepage" />
         </div>

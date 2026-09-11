@@ -9,7 +9,9 @@ const SESSION_KEY = "hhs_overture_seen";
 export function OverturePreloader() {
   const tier = useMotionTier();
   const [active, setActive] = useState(false);
-  const [stage, setStage] = useState<"drawing" | "resolving" | "lifting" | "done">("drawing");
+  const [stage, setStage] = useState<
+    "drawing" | "resolving" | "lifting" | "done"
+  >("drawing");
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ export function OverturePreloader() {
     }
 
     // Activate the overture
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Animation activation: standard mount-based state initialization
     setActive(true);
 
     // Sequence timing (total <= 2.3 seconds)
@@ -72,7 +75,9 @@ export function OverturePreloader() {
       aria-live="polite"
       aria-label="His & Her's Scents Loading Experience"
       className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-onyx-900 transition-transform duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] ${
-        stage === "lifting" ? "-translate-y-full opacity-0 pointer-events-none" : "translate-y-0 opacity-100"
+        stage === "lifting"
+          ? "-translate-y-full opacity-0 pointer-events-none"
+          : "translate-y-0 opacity-100"
       }`}
     >
       {/* Background radial gold warmth */}
@@ -109,7 +114,13 @@ export function OverturePreloader() {
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id="gold-hairline" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient
+              id="gold-hairline"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
               <stop offset="0%" stopColor="#f0e2b8" />
               <stop offset="50%" stopColor="#d9bc6a" />
               <stop offset="100%" stopColor="#997a2d" />
@@ -131,14 +142,17 @@ export function OverturePreloader() {
             style={{
               strokeDasharray: 400,
               strokeDashoffset: 400,
-              animation: "overtureStroke 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards",
+              animation:
+                "overtureStroke 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards",
             }}
           />
         </svg>
 
         <span
           className={`mt-6 font-display text-sm tracking-[0.35em] text-gold-300 uppercase transition-opacity duration-700 ${
-            stage === "resolving" || stage === "lifting" ? "opacity-100" : "opacity-0"
+            stage === "resolving" || stage === "lifting"
+              ? "opacity-100"
+              : "opacity-0"
           }`}
         >
           His &amp; Her&apos;s
@@ -149,7 +163,14 @@ export function OverturePreloader() {
       <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-onyx-800">
         <div
           className="h-full bg-gradient-to-r from-transparent via-gold-300 to-gold-100 transition-all duration-[2000ms] ease-out"
-          style={{ width: stage === "lifting" ? "95%" : stage === "resolving" ? "75%" : "40%" }}
+          style={{
+            width:
+              stage === "lifting"
+                ? "95%"
+                : stage === "resolving"
+                  ? "75%"
+                  : "40%",
+          }}
         />
       </div>
     </div>

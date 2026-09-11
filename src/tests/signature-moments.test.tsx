@@ -12,7 +12,8 @@ import { setMotionCapability } from "@/lib/motion/motion-store";
 
 function createMatchMediaMock(matchesReducedMotion = false) {
   return vi.fn().mockImplementation((query: string) => ({
-    matches: matchesReducedMotion && query.includes("prefers-reduced-motion: reduce"),
+    matches:
+      matchesReducedMotion && query.includes("prefers-reduced-motion: reduce"),
     media: query,
     onchange: null,
     addListener: vi.fn(),
@@ -34,7 +35,8 @@ describe("Signature Animated Moments", () => {
   beforeEach(() => {
     sessionStorage.clear();
     window.matchMedia = createMatchMediaMock(false);
-    window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver;
+    window.IntersectionObserver =
+      MockIntersectionObserver as unknown as typeof IntersectionObserver;
   });
 
   it("OverturePreloader bypasses in tier-c (accessible baseline)", () => {
@@ -42,7 +44,7 @@ describe("Signature Animated Moments", () => {
     const { container } = render(
       <MotionProvider>
         <OverturePreloader />
-      </MotionProvider>
+      </MotionProvider>,
     );
     expect(container.firstChild).toBeNull();
   });
@@ -52,7 +54,7 @@ describe("Signature Animated Moments", () => {
     render(
       <MotionProvider>
         <FooterClose />
-      </MotionProvider>
+      </MotionProvider>,
     );
 
     expect(screen.getByTestId("footer-close")).toBeDefined();
@@ -66,7 +68,7 @@ describe("Signature Animated Moments", () => {
         <CollectionReveal>
           <div>Card Content</div>
         </CollectionReveal>
-      </MotionProvider>
+      </MotionProvider>,
     );
 
     expect(screen.getByText("Card Content")).toBeDefined();
@@ -84,7 +86,7 @@ describe("Signature Animated Moments", () => {
             },
           ]}
         />
-      </MotionProvider>
+      </MotionProvider>,
     );
 
     expect(screen.getByText("personal")).toBeDefined();
@@ -103,7 +105,7 @@ describe("Signature Animated Moments", () => {
           }}
           fragranceName="Midnight Oath"
         />
-      </MotionProvider>
+      </MotionProvider>,
     );
 
     expect(screen.getByText("Bergamot")).toBeDefined();
@@ -111,15 +113,15 @@ describe("Signature Animated Moments", () => {
     expect(screen.getByText("Oud")).toBeDefined();
   });
 
-  it("RitualFilm renders play button in tier-c", () => {
+  it("RitualFilm renders editorial overlay in tier-c", () => {
     setMotionCapability("tier-c");
     render(
       <MotionProvider>
         <RitualFilm />
-      </MotionProvider>
+      </MotionProvider>,
     );
     expect(screen.getByTestId("ritual-film")).toBeDefined();
-    expect(screen.getByLabelText(/play ritual film/i)).toBeDefined();
+    expect(screen.getByText(/A fragrance becomes personal/i)).toBeDefined();
   });
 
   it("RitualFilm renders editorial overlay in all tiers", () => {
@@ -127,7 +129,7 @@ describe("Signature Animated Moments", () => {
     render(
       <MotionProvider>
         <RitualFilm />
-      </MotionProvider>
+      </MotionProvider>,
     );
     expect(screen.getByText(/A fragrance becomes personal/i)).toBeDefined();
   });

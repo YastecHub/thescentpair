@@ -85,6 +85,7 @@ export function SiteNavigation() {
 
   // Close mobile nav on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Route change: close mobile menu on navigation
     setIsOpen(false);
   }, [pathname]);
 
@@ -159,7 +160,9 @@ export function SiteNavigation() {
             ref={triggerRef}
             type="button"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-gold-300/70 px-4 type-button text-gold-300 transition duration-fast ease-out-soft hover:bg-gold-300 hover:text-ink-900 md:hidden"
-            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              isOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
             onClick={() => setIsOpen((v) => !v)}

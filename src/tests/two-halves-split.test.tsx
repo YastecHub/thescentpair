@@ -8,7 +8,8 @@ import { resetMotionStore } from "@/lib/motion/motion-store";
 
 function createMatchMediaMock(matchesReducedMotion = false) {
   return vi.fn().mockImplementation((query: string) => ({
-    matches: matchesReducedMotion && query.includes("prefers-reduced-motion: reduce"),
+    matches:
+      matchesReducedMotion && query.includes("prefers-reduced-motion: reduce"),
     media: query,
     onchange: null,
     addListener: vi.fn(),

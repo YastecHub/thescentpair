@@ -1,14 +1,11 @@
 import { describe, expect, it, vi } from "vitest";
-import {
-  filterFragrances,
-} from "@/components/collection/collection-filters";
+import { filterFragrances } from "@/components/collection/collection-filters";
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/collection",
   useRouter: () => ({ push: vi.fn() }),
   useSearchParams: () => new URLSearchParams(),
 }));
-
 
 import {
   getAllFragrances,
@@ -23,7 +20,6 @@ import {
 } from "@/lib/content/repository";
 import { fragrances } from "@/content/fragrances/sample-fragrances";
 import { pairs } from "@/content/pairs/sample-pairs";
-
 
 describe("dynamic route generation", () => {
   it("fragrance generateStaticParams returns all slugs", () => {
@@ -112,9 +108,7 @@ describe("collection filter function", () => {
 
   it("filters to unavailable fragrances only", () => {
     const result = filterFragrances(all, { availability: "unavailable" });
-    expect(result.every((f) => f.variants.every((v) => !v.inStock))).toBe(
-      true,
-    );
+    expect(result.every((f) => f.variants.every((v) => !v.inStock))).toBe(true);
   });
 
   it("combines audience and family filters", () => {
@@ -122,7 +116,11 @@ describe("collection filter function", () => {
       audience: "his",
       family: "woody-oriental",
     });
-    expect(result.every((f) => f.audience === "his" && f.family === "woody-oriental")).toBe(true);
+    expect(
+      result.every(
+        (f) => f.audience === "his" && f.family === "woody-oriental",
+      ),
+    ).toBe(true);
   });
 });
 
@@ -138,7 +136,10 @@ describe("variant behaviour", () => {
   });
 
   it("detects unavailability when all variants are out of stock", () => {
-    const allOutOfStock = fragrance.variants.map((v) => ({ ...v, inStock: false }));
+    const allOutOfStock = fragrance.variants.map((v) => ({
+      ...v,
+      inStock: false,
+    }));
     expect(hasAvailableVariant(allOutOfStock)).toBe(false);
   });
 

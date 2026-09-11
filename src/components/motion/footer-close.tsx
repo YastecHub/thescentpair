@@ -11,6 +11,7 @@ export function FooterClose() {
 
   useEffect(() => {
     if (tier === "tier-c") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Tier-c fallback: reveal immediately without intersection observer
       setFilled(true);
       return;
     }
@@ -25,7 +26,7 @@ export function FooterClose() {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(el);
@@ -42,7 +43,9 @@ export function FooterClose() {
       <div className="relative h-[1.5px] w-full max-w-5xl overflow-hidden bg-onyx-800">
         <div
           className={`h-full bg-gradient-to-r from-transparent via-gold-300 to-transparent transition-all duration-[1600ms] ease-out ${
-            filled || tier === "tier-c" ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0"
+            filled || tier === "tier-c"
+              ? "scale-x-100 opacity-100"
+              : "scale-x-0 opacity-0"
           }`}
           style={{ transformOrigin: "center" }}
         />

@@ -89,10 +89,7 @@ export default async function StoryArticlePage({
       <Section labelledBy="story-title">
         <div className="mx-auto max-w-readable">
           <Eyebrow>Stories</Eyebrow>
-          <h1
-            id="story-title"
-            className="mt-4 type-section-heading text-foil"
-          >
+          <h1 id="story-title" className="mt-4 type-section-heading text-foil">
             {story.title}
           </h1>
 
@@ -117,7 +114,6 @@ export default async function StoryArticlePage({
             ))}
           </div>
         </div>
-
 
         {/* Related fragrances */}
         {relatedFragrances.length > 0 ? (

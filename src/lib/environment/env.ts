@@ -18,6 +18,7 @@ export const envSchema = z.object({
     },
   ),
   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: optionalString,
+  NEXT_PUBLIC_TWITTER_URL: optionalUrl,
   NEXT_PUBLIC_ANALYTICS_DOMAIN: optionalString,
   NEXT_PUBLIC_ANALYTICS_SRC: optionalUrl,
   NEXT_PUBLIC_GTM_ID: optionalString.refine(

@@ -47,7 +47,9 @@ export function PartnerModule({
             <h3 className="mt-4 font-display text-3xl leading-none text-parchment group-hover:text-gold-300 transition-colors">
               {fragrance.name}
             </h3>
-            <p className="mt-2 text-sm text-parchment/68">{fragrance.tagline}</p>
+            <p className="mt-2 text-sm text-parchment/68">
+              {fragrance.tagline}
+            </p>
           </Link>
         </div>
 

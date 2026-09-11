@@ -1,7 +1,7 @@
 import { Section } from "@/components/layout/section";
 import { ButtonLink } from "@/components/ui/button-link";
 import { GoldRule } from "@/components/ui/gold-rule";
-import { Eyebrow } from "@/components/typography/typography";
+// Eyebrow is available via type-eyebrow CSS class in this page
 import { EditorialLetter } from "@/components/motion/editorial-letter";
 import { BrandLogo } from "@/components/brand/brand-logo";
 import { createPageMetadata } from "@/lib/seo/page-metadata";
@@ -16,7 +16,11 @@ export const metadata = createPageMetadata({
 export default function StoryPage() {
   return (
     <article aria-labelledby="story-page-title">
-      <Section labelledBy="story-page-title" data-motion="letter" className="bg-onyx-900 pb-12">
+      <Section
+        labelledBy="story-page-title"
+        data-motion="letter"
+        className="bg-onyx-900 pb-12"
+      >
         <div className="flex flex-col items-center text-center">
           <BrandLogo variant="crest" className="mb-6" />
           <h1
@@ -69,8 +73,8 @@ export default function StoryPage() {
               </p>
               <p>
                 Too many fragrances are designed to be universal. We made the
-                opposite choice. We made something that felt specific.
-                Something that felt like it belonged to someone.
+                opposite choice. We made something that felt specific. Something
+                that felt like it belonged to someone.
               </p>
             </div>
           </div>
@@ -88,9 +92,8 @@ export default function StoryPage() {
               </p>
               <p>
                 A signature fragrance becomes the invisible part of how people
-                know you — what lingers in a room after you leave, what
-                someone remembers when they think of you long after a moment
-                has passed.
+                know you — what lingers in a room after you leave, what someone
+                remembers when they think of you long after a moment has passed.
               </p>
             </div>
           </div>
@@ -106,15 +109,14 @@ export default function StoryPage() {
             <div className="mt-6 grid gap-5 text-body text-ink-600 leading-relaxed">
               <p>
                 Every pair in HIS &amp; HER&apos;S begins with a question: what
-                would it mean for two people to choose a fragrance together?
-                Not the same fragrance — but two that belong alongside each
-                other.
+                would it mean for two people to choose a fragrance together? Not
+                the same fragrance — but two that belong alongside each other.
               </p>
               <p>
                 We were inspired by the quiet intimacy of that. Two people
                 developing their own signature, while remaining connected
-                through a shared note, a shared mood, a thread that runs
-                between them.
+                through a shared note, a shared mood, a thread that runs between
+                them.
               </p>
             </div>
           </div>
@@ -130,13 +132,13 @@ export default function StoryPage() {
             <div className="mt-6 grid gap-5 text-body text-ink-600 leading-relaxed">
               <p>
                 Our pairs are never two versions of the same fragrance. His is
-                darker, drier, more resinous. Her&apos;s is warmer, softer,
-                more layered. But both carry the same base note — the accord
-                that makes them feel like they were made for each other.
+                darker, drier, more resinous. Her&apos;s is warmer, softer, more
+                layered. But both carry the same base note — the accord that
+                makes them feel like they were made for each other.
               </p>
               <p>
-                Because that is how it works between people, too. Not
-                identical. Complementary.
+                Because that is how it works between people, too. Not identical.
+                Complementary.
               </p>
             </div>
           </div>
@@ -149,9 +151,9 @@ export default function StoryPage() {
             </h2>
             <div className="mt-6 grid gap-5 text-body text-ink-600 leading-relaxed">
               <p>
-                A fragrance worn every day becomes memory. It becomes the
-                smell of a particular morning, a particular evening, a
-                particular version of yourself that you will want to return to.
+                A fragrance worn every day becomes memory. It becomes the smell
+                of a particular morning, a particular evening, a particular
+                version of yourself that you will want to return to.
               </p>
               <p>
                 That is the real thing we are making. Not a bottle. Not a
@@ -179,9 +181,7 @@ export default function StoryPage() {
             <ButtonLink href="/pairs" variant="primary">
               Explore the pairs
             </ButtonLink>
-            <ButtonLink href="/collection">
-              Browse the collection
-            </ButtonLink>
+            <ButtonLink href="/collection">Browse the collection</ButtonLink>
           </div>
         </div>
       </Section>

@@ -19,7 +19,6 @@ export function buildCloudinaryImageUrl(
   return `https://res.cloudinary.com/${cloudName}/image/upload/${transformation}/${publicId}`;
 }
 
-
 export function buildCloudinaryVideoUrl(
   publicId: string,
   transformation = "f_auto,q_auto,vc_auto",

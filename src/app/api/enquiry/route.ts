@@ -12,7 +12,10 @@ const enquirySchema = z.object({
       "Enter a valid email address or phone number.",
     ),
   topic: z.string().min(1),
-  message: z.string().min(10, "Message must be at least 10 characters.").max(2000),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters.")
+    .max(2000),
   // Honeypot — must be empty
   _hp: z.string().max(0, "Bot detected."),
   // Time-to-submit in ms — must be > 3s to filter instant bots
@@ -53,7 +56,10 @@ async function sendViaAdapter(data: {
   if (endpoint) {
     const res = await fetch(endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify(data),
     });
     if (!res.ok) throw new Error(`Form endpoint returned ${res.status}`);
@@ -100,13 +106,19 @@ export async function POST(request: NextRequest) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid request body." },
+      { status: 400 },
+    );
   }
 
   const parsed = enquirySchema.safeParse(body);
   if (!parsed.success) {
     const fieldErrors = parsed.error.flatten().fieldErrors;
-    return NextResponse.json({ error: "Validation failed.", fieldErrors }, { status: 422 });
+    return NextResponse.json(
+      { error: "Validation failed.", fieldErrors },
+      { status: 422 },
+    );
   }
 
   const { name, contact, topic, message } = parsed.data;

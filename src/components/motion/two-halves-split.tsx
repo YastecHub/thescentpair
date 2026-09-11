@@ -25,7 +25,6 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const returnTweenRef = useRef<gsap.core.Tween | null>(null);
 
-
   const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -134,7 +133,9 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
             aria-hidden="true"
           />
           <div className="relative z-10 flex max-w-[420px] flex-col items-end">
-            <span className="type-eyebrow text-[#D9BC6A]">Her&apos;s World</span>
+            <span className="type-eyebrow text-[#D9BC6A]">
+              Her&apos;s World
+            </span>
             <h3 className="mt-2 font-display text-4xl text-parchment md:text-5xl">
               {hers?.name}
             </h3>
@@ -143,7 +144,10 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
             </p>
             {hers ? (
               <ProductImage
-                media={{ publicId: hers.media.heroLight, alt: `${hers.name} fragrance bottle` }}
+                media={{
+                  publicId: hers.media.heroLight,
+                  alt: `${hers.name} fragrance bottle`,
+                }}
                 ratio="4 / 5"
                 className="mt-6 h-56 w-36 md:h-72 md:w-44"
               />
@@ -177,7 +181,10 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
             </p>
             {his ? (
               <ProductImage
-                media={{ publicId: his.media.heroLight, alt: `${his.name} fragrance bottle` }}
+                media={{
+                  publicId: his.media.heroLight,
+                  alt: `${his.name} fragrance bottle`,
+                }}
                 ratio="4 / 5"
                 className="mt-6 h-56 w-36 md:h-72 md:w-44"
               />
@@ -190,7 +197,10 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
 
         {/* Center Shared Accord Banner (Always readable in DOM) */}
         <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center justify-center rounded-none border border-gold-300/40 bg-onyx-900/90 px-6 py-3 text-center backdrop-blur-md">
-          <p id="split-world-title" className="type-eyebrow text-gold-300 text-xs">
+          <p
+            id="split-world-title"
+            className="type-eyebrow text-gold-300 text-xs"
+          >
             Shared Accord
           </p>
           <p className="mt-1 font-display text-xl text-parchment md:text-2xl">

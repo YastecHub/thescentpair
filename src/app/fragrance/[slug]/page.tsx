@@ -121,7 +121,11 @@ export default async function FragrancePage({
             {galleryImages.length > 1 ? (
               <div className="grid grid-cols-3 gap-3">
                 {galleryImages.slice(1, 4).map((img) => (
-                  <ProductImage key={img.publicId ?? img.alt} media={img} ratio="1 / 1" />
+                  <ProductImage
+                    key={img.publicId ?? img.alt}
+                    media={img}
+                    ratio="1 / 1"
+                  />
                 ))}
               </div>
             ) : null}
@@ -217,7 +221,10 @@ export default async function FragrancePage({
           longest in memory.
         </BodyText>
         <div className="mt-10">
-          <FragranceNotesGraph notes={fragrance.notes} fragranceName={fragrance.name} />
+          <FragranceNotesGraph
+            notes={fragrance.notes}
+            fragranceName={fragrance.name}
+          />
         </div>
         <div className="mt-8">
           <NotesDetail notes={fragrance.notes} />
@@ -248,10 +255,7 @@ export default async function FragrancePage({
             common accord while keeping its own character.
           </BodyText>
           <div className="mt-10">
-            <PartnerModule
-              fragrance={fragrance}
-              partner={partner}
-            />
+            <PartnerModule fragrance={fragrance} partner={partner} />
           </div>
         </Section>
       ) : null}
