@@ -3,6 +3,8 @@
 import React, {
   createContext,
   useContext,
+  useEffect,
+  useRef,
   useSyncExternalStore,
   useCallback,
 } from "react";
@@ -17,11 +19,12 @@ import {
   getMotionServerSnapshot,
   downgradeMotionStore,
 } from "@/lib/motion/motion-store";
+import { trackEvent } from "@/lib/analytics/analytics";
 
 interface MotionContextValue {
   capabilities: MotionCapabilities;
   tier: MotionTier;
-  downgradeTier: (newTier: MotionTier, reason: string) => void;
+  downgradeTier: (newTier: MotionTier, reason: string, avgFps?: number) => void;
 }
 
 const MotionContext = createContext<MotionContextValue>({
@@ -37,9 +40,20 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     getMotionServerSnapshot,
   );
 
-  const downgradeTier = useCallback((newTier: MotionTier, reason: string) => {
-    downgradeMotionStore(newTier, reason);
+  const downgradeTier = useCallback((newTier: MotionTier, reason: string, avgFps?: number) => {
+    downgradeMotionStore(newTier, reason, avgFps);
   }, []);
+
+  // Fire tier_assigned once after hydration (capabilities will differ from SSR default)
+  const assignedRef = useRef(false);
+  useEffect(() => {
+    if (assignedRef.current) return;
+    assignedRef.current = true;
+    trackEvent("tier_assigned", {
+      tier: capabilities.tier,
+      reason: capabilities.reason,
+    });
+  }, [capabilities.tier, capabilities.reason]);
 
   return (
     <MotionContext.Provider

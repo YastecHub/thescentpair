@@ -49,7 +49,7 @@ export function Footer() {
                 First access to new pairs, scent stories and exclusive launches.
               </p>
               <div className="mt-4">
-                <NewsletterForm compact />
+                <NewsletterForm compact source="footer" />
               </div>
             </div>
             <div className="grid gap-2 text-sm text-parchment/68">

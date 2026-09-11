@@ -9,6 +9,10 @@
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "lighthouse:ci": "lhci autorun",
     "format": "prettier --check ."
   },
   "dependencies": {
@@ -24,6 +28,7 @@
     "zod": "^4.6.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@testing-library/jest-dom": "latest",
     "@testing-library/react": "latest",
     "@types/node": "latest",

@@ -12,7 +12,7 @@ export const metadata = createPageMetadata({
 });
 
 // [PENDING CLIENT CONTENT] Replace placeholders when final details are approved
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? null;
+const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? null;
 const INSTAGRAM_HANDLE = process.env.NEXT_PUBLIC_INSTAGRAM_HANDLE ?? null;
 const TIKTOK_HANDLE = process.env.NEXT_PUBLIC_TIKTOK_HANDLE ?? null;
 const EMAIL_ADDRESS = process.env.NEXT_PUBLIC_EMAIL_ADDRESS ?? null;

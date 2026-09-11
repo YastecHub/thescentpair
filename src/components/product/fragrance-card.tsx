@@ -22,7 +22,7 @@ export function FragranceCard({
   const inStock = hasAvailableVariant(fragrance.variants);
 
   return (
-    <article className="group border border-onyx-700 bg-onyx-800 text-parchment overflow-hidden transition-colors hover:border-gold-300/50">
+    <article className="group border border-onyx-700 bg-onyx-800 text-parchment overflow-hidden transition-colors hover:border-gold-300/50" data-cursor="discover">
       <Link
         href={`/fragrance/${fragrance.slug}`}
         className="block focus-visible:outline-offset-4"

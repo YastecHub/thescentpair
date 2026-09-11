@@ -7,6 +7,7 @@ import { FooterClose } from "@/components/motion/footer-close";
 import { CollectionReveal } from "@/components/motion/collection-reveal";
 import { EditorialLetter } from "@/components/motion/editorial-letter";
 import { FragranceNotesGraph } from "@/components/motion/fragrance-notes-graph";
+import { RitualFilm } from "@/components/motion/ritual-film";
 import { setMotionCapability } from "@/lib/motion/motion-store";
 
 function createMatchMediaMock(matchesReducedMotion = false) {
@@ -108,5 +109,26 @@ describe("Signature Animated Moments", () => {
     expect(screen.getByText("Bergamot")).toBeDefined();
     expect(screen.getByText("Rose")).toBeDefined();
     expect(screen.getByText("Oud")).toBeDefined();
+  });
+
+  it("RitualFilm renders play button in tier-c", () => {
+    setMotionCapability("tier-c");
+    render(
+      <MotionProvider>
+        <RitualFilm />
+      </MotionProvider>
+    );
+    expect(screen.getByTestId("ritual-film")).toBeDefined();
+    expect(screen.getByLabelText(/play ritual film/i)).toBeDefined();
+  });
+
+  it("RitualFilm renders editorial overlay in all tiers", () => {
+    setMotionCapability("tier-b");
+    render(
+      <MotionProvider>
+        <RitualFilm />
+      </MotionProvider>
+    );
+    expect(screen.getByText(/A fragrance becomes personal/i)).toBeDefined();
   });
 });

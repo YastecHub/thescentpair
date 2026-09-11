@@ -14,9 +14,10 @@ export interface WhatsAppOrderDetails {
   pagePath: string;
 }
 
-// Configurable WhatsApp Business Number (default fallback or env var)
+// WhatsApp Business Number — must be set via NEXT_PUBLIC_WHATSAPP_PHONE env var.
+// Format: digits only, including country code, no plus sign (e.g. 2348012345678).
 export const DEFAULT_WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "2348000000000";
+  process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "";
 
 /**
  * Generates an elegant, structured WhatsApp message payload for the customer.

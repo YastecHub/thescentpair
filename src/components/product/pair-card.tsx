@@ -19,7 +19,7 @@ export function PairCard({ pair }: Readonly<{ pair: Pair }>) {
   const inStock = hasAvailableVariant(pair.setVariants);
 
   return (
-    <article className="group overflow-hidden border border-onyx-700 bg-onyx-800 text-parchment transition-colors hover:border-gold-300/50">
+    <article className="group overflow-hidden border border-onyx-700 bg-onyx-800 text-parchment transition-colors hover:border-gold-300/50" data-cursor="discover">
       <Link
         href={`/pairs/${pair.slug}`}
         className="block focus-visible:outline-offset-4"

@@ -19,6 +19,11 @@ export const envSchema = z.object({
   ),
   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: optionalString,
   NEXT_PUBLIC_ANALYTICS_DOMAIN: optionalString,
+  NEXT_PUBLIC_ANALYTICS_SRC: optionalUrl,
+  NEXT_PUBLIC_GTM_ID: optionalString.refine(
+    (value) => value === undefined || /^GTM-[A-Z0-9]+$/.test(value),
+    { message: "GTM ID must be in the format GTM-XXXXXXX." },
+  ),
   CLOUDINARY_API_KEY: optionalString,
   CLOUDINARY_API_SECRET: optionalString,
   FORM_ENDPOINT: optionalUrl,

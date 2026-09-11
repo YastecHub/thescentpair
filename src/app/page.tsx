@@ -146,7 +146,7 @@ export default function HomePage() {
             <Eyebrow>Stay close</Eyebrow>
             <h2 id="newsletter-title" className="type-section-heading mt-4 text-foil">First access to new pairs and scent stories.</h2>
           </div>
-          <NewsletterForm />
+          <NewsletterForm source="homepage" />
         </div>
       </Section>
     </>

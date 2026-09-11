@@ -1,67 +1,185 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { trackEvent } from "@/lib/analytics/analytics";
 
-const topics = ["General enquiry", "Product question", "Gifting", "Wholesale", "Bespoke request", "Delivery question"];
+const topics = [
+  "General enquiry",
+  "Product question",
+  "Gifting",
+  "Wholesale",
+  "Bespoke request",
+  "Delivery question",
+];
+
+type FormState = "idle" | "loading" | "success" | "error";
 
 export function ContactForm() {
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [status, setStatus] = useState("");
+  const [state, setState] = useState<FormState>("idle");
+  const [serverError, setServerError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({});
+  const mountedAt = useRef(Date.now());
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const nextErrors: Record<string, string> = {};
+    setState("loading");
+    setServerError("");
+    setFieldErrors({});
 
-    if (!String(data.get("name") ?? "").trim()) {
-      nextErrors.name = "Enter your name.";
-    }
+    const form = event.currentTarget;
+    const data = new FormData(form);
 
-    const contact = String(data.get("contact") ?? "").trim();
-    if (!contact || (!contact.includes("@") && contact.length < 7)) {
-      nextErrors.contact = "Enter an email address or phone number.";
-    }
+    const payload = {
+      name: String(data.get("name") ?? "").trim(),
+      contact: String(data.get("contact") ?? "").trim(),
+      topic: String(data.get("topic") ?? "").trim(),
+      message: String(data.get("message") ?? "").trim(),
+      _hp: String(data.get("_hp") ?? ""),
+      _ts: Date.now() - mountedAt.current,
+    };
 
-    if (!String(data.get("message") ?? "").trim()) {
-      nextErrors.message = "Enter a message.";
-    }
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    setErrors(nextErrors);
+      const json = (await res.json()) as {
+        ok?: boolean;
+        error?: string;
+        fieldErrors?: Record<string, string[]>;
+      };
 
-    if (Object.keys(nextErrors).length === 0) {
-      setStatus("Demo state: the form is valid, but no production form endpoint is configured yet.");
-    } else {
-      setStatus("Please correct the highlighted fields.");
+      if (res.ok) {
+        setState("success");
+        trackEvent("enquiry_submit", { topic: payload.topic });
+        form.reset();
+      } else if (res.status === 422 && json.fieldErrors) {
+        setFieldErrors(json.fieldErrors);
+        setState("error");
+      } else {
+        setServerError(json.error ?? "Something went wrong. Please try WhatsApp instead.");
+        setState("error");
+      }
+    } catch {
+      setServerError("Network error. Please check your connection and try again.");
+      setState("error");
     }
   }
 
+  if (state === "success") {
+    return (
+      <div className="border border-onyx-700 bg-onyx-900 p-8 text-center" role="status">
+        <p className="font-display text-2xl text-foil">Message received.</p>
+        <p className="mt-3 text-sm text-parchment/68">
+          We'll respond as quickly as possible. For urgent questions, WhatsApp is faster.
+        </p>
+        <button
+          type="button"
+          onClick={() => setState("idle")}
+          className="mt-6 text-sm text-gold-300 underline underline-offset-4 hover:text-gold-100"
+        >
+          Send another message
+        </button>
+      </div>
+    );
+  }
+
   return (
-    <form className="grid gap-5" onSubmit={handleSubmit} noValidate aria-label="Contact enquiry form">
+    <form
+      className="grid gap-5"
+      onSubmit={handleSubmit}
+      noValidate
+      aria-label="Contact enquiry form"
+    >
+      {/* Honeypot — hidden from real users */}
+      <input
+        name="_hp"
+        type="text"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="sr-only"
+        autoComplete="off"
+      />
+
       <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-name">
         Name
-        <input id="contact-name" name="name" className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment" aria-describedby={errors.name ? "contact-name-error" : undefined} />
-        {errors.name ? <span id="contact-name-error" className="text-gold-300">{errors.name}</span> : null}
+        <input
+          id="contact-name"
+          name="name"
+          autoComplete="name"
+          className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment placeholder:text-parchment/40 focus:border-gold-300 focus:outline-none"
+          aria-describedby={fieldErrors.name ? "contact-name-error" : undefined}
+          aria-invalid={Boolean(fieldErrors.name)}
+        />
+        {fieldErrors.name ? (
+          <span id="contact-name-error" role="alert" className="text-xs text-gold-300">
+            {fieldErrors.name[0]}
+          </span>
+        ) : null}
       </label>
+
       <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-contact">
         Email or phone
-        <input id="contact-contact" name="contact" className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment" aria-describedby={errors.contact ? "contact-contact-error" : undefined} />
-        {errors.contact ? <span id="contact-contact-error" className="text-gold-300">{errors.contact}</span> : null}
+        <input
+          id="contact-contact"
+          name="contact"
+          autoComplete="email"
+          className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment placeholder:text-parchment/40 focus:border-gold-300 focus:outline-none"
+          aria-describedby={fieldErrors.contact ? "contact-contact-error" : undefined}
+          aria-invalid={Boolean(fieldErrors.contact)}
+        />
+        {fieldErrors.contact ? (
+          <span id="contact-contact-error" role="alert" className="text-xs text-gold-300">
+            {fieldErrors.contact[0]}
+          </span>
+        ) : null}
       </label>
+
       <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-topic">
         Enquiry topic
-        <select id="contact-topic" name="topic" className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment">
-          {topics.map((topic) => <option key={topic}>{topic}</option>)}
+        <select
+          id="contact-topic"
+          name="topic"
+          className="min-h-11 border border-onyx-700 bg-onyx-900 px-4 text-parchment focus:border-gold-300 focus:outline-none"
+        >
+          {topics.map((topic) => (
+            <option key={topic}>{topic}</option>
+          ))}
         </select>
       </label>
+
       <label className="grid gap-2 text-sm font-semibold text-parchment" htmlFor="contact-message">
         Message
-        <textarea id="contact-message" name="message" rows={5} className="border border-onyx-700 bg-onyx-900 px-4 py-3 text-parchment" aria-describedby={errors.message ? "contact-message-error" : undefined} />
-        {errors.message ? <span id="contact-message-error" className="text-gold-300">{errors.message}</span> : null}
+        <textarea
+          id="contact-message"
+          name="message"
+          rows={5}
+          className="border border-onyx-700 bg-onyx-900 px-4 py-3 text-parchment placeholder:text-parchment/40 focus:border-gold-300 focus:outline-none"
+          aria-describedby={fieldErrors.message ? "contact-message-error" : undefined}
+          aria-invalid={Boolean(fieldErrors.message)}
+        />
+        {fieldErrors.message ? (
+          <span id="contact-message-error" role="alert" className="text-xs text-gold-300">
+            {fieldErrors.message[0]}
+          </span>
+        ) : null}
       </label>
-      <button type="submit" className="inline-flex min-h-11 items-center justify-center rounded-full border border-gold-300 bg-gold-300 px-6 py-3 type-button text-ink-900">
-        Prepare enquiry
+
+      {serverError ? (
+        <p role="alert" className="text-sm text-gold-300">
+          {serverError}
+        </p>
+      ) : null}
+
+      <button
+        type="submit"
+        disabled={state === "loading"}
+        className="inline-flex min-h-11 items-center justify-center rounded-full border border-gold-300 bg-gold-300 px-6 py-3 type-button text-ink-900 transition-opacity disabled:opacity-60"
+      >
+        {state === "loading" ? "Sending…" : "Send message"}
       </button>
-      <p aria-live="polite" className="min-h-6 text-sm text-gold-300">{status}</p>
     </form>
   );
 }

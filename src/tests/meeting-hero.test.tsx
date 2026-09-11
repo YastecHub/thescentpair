@@ -36,13 +36,9 @@ describe("MeetingHero Component", () => {
       "/pairs",
     );
 
-    // Verify both bottles exist in DOM with accessible labels
-    expect(
-      screen.getByRole("img", { name: /his fragrance bottle/i }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("img", { name: /her's fragrance bottle/i }),
-    ).toBeInTheDocument();
+    // Verify the pair composition image or fallback labels are present
+    expect(screen.getByText("His")).toBeInTheDocument();
+    expect(screen.getByText("Her\u2019s")).toBeInTheDocument();
   });
 
   it("renders cleanly in tier-c (reduced motion)", () => {

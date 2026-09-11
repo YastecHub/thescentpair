@@ -11,6 +11,9 @@ export const metadata = createPageMetadata({
   path: "/collection",
 });
 
+// Filtered URLs (/collection?for=his etc.) canonicalise back to /collection
+export const alternates = { canonical: "https://thescentpair.com/collection" };
+
 export default function CollectionPage() {
   const fragrances = getAllFragrances();
 

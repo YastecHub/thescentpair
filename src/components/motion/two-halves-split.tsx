@@ -116,6 +116,7 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
       <div
         ref={containerRef}
         className="relative min-h-[580px] w-full select-none md:min-h-[640px]"
+        data-cursor="drag"
         style={{ touchAction: "pan-y" }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

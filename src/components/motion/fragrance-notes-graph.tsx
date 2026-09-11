@@ -18,6 +18,11 @@ interface FragranceNotesGraphProps {
 
 // Editorial descriptors for key ingredients
 const INGREDIENT_DETAILS: Record<string, { role: string; description: string; mood: string }> = {
+  "pink-pepper": {
+    role: "Top Note",
+    description: "Dry, sparkling piquancy that provides an effervescent top before the deeper resins arrive.",
+    mood: "Bright · Peppery · Intrigued",
+  },
   bergamot: {
     role: "Top Note",
     description: "Cold-pressed Calabrian citrus offering sharp, luminous vitality that cuts through darkness.",
@@ -27,11 +32,6 @@ const INGREDIENT_DETAILS: Record<string, { role: string; description: string; mo
     role: "Top Note",
     description: "Crushed green pods with an aromatic, spicy heat that immediately quickens the pulse.",
     mood: "Warm · Resinous · Electric",
-  },
-  "pink pepper": {
-    role: "Top Note",
-    description: "Dry, sparkling piquancy that provides an effervescent top before the deeper resins arrive.",
-    mood: "Bright · Peppery · Intrigued",
   },
   rose: {
     role: "Heart Note",
@@ -146,7 +146,7 @@ export function FragranceNotesGraph({
                       className={`group relative rounded-full border px-4 py-1.5 text-xs font-sans tracking-wider transition-all duration-fast focus:outline-none focus:ring-2 focus:ring-gold-300 ${
                         isSelected
                           ? "border-gold-300 bg-gold-500/20 text-gold-100 shadow-[0_0_15px_rgba(217,188,106,0.4)]"
-                          : "border-onyx-600 bg-onyx-900/80 text-parchment hover:border-gold-500/70 hover:text-gold-200"
+                          : "border-onyx-700 bg-onyx-900/80 text-parchment hover:border-gold-500/70 hover:text-gold-200"
                       }`}
                     >
                       {note}
@@ -197,7 +197,7 @@ export function FragranceNotesGraph({
                       className={`group relative rounded-full border px-4 py-1.5 text-xs font-sans tracking-wider transition-all duration-fast focus:outline-none focus:ring-2 focus:ring-gold-300 ${
                         isSelected
                           ? "border-gold-300 bg-gold-500/20 text-gold-100 shadow-[0_0_15px_rgba(217,188,106,0.4)]"
-                          : "border-onyx-600 bg-onyx-900/80 text-parchment hover:border-gold-500/70 hover:text-gold-200"
+                          : "border-onyx-700 bg-onyx-900/80 text-parchment hover:border-gold-500/70 hover:text-gold-200"
                       }`}
                     >
                       {note}
@@ -224,7 +224,7 @@ export function FragranceNotesGraph({
                       className={`group relative rounded-full border px-4 py-1.5 text-xs font-sans tracking-wider transition-all duration-fast focus:outline-none focus:ring-2 focus:ring-gold-300 ${
                         isSelected
                           ? "border-gold-300 bg-gold-500/20 text-gold-100 shadow-[0_0_15px_rgba(217,188,106,0.4)]"
-                          : "border-onyx-600 bg-onyx-900/80 text-parchment hover:border-gold-500/70 hover:text-gold-200"
+                          : "border-onyx-700 bg-onyx-900/80 text-parchment hover:border-gold-500/70 hover:text-gold-200"
                       }`}
                     >
                       {note}

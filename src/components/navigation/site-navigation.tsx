@@ -8,16 +8,41 @@ import { navLinks } from "@/components/navigation/nav-links";
 import { BrandLogo } from "@/components/brand/brand-logo";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
 
+const WA_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE ?? "2348000000000";
+const WA_GREETING = encodeURIComponent(
+  "Hello His & Her's Scents, I'd like to place an order.",
+);
+
 export function SiteNavigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
+  const lastScrollY = useRef(0);
+  const isHomePage = pathname === "/";
+
+  // Scroll-aware: transparent on hero, hide on scroll-down, show on scroll-up
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setIsScrolled(y > 60);
+      // Hide when scrolling down past 200px, show when scrolling up
+      if (y > 200) {
+        setIsHidden(y > lastScrollY.current);
+      } else {
+        setIsHidden(false);
+      }
+      lastScrollY.current = y;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
+    if (!isOpen) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -34,9 +59,7 @@ export function SiteNavigation() {
         return;
       }
 
-      if (event.key !== "Tab" || !focusable?.length) {
-        return;
-      }
+      if (event.key !== "Tab" || !focusable?.length) return;
 
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
@@ -60,6 +83,11 @@ export function SiteNavigation() {
     };
   }, [isOpen]);
 
+  // Close mobile nav on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   function isCurrentRoute(href: string) {
     return href === "/"
       ? pathname === href
@@ -71,8 +99,18 @@ export function SiteNavigation() {
     triggerRef.current?.focus();
   }
 
+  const transparent = isHomePage && !isScrolled && !isOpen;
+
   return (
-    <header className="sticky top-0 z-nav border-b border-onyx-700 bg-onyx-900/92 backdrop-blur-md">
+    <header
+      className={[
+        "sticky top-0 z-nav border-b transition-all duration-base",
+        isHidden && !isOpen ? "-translate-y-full" : "translate-y-0",
+        transparent
+          ? "border-transparent bg-transparent"
+          : "border-onyx-700 bg-onyx-900/92 backdrop-blur-md",
+      ].join(" ")}
+    >
       <Container className="flex min-h-20 items-center justify-between gap-4 py-3">
         <Link
           href="/"
@@ -97,9 +135,8 @@ export function SiteNavigation() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          {/* WhatsApp quick-order: desktop only */}
           <a
-            href="https://wa.me/2348000000000?text=Hello%20His%20%26%20Her%27s%20Scents%2C%20I%27d%20like%20to%20place%20an%20order."
+            href={`https://wa.me/${WA_PHONE}?text=${WA_GREETING}`}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Order via WhatsApp"
@@ -122,12 +159,10 @@ export function SiteNavigation() {
             ref={triggerRef}
             type="button"
             className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-gold-300/70 px-4 type-button text-gold-300 transition duration-fast ease-out-soft hover:bg-gold-300 hover:text-ink-900 md:hidden"
-            aria-label={
-              isOpen ? "Close navigation menu" : "Open navigation menu"
-            }
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
-            onClick={() => setIsOpen((value) => !value)}
+            onClick={() => setIsOpen((v) => !v)}
           >
             <span aria-hidden="true">Menu</span>
           </button>
@@ -157,10 +192,7 @@ export function SiteNavigation() {
           ))}
         </div>
         <div className="mt-10 border-t border-onyx-700 pt-6 text-sm text-parchment/62">
-          <p>
-            Future cart location is reserved. Phase 1 ordering remains
-            WhatsApp-led.
-          </p>
+          <p>Phase 1 ordering is WhatsApp-led.</p>
           <button
             type="button"
             className="mt-6 min-h-11 text-gold-300 underline underline-offset-4"

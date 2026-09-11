@@ -6,6 +6,9 @@ import { siteMetadata } from "@/lib/seo/metadata";
 import { getOrganizationJsonLd } from "@/lib/seo/jsonld";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { SillageAmbient } from "@/components/motion/sillage-ambient";
+import { LenisProvider } from "@/components/motion/lenis-provider";
+import { CustomCursor } from "@/components/motion/custom-cursor";
+import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
 import "@/styles/globals.css";
 
 const display = Cormorant_Garamond({
@@ -42,18 +45,22 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        <AnalyticsScripts />
       </head>
       <body className="font-sans">
         <MotionProvider>
-          <SillageAmbient />
-          <a className="skip-link" href="#main-content">
-            Skip to content
-          </a>
-          <SiteNavigation />
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
-          <Footer />
+          <LenisProvider>
+            <CustomCursor />
+            <SillageAmbient />
+            <a className="skip-link" href="#main-content">
+              Skip to content
+            </a>
+            <SiteNavigation />
+            <main id="main-content" tabIndex={-1}>
+              {children}
+            </main>
+            <Footer />
+          </LenisProvider>
         </MotionProvider>
       </body>
     </html>

@@ -4,6 +4,7 @@ import {
   DEFAULT_MOTION_CAPABILITIES,
   detectMotionCapabilities,
 } from "@/lib/motion/motion-tier";
+import { trackEvent } from "@/lib/analytics/analytics";
 
 let cachedCapabilities: MotionCapabilities | null = null;
 const listeners = new Set<() => void>();
@@ -52,9 +53,15 @@ export function getMotionServerSnapshot(): MotionCapabilities {
   return DEFAULT_MOTION_CAPABILITIES;
 }
 
-export function downgradeMotionStore(newTier: MotionTier, reason: string): void {
+export function downgradeMotionStore(newTier: MotionTier, reason: string, avgFps = 0): void {
   const current = getMotionSnapshot();
   if (current.tier === "tier-c") return;
+
+  trackEvent("perf_degrade", {
+    startingTier: current.tier,
+    newTier,
+    avgFps,
+  });
 
   cachedCapabilities = {
     ...current,

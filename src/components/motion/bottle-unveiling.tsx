@@ -225,6 +225,7 @@ export function BottleUnveiling({
         tier === "tier-c" ? "" : "min-h-screen"
       }`}
       data-motion="unveiling"
+      data-cursor="rotate"
       aria-labelledby="unveiling-title"
     >
       <div className="mx-auto grid w-full max-w-content grid-cols-1 items-center gap-8 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">

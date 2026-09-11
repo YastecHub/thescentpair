@@ -1,16 +1,21 @@
 /**
  * Client & Server-Safe Analytics Dispatcher
- * Tracks signature brand moments and conversion events.
+ * Event taxonomy per 03_HHS_Master_Document.pdf Section 19.
  */
 
 export type AnalyticsEventType =
   | "order_intent"
+  | "fragrance_view"
   | "turntable_engage"
   | "split_drag"
-  | "note_explore"
-  | "ritual_watch"
-  | "collection_filter"
-  | "page_view";
+  | "note_open"
+  | "ritual_progress"
+  | "filter_apply"
+  | "pair_upsell_click"
+  | "list_signup"
+  | "enquiry_submit"
+  | "tier_assigned"
+  | "perf_degrade";
 
 export interface AnalyticsPayload {
   order_intent: {
@@ -23,59 +28,77 @@ export interface AnalyticsPayload {
     refCode: string;
     method: "whatsapp_direct" | "clipboard_copy";
   };
+  fragrance_view: {
+    slug: string;
+    audience: string;
+    family: string;
+    referrerType: string;
+  };
   turntable_engage: {
     fragranceSlug: string;
-    trigger: "scroll" | "drag";
-    framesLoaded: number;
+    rotationPct: number;
+    motionTier: string;
   };
   split_drag: {
     pairSlug: string;
-    ratio: number;
+    maxOffset: number;
+    inputType: "pointer" | "touch" | "keyboard";
   };
-  note_explore: {
-    noteName: string;
-    stage: "Top" | "Heart" | "Base";
-    fragranceName?: string;
+  note_open: {
+    noteId: string;
+    fragranceSlug: string;
   };
-  ritual_watch: {
-    scrollProgress: number;
-    completed: boolean;
+  ritual_progress: {
+    progress: 25 | 50 | 75 | 100;
+    motionTier: string;
   };
-  collection_filter: {
-    audience?: string;
-    family?: string;
-    count: number;
+  filter_apply: {
+    facet: string;
+    value: string;
+    resultCount: number;
   };
-  page_view: {
-    path: string;
+  pair_upsell_click: {
+    startingFragrance: string;
+    pairSlug: string;
+  };
+  list_signup: {
+    source: string;
+  };
+  enquiry_submit: {
+    topic: string;
+  };
+  tier_assigned: {
     tier: string;
+    reason: string;
+  };
+  perf_degrade: {
+    startingTier: string;
+    newTier: string;
+    avgFps: number;
   };
 }
 
-/**
- * Dispatches an event to the dataLayer or window.gtag if available,
- * and logs to console in development mode.
- */
 export function trackEvent<E extends AnalyticsEventType>(
   event: E,
-  data: AnalyticsPayload[E]
+  data: AnalyticsPayload[E],
 ) {
   if (typeof window === "undefined") return;
 
-  // Development telemetry logging
   if (process.env.NODE_ENV === "development") {
     console.debug(`[Analytics] ${event}:`, data);
   }
 
   try {
-    // Standard Google Tag Manager dataLayer
-    const win = window as unknown as { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
+    const win = window as unknown as {
+      dataLayer?: unknown[];
+      gtag?: (...args: unknown[]) => void;
+    };
     if (Array.isArray(win.dataLayer)) {
       win.dataLayer.push({ event, ...data });
     } else if (typeof win.gtag === "function") {
       win.gtag("event", event, data);
     }
   } catch {
-    // Non-blocking telemetry
+    // Non-blocking
   }
 }
