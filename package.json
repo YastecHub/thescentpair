@@ -18,6 +18,7 @@
   "dependencies": {
     "@next/env": "latest",
     "@tailwindcss/forms": "latest",
+    "@vercel/analytics": "^2.0.1",
     "clsx": "latest",
     "framer-motion": "^13.2.0",
     "gsap": "^3.15.0",

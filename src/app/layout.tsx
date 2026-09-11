@@ -9,6 +9,7 @@ import { SillageAmbient } from "@/components/motion/sillage-ambient";
 import { LenisProvider } from "@/components/motion/lenis-provider";
 import { CustomCursor } from "@/components/motion/custom-cursor";
 import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
+import { Analytics } from "@vercel/analytics/next";
 import "@/styles/globals.css";
 
 const display = Cormorant_Garamond({
@@ -62,6 +63,7 @@ export default function RootLayout({
             <Footer />
           </LenisProvider>
         </MotionProvider>
+        <Analytics />
       </body>
     </html>
   );
