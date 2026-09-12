@@ -49,7 +49,7 @@ export function StaticSplitWorld({
           </ButtonLink>
         </div>
         <div className="bg-hers-500/45 p-5 md:p-8">
-          <p className="type-eyebrow text-gold-300">Her&apos;s</p>
+          <p className="type-eyebrow text-gold-300">Her</p>
           {hers ? (
             <ProductImage
               media={{

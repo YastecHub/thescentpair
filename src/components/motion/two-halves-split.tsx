@@ -122,7 +122,7 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
       >
-        {/* Layer 1: Her's World (Base Background) */}
+        {/* Layer 1: Her World (Base Background) */}
         <div
           className="absolute inset-0 flex items-center justify-end bg-[#221316] p-6 text-right md:p-12"
           aria-hidden={splitPos > 80}
@@ -134,7 +134,7 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
           />
           <div className="relative z-10 flex max-w-[420px] flex-col items-end">
             <span className="type-eyebrow text-[#D9BC6A]">
-              Her&apos;s World
+              Her World
             </span>
             <h3 className="mt-2 font-display text-4xl text-parchment md:text-5xl">
               {hers?.name}

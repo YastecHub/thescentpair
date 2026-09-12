@@ -46,7 +46,7 @@ describe("TwoHalvesSplit Component", () => {
 
     // Verify both worlds exist in DOM
     expect(screen.getByText("His World")).toBeInTheDocument();
-    expect(screen.getByText("Her's World")).toBeInTheDocument();
+    expect(screen.getByText("Her World")).toBeInTheDocument();
   });
 
   it("supports keyboard 5% step increments on slider", () => {
