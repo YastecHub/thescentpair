@@ -9,10 +9,12 @@ const bottleImages = [
   {
     label: "His",
     publicId: "hhs/fragrance/midnight-oath/hero-light",
+    liquid: "bg-amber-500/55",
   },
   {
     label: "Hers",
     publicId: "hhs/fragrance/velvet-vow/hero-light",
+    liquid: "bg-rose-300/55",
   },
 ] as const;
 
@@ -123,14 +125,24 @@ export function OverturePreloader() {
                 unoptimized
               />
               <div
-                className={`pointer-events-none absolute inset-x-0 bottom-0 z-[1] bg-gradient-to-t from-gold-300/25 via-gold-200/5 to-transparent transition-[height] duration-[1800ms] ease-out ${
+                className={`pointer-events-none absolute inset-x-0 bottom-0 z-[1] overflow-hidden border-t border-gold-100/70 transition-[height] duration-[1800ms] ease-out ${
                   stage === "drawing"
                     ? "h-0"
                     : stage === "resolving"
-                      ? "h-[28%]"
-                      : "h-[52%]"
+                      ? "h-[38%]"
+                      : "h-[72%]"
+                } ${bottle.liquid}`}
+              />
+              <div
+                className={`pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2 -translate-y-1/2 rounded-[50%] border border-gold-100/80 bg-gold-100/45 transition-[bottom] duration-[1800ms] ease-out ${
+                  stage === "drawing"
+                    ? "bottom-0 opacity-0"
+                    : stage === "resolving"
+                      ? "bottom-[38%] opacity-100"
+                      : "bottom-[72%] opacity-100"
                 }`}
               />
+              <div className="pointer-events-none absolute inset-y-2 left-2 z-[3] w-px bg-white/35" />
             </div>
             <span className="mt-3 font-display text-sm tracking-[0.28em] text-gold-300 uppercase">
               {bottle.label}
