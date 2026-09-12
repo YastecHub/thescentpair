@@ -9,12 +9,10 @@ const bottleImages = [
   {
     label: "His",
     publicId: "hhs/fragrance/midnight-oath/hero-light",
-    liquid: "bg-amber-500/70",
   },
   {
     label: "Hers",
     publicId: "hhs/fragrance/velvet-vow/hero-light",
-    liquid: "bg-rose-300/60",
   },
 ] as const;
 
@@ -109,12 +107,7 @@ export function OverturePreloader() {
       >
         {bottleImages.map((bottle) => (
           <div key={bottle.label} className="flex flex-col items-center">
-            <div
-              className="h-3 w-8 rounded-t-sm border border-gold-300/60 bg-onyx-800"
-            />
-            <div
-              className="relative h-36 w-20 overflow-hidden rounded-[0.7rem] border border-gold-300/70 bg-onyx-800 shadow-[0_12px_35px_rgba(0,0,0,0.35)] sm:h-44 sm:w-24"
-            >
+            <div className="relative aspect-[4/5] w-28 overflow-hidden bg-onyx-800 shadow-[0_16px_40px_rgba(0,0,0,0.38)] sm:w-36">
               <Image
                 src={
                   buildCloudinaryImageUrl(
@@ -124,27 +117,24 @@ export function OverturePreloader() {
                 }
                 alt={`${bottle.label} perfume bottle`}
                 fill
-                sizes="96px"
-                className="z-0 object-contain"
+                sizes="(min-width: 640px) 144px, 112px"
+                className="z-0 object-cover"
                 priority
                 unoptimized
               />
               <div
-                className={`absolute inset-x-0 bottom-0 transition-[height] duration-1000 ease-out ${
+                className={`pointer-events-none absolute inset-x-0 bottom-0 z-[1] bg-gradient-to-t from-gold-300/25 via-gold-200/5 to-transparent transition-[height] duration-[1800ms] ease-out ${
                   stage === "drawing"
                     ? "h-0"
                     : stage === "resolving"
-                      ? "h-[58%]"
-                      : "h-[82%]"
-                } ${bottle.liquid} z-[1]`}
+                      ? "h-[28%]"
+                      : "h-[52%]"
+                }`}
               />
-              <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 border border-gold-300/50 bg-onyx-900/40 px-1 py-2 text-center">
-                <span className="font-display text-[0.65rem] tracking-[0.22em] text-gold-100 uppercase">
-                  {bottle.label}
-                </span>
-              </div>
-              <div className="absolute inset-y-2 left-2 w-px bg-white/25" />
             </div>
+            <span className="mt-3 font-display text-sm tracking-[0.28em] text-gold-300 uppercase">
+              {bottle.label}
+            </span>
           </div>
         ))}
       </div>
