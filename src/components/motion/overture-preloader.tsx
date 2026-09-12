@@ -9,12 +9,12 @@ const bottleImages = [
   {
     label: "His",
     publicId: "hhs/fragrance/midnight-oath/hero-light",
-    liquid: "bg-amber-500/55",
+    liquid: "from-amber-300 via-amber-500 to-orange-700",
   },
   {
     label: "Hers",
     publicId: "hhs/fragrance/velvet-vow/hero-light",
-    liquid: "bg-rose-300/55",
+    liquid: "from-rose-200 via-rose-400 to-fuchsia-700",
   },
 ] as const;
 
@@ -109,7 +109,7 @@ export function OverturePreloader() {
       >
         {bottleImages.map((bottle) => (
           <div key={bottle.label} className="flex flex-col items-center">
-            <div className="relative aspect-[4/5] w-28 overflow-hidden bg-onyx-800 shadow-[0_16px_40px_rgba(0,0,0,0.38)] sm:w-36">
+            <div className="relative aspect-[4/5] w-28 overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.38)] sm:w-36">
               <Image
                 src={
                   buildCloudinaryImageUrl(
@@ -120,26 +120,26 @@ export function OverturePreloader() {
                 alt={`${bottle.label} perfume bottle`}
                 fill
                 sizes="(min-width: 640px) 144px, 112px"
-                className="z-0 object-cover"
+                className="z-0 object-contain"
                 priority
                 unoptimized
               />
               <div
-                className={`pointer-events-none absolute inset-x-0 bottom-0 z-[1] overflow-hidden border-t border-gold-100/70 transition-[height] duration-[1800ms] ease-out ${
+                className={`pointer-events-none absolute inset-x-[18%] bottom-[8%] z-[1] overflow-hidden rounded-[35%_35%_24%_24%] border-t-2 border-gold-100 bg-gradient-to-t shadow-[0_0_24px_rgba(245,158,11,0.8)] transition-[height] duration-[1800ms] ease-out ${
                   stage === "drawing"
                     ? "h-0"
                     : stage === "resolving"
-                      ? "h-[38%]"
-                      : "h-[72%]"
+                      ? "h-[34%]"
+                      : "h-[68%]"
                 } ${bottle.liquid}`}
               />
               <div
-                className={`pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2 -translate-y-1/2 rounded-[50%] border border-gold-100/80 bg-gold-100/45 transition-[bottom] duration-[1800ms] ease-out ${
+                className={`pointer-events-none absolute inset-x-[17%] z-[2] h-3 -translate-y-1/2 rounded-[50%] border-2 border-gold-50 bg-gold-100 shadow-[0_0_18px_rgba(255,244,190,0.95)] transition-[bottom] duration-[1800ms] ease-out ${
                   stage === "drawing"
                     ? "bottom-0 opacity-0"
                     : stage === "resolving"
-                      ? "bottom-[38%] opacity-100"
-                      : "bottom-[72%] opacity-100"
+                      ? "bottom-[42%] opacity-100"
+                      : "bottom-[76%] opacity-100"
                 }`}
               />
               <div className="pointer-events-none absolute inset-y-2 left-2 z-[3] w-px bg-white/35" />
