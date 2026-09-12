@@ -10,16 +10,16 @@ const bottleImages = [
     src: "/brand/bottles/midnight-oath.png",
     boxClass: "w-24 h-52 sm:w-28 sm:h-60",
     liquidGradient: "from-amber-950 via-amber-500 to-amber-200",
-    midFill: "h-[36%]",
-    maxFill: "h-[68%]",
+    midFill: "h-[38%]",
+    maxFill: "h-[74%]",
   },
   {
     label: "Hers",
     src: "/brand/bottles/velvet-vow.png",
     boxClass: "w-28 h-44 sm:w-32 sm:h-52",
     liquidGradient: "from-rose-950 via-rose-500 to-rose-200",
-    midFill: "h-[34%]",
-    maxFill: "h-[68%]",
+    midFill: "h-[36%]",
+    maxFill: "h-[72%]",
   },
 ] as const;
 
@@ -41,24 +41,24 @@ export function OverturePreloader() {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Animation activation: standard mount-based state initialization
     setActive(true);
 
-    // Sequence timing (total 5 seconds)
+    // Sequence timing (giving more time to savor the liquid filling to the top)
     // 0ms: Hairline draws monogram
-    // 1200ms: Bottles resolve out of darkness
-    // 2400ms: Liquid reaches its presentation level
-    // 3900ms: Curtain lifts
-    // 5000ms: Complete and unmount
+    // 1200ms: Bottles resolve and liquid starts filling smoothly to the top
+    // 5000ms: Liquid reaches presentation fill level at the top, brief hold
+    // 5100ms: Curtain lifts
+    // 6300ms: Complete and unmount
     const tResolve = setTimeout(() => {
       setStage("resolving");
     }, 1200);
 
     const tLift = setTimeout(() => {
       setStage("lifting");
-    }, 3900);
+    }, 5100);
 
     const tDone = setTimeout(() => {
       setStage("done");
       setActive(false);
-    }, 5000);
+    }, 6300);
 
     return () => {
       clearTimeout(tResolve);
@@ -148,9 +148,9 @@ export function OverturePreloader() {
                 }}
                 aria-hidden="true"
               >
-                {/* Rising luminous liquid volume */}
+                {/* Rising luminous liquid volume: takes more seconds to smoothly fill to the top */}
                 <div
-                  className={`absolute inset-x-0 bottom-0 bg-gradient-to-t ${bottle.liquidGradient} transition-[height] duration-[2200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  className={`absolute inset-x-0 bottom-0 bg-gradient-to-t ${bottle.liquidGradient} transition-[height] duration-[3600ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
                     stage === "drawing"
                       ? "h-0"
                       : stage === "resolving"
@@ -191,8 +191,12 @@ export function OverturePreloader() {
         ))}
       </div>
 
-      {/* Gold hairline monogram floats above the filling bottles. */}
-      <div className="absolute z-[2] flex -translate-y-28 flex-col items-center sm:-translate-y-36">
+      {/* Gold hairline monogram: animates during drawing stage, then smoothly fades out so bottles have full, clean focus */}
+      <div
+        className={`pointer-events-none absolute z-[2] flex -translate-y-36 sm:-translate-y-44 flex-col items-center transition-opacity duration-1000 ${
+          stage === "drawing" ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <svg
           viewBox="0 0 160 160"
           className="h-28 w-28 sm:h-36 sm:w-36 overflow-visible"
@@ -233,16 +237,6 @@ export function OverturePreloader() {
             }}
           />
         </svg>
-
-        <span
-          className={`mt-6 font-display text-sm tracking-[0.35em] text-gold-300 uppercase transition-opacity duration-700 ${
-            stage === "resolving" || stage === "lifting"
-              ? "opacity-100"
-              : "opacity-0"
-          }`}
-        >
-          His &amp; Her&apos;s
-        </span>
       </div>
 
       {/* Liquid gold bottom progress indicator */}

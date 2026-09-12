@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Preloader Bottle Fill Preview</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0B0A09;
+      color: #F6F2EA;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .controls {
+      position: fixed;
+      top: 24px;
+      display: flex;
+      gap: 12px;
+      z-index: 50;
+    }
+
+    .replay-btn {
+      background: #1a1714;
+      border: 1px solid #d9bc6a;
+      color: #d9bc6a;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .replay-btn:hover {
+      background: #d9bc6a;
+      color: #0b0a09;
+    }
+
+    .bottles-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 3.5rem;
+    }
+
+    .bottle-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .bottle-box {
+      position: relative;
+    }
+
+    .bottle-box.his {
+      width: 112px;
+      height: 240px;
+    }
+
+    .bottle-box.hers {
+      width: 128px;
+      height: 215px;
+    }
+
+    /* Ambient pedestal shadow under each bottle */
+    .bottle-shadow {
+      position: absolute;
+      bottom: -8px;
+      left: 8%;
+      right: 8%;
+      height: 16px;
+      background: radial-gradient(ellipse at center, rgba(217, 188, 106, 0.35) 0%, rgba(0,0,0,0.85) 60%, transparent 80%);
+      pointer-events: none;
+      filter: blur(3px);
+    }
+
+    /* Base bottle */
+    .bottle-base {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.4;
+      filter: brightness(0.7) contrast(1.2);
+      pointer-events: none;
+    }
+
+    /* Masked liquid container: the liquid only renders strictly INSIDE the bottle silhouette */
+    .liquid-mask {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center bottom;
+      mask-position: center bottom;
+    }
+
+    .bottle-box.his .liquid-mask {
+      -webkit-mask-image: url("/brand/bottles/midnight-oath.png");
+      mask-image: url("/brand/bottles/midnight-oath.png");
+    }
+
+    .bottle-box.hers .liquid-mask {
+      -webkit-mask-image: url("/brand/bottles/velvet-vow.png");
+      mask-image: url("/brand/bottles/velvet-vow.png");
+    }
+
+    /* Rising liquid body taking deliberate seconds to fill right to the top shoulder */
+    .liquid-fill {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 0%;
+      transition: height 3.6s cubic-bezier(0.16, 1, 0.3, 1);
+      mix-blend-mode: screen;
+    }
+
+    .liquid-fill.his {
+      background: linear-gradient(to top, #451a03 0%, #b45309 30%, #f59e0b 70%, #fef08a 100%);
+      box-shadow: 0 0 35px rgba(245, 158, 11, 0.6);
+    }
+
+    .liquid-fill.hers {
+      background: linear-gradient(to top, #4c0519 0%, #9f1239 30%, #e11d48 70%, #fecdd3 100%);
+      box-shadow: 0 0 35px rgba(225, 29, 72, 0.6);
+    }
+
+    /* Glowing liquid meniscus line at surface */
+    .meniscus {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #fff;
+      box-shadow: 0 0 12px 2px #fff, 0 0 24px 6px #d9bc6a;
+      opacity: 0.95;
+    }
+
+    /* Front bottle overlay for crisp metallic cap, label, and crystal reflections */
+    .bottle-front {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      opacity: 0.9;
+      mix-blend-mode: screen;
+    }
+
+    /* Label text strictly below each bottle */
+    .bottle-label {
+      margin-top: 1.25rem;
+      font-family: serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.28em;
+      color: #d9bc6a;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button class="replay-btn" onclick="replay()">Replay Fill</button>
+  </div>
+
+  <div class="bottles-container">
+    <!-- His Bottle (Midnight Oath) -->
+    <div class="bottle-wrapper">
+      <div class="bottle-box his">
+        <div class="bottle-shadow"></div>
+        <img class="bottle-base" src="/brand/bottles/midnight-oath.png" alt="His">
+        <div class="liquid-mask">
+          <div id="liquid-his" class="liquid-fill his">
+            <div class="meniscus"></div>
+          </div>
+        </div>
+        <img class="bottle-front" src="/brand/bottles/midnight-oath.png" alt="">
+      </div>
+      <span class="bottle-label">His</span>
+    </div>
+
+    <!-- Her's Bottle (Velvet Vow) -->
+    <div class="bottle-wrapper">
+      <div class="bottle-box hers">
+        <div class="bottle-shadow"></div>
+        <img class="bottle-base" src="/brand/bottles/velvet-vow.png" alt="Hers">
+        <div class="liquid-mask">
+          <div id="liquid-hers" class="liquid-fill hers">
+            <div class="meniscus"></div>
+          </div>
+        </div>
+        <img class="bottle-front" src="/brand/bottles/velvet-vow.png" alt="">
+      </div>
+      <span class="bottle-label">Her's</span>
+    </div>
+  </div>
+
+  <script>
+    function fill() {
+      const his = document.getElementById('liquid-his');
+      const hers = document.getElementById('liquid-hers');
+      his.style.height = '74%';
+      hers.style.height = '72%';
+    }
+
+    function replay() {
+      const his = document.getElementById('liquid-his');
+      const hers = document.getElementById('liquid-hers');
+      his.style.transition = 'none';
+      hers.style.transition = 'none';
+      his.style.height = '0%';
+      hers.style.height = '0%';
+      setTimeout(() => {
+        his.style.transition = 'height 3.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        hers.style.transition = 'height 3.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        fill();
+      }, 50);
+    }
+
+    // Auto-trigger on page load
+    setTimeout(fill, 400);
+  </script>
+</body>
+</html>
