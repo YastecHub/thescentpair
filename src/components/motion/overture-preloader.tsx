@@ -2,19 +2,24 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { buildCloudinaryImageUrl } from "@/lib/cloudinary/url";
 import { useMotionTier } from "./motion-provider";
 
 const bottleImages = [
   {
     label: "His",
-    publicId: "hhs/fragrance/midnight-oath/hero-light",
-    liquid: "from-amber-300 via-amber-500 to-orange-700",
+    src: "/brand/bottles/midnight-oath.png",
+    boxClass: "w-24 h-52 sm:w-28 sm:h-60",
+    liquidGradient: "from-amber-950 via-amber-500 to-amber-200",
+    midFill: "h-[36%]",
+    maxFill: "h-[68%]",
   },
   {
     label: "Hers",
-    publicId: "hhs/fragrance/velvet-vow/hero-light",
-    liquid: "from-rose-200 via-rose-400 to-fuchsia-700",
+    src: "/brand/bottles/velvet-vow.png",
+    boxClass: "w-28 h-44 sm:w-32 sm:h-52",
+    liquidGradient: "from-rose-950 via-rose-500 to-rose-200",
+    midFill: "h-[34%]",
+    maxFill: "h-[68%]",
   },
 ] as const;
 
@@ -101,7 +106,7 @@ export function OverturePreloader() {
 
       {/* His and Hers bottles fill with liquid before the reveal. */}
       <div
-        className={`relative z-[1] flex items-end gap-5 sm:gap-8 transition-all duration-1000 ease-out ${
+        className={`relative z-[1] flex items-end gap-6 sm:gap-10 transition-all duration-1000 ease-out ${
           stage === "resolving" || stage === "lifting"
             ? "scale-100 opacity-100 blur-0"
             : "scale-90 opacity-0 blur-sm"
@@ -109,42 +114,77 @@ export function OverturePreloader() {
       >
         {bottleImages.map((bottle) => (
           <div key={bottle.label} className="flex flex-col items-center">
-            <div className="relative aspect-[4/5] w-28 overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.38)] sm:w-36">
+            {/* The exact bottle flacon — no background card, no photo scene */}
+            <div className={`relative ${bottle.boxClass} select-none`}>
+              {/* Soft ambient contact shadow under the bottle base */}
+              <div
+                className="pointer-events-none absolute -bottom-2 inset-x-2 h-4 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(217,188,106,0.3)_0%,rgba(0,0,0,0.85)_60%,transparent_80%)] blur-[2px]"
+                aria-hidden="true"
+              />
+
+              {/* 1. Base translucent bottle silhouette */}
               <Image
-                src={
-                  buildCloudinaryImageUrl(
-                    bottle.publicId,
-                    "f_auto,q_auto:good,c_limit,w_480",
-                  ) ?? "/brand/logo-lockup.png"
-                }
+                src={bottle.src}
                 alt={`${bottle.label} perfume bottle`}
                 fill
                 sizes="(min-width: 640px) 144px, 112px"
-                className="z-0 object-contain"
+                className="z-0 object-contain brightness-75 contrast-125 opacity-40 transition-opacity duration-1000"
                 priority
                 unoptimized
               />
+
+              {/* 2. Liquid fill strictly masked to the exact bottle silhouette */}
               <div
-                className={`pointer-events-none absolute inset-x-[18%] bottom-[8%] z-[1] overflow-hidden rounded-[35%_35%_24%_24%] border-t-2 border-gold-100 bg-gradient-to-t shadow-[0_0_24px_rgba(245,158,11,0.8)] transition-[height] duration-[1800ms] ease-out ${
-                  stage === "drawing"
-                    ? "h-0"
-                    : stage === "resolving"
-                      ? "h-[34%]"
-                      : "h-[68%]"
-                } ${bottle.liquid}`}
+                className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
+                style={{
+                  WebkitMaskImage: `url(${bottle.src})`,
+                  maskImage: `url(${bottle.src})`,
+                  WebkitMaskSize: "contain",
+                  maskSize: "contain",
+                  WebkitMaskRepeat: "no-repeat",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskPosition: "center bottom",
+                  maskPosition: "center bottom",
+                }}
+                aria-hidden="true"
+              >
+                {/* Rising luminous liquid volume */}
+                <div
+                  className={`absolute inset-x-0 bottom-0 bg-gradient-to-t ${bottle.liquidGradient} transition-[height] duration-[2200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    stage === "drawing"
+                      ? "h-0"
+                      : stage === "resolving"
+                        ? bottle.midFill
+                        : bottle.maxFill
+                  }`}
+                  style={{
+                    mixBlendMode: "screen",
+                  }}
+                >
+                  {/* Glowing liquid surface meniscus */}
+                  <div
+                    className={`absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent shadow-[0_0_12px_2px_rgba(255,255,255,0.95)] transition-opacity duration-700 ${
+                      stage === "drawing" ? "opacity-0" : "opacity-100"
+                    }`}
+                  />
+                </div>
+              </div>
+
+              {/* 3. Front bottle overlay for crisp metallic cap, label typography, and crystal highlights */}
+              <Image
+                src={bottle.src}
+                alt=""
+                aria-hidden="true"
+                fill
+                sizes="(min-width: 640px) 144px, 112px"
+                className="pointer-events-none z-[2] object-contain opacity-90 transition-opacity duration-1000"
+                style={{
+                  mixBlendMode: "screen",
+                }}
+                unoptimized
               />
-              <div
-                className={`pointer-events-none absolute inset-x-[17%] z-[2] h-3 -translate-y-1/2 rounded-[50%] border-2 border-gold-50 bg-gold-100 shadow-[0_0_18px_rgba(255,244,190,0.95)] transition-[bottom] duration-[1800ms] ease-out ${
-                  stage === "drawing"
-                    ? "bottom-0 opacity-0"
-                    : stage === "resolving"
-                      ? "bottom-[42%] opacity-100"
-                      : "bottom-[76%] opacity-100"
-                }`}
-              />
-              <div className="pointer-events-none absolute inset-y-2 left-2 z-[3] w-px bg-white/35" />
             </div>
-            <span className="mt-3 font-display text-sm tracking-[0.28em] text-gold-300 uppercase">
+            <span className="mt-4 font-display text-sm tracking-[0.28em] text-gold-300 uppercase">
               {bottle.label}
             </span>
           </div>
