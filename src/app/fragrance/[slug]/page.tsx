@@ -22,7 +22,7 @@ import {
 import { createPageMetadata } from "@/lib/seo/page-metadata";
 import type { Metadata } from "next";
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export function generateStaticParams() {
   return getAllFragrances().map((fragrance) => ({ slug: fragrance.slug }));

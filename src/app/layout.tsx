@@ -43,6 +43,11 @@ export default function RootLayout({
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){if(typeof window!=='undefined'){var filter=function(m,f){return(m&&(m.indexOf('MetaMask')!==-1||m.indexOf('chrome-extension://')!==-1))||(f&&f.indexOf('chrome-extension://')!==-1);};window.addEventListener('unhandledrejection',function(e){var r=e.reason;var m=(r&&(r.message||r.stack))||String(r||'');if(filter(m)){e.stopImmediatePropagation();e.preventDefault();}},true);window.addEventListener('error',function(e){var m=(e.error&&(e.error.message||e.error.stack))||e.message||'';if(filter(m,e.filename)){e.stopImmediatePropagation();e.preventDefault();}},true);}})();`,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />

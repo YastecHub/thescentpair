@@ -14,9 +14,9 @@ import {
 
 describe("content schemas", () => {
   it("accepts labelled sample content", () => {
-    expect(fragrances).toHaveLength(3);
+    expect(fragrances).toHaveLength(9);
     expect(pairs).toHaveLength(1);
-    expect(notes).toHaveLength(6);
+    expect(notes).toHaveLength(25);
     expect(stories).toHaveLength(3);
   });
 

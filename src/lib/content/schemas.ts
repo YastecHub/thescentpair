@@ -10,7 +10,7 @@ export const currencySchema = z.literal("NGN");
 export const cloudinaryPublicIdSchema = z
   .string()
   .min(1)
-  .regex(/^[a-zA-Z0-9/_-]+$/);
+  .regex(/^[a-zA-Z0-9/_.-]+$/);
 export const hexColorSchema = z.string().regex(/^#[0-9A-Fa-f]{6}$/);
 
 export const seoSchema = z.object({

@@ -132,15 +132,14 @@ describe("variant behaviour", () => {
   });
 
   it("detects availability when at least one variant is in stock", () => {
-    expect(hasAvailableVariant(fragrance.variants)).toBe(true);
+    const availableFragrance = fragrances.find((f) =>
+      f.variants.some((v) => v.inStock),
+    )!;
+    expect(hasAvailableVariant(availableFragrance.variants)).toBe(true);
   });
 
   it("detects unavailability when all variants are out of stock", () => {
-    const allOutOfStock = fragrance.variants.map((v) => ({
-      ...v,
-      inStock: false,
-    }));
-    expect(hasAvailableVariant(allOutOfStock)).toBe(false);
+    expect(hasAvailableVariant(fragrance.variants)).toBe(false);
   });
 
   it("variant 100ml on velvet-vow is marked out of stock", () => {

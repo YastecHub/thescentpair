@@ -24,7 +24,7 @@ const demoFragrances = [
         unit: "ml",
         price: 45000,
         currency: "NGN",
-        inStock: true,
+        inStock: false,
       },
       {
         sku: "MO-100",
@@ -32,7 +32,7 @@ const demoFragrances = [
         unit: "ml",
         price: 72000,
         currency: "NGN",
-        inStock: true,
+        inStock: false,
       },
     ],
     media: {
@@ -56,7 +56,7 @@ const demoFragrances = [
       ogImage: "hhs/og/midnight-oath",
     },
     featured: true,
-    order: 10,
+    order: 100,
   },
   {
     slug: "velvet-vow",
@@ -80,7 +80,7 @@ const demoFragrances = [
         unit: "ml",
         price: 45000,
         currency: "NGN",
-        inStock: true,
+        inStock: false,
       },
       {
         sku: "VV-100",
@@ -112,7 +112,7 @@ const demoFragrances = [
       ogImage: "hhs/og/velvet-vow",
     },
     featured: true,
-    order: 20,
+    order: 110,
   },
   {
     slug: "amber-room",
@@ -135,7 +135,7 @@ const demoFragrances = [
         unit: "ml",
         price: 48000,
         currency: "NGN",
-        inStock: true,
+        inStock: false,
       },
       {
         sku: "AR-100",
@@ -143,7 +143,7 @@ const demoFragrances = [
         unit: "ml",
         price: 76000,
         currency: "NGN",
-        inStock: true,
+        inStock: false,
       },
     ],
     media: {
@@ -158,7 +158,235 @@ const demoFragrances = [
       ogImage: "hhs/og/amber-room",
     },
     featured: false,
+    order: 120,
+  },
+  {
+    slug: "club-de-nuit-intense-man",
+    name: "Club de Nuit Intense Man",
+    audience: "his",
+    family: "woody-spicy",
+    tagline: "A sharp citrus fruity burst settling into a smoky floral heart and warm musky base.",
+    description:
+      "A bold, woody spicy fragrance that opens with a sharp citrus fruity burst, settles into a smoky floral heart, and finishes with a warm, musky base. Confident and long lasting built for the man who commands attention.",
+    notes: {
+      top: ["lemon", "pineapple", "blackcurrant", "apple", "bergamot"],
+      heart: ["birch", "jasmine", "rose"],
+      base: ["ambergris", "musk", "patchouli", "vanilla"],
+    },
+    performance: { longevity: 5, sillage: 5, projection: 4 },
+    variants: [
+      {
+        sku: "CDNIM-105",
+        size: 105,
+        unit: "ml",
+        price: 65000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/brand/products/club-de-nuit-intense-man.png",
+      heroLight: "/brand/products/club-de-nuit-intense-man.png",
+      gallery: ["/brand/products/club-de-nuit-intense-man.png"],
+    },
+    seo: {
+      title: "Club de Nuit Intense Man Eau de Parfum",
+      description:
+        "A bold, woody spicy fragrance that opens with sharp citrus and settles into smoky birch and musk. 105ml.",
+      ogImage: "/brand/products/club-de-nuit-intense-man.png",
+    },
+    featured: false,
+    order: 10,
+  },
+  {
+    slug: "afnan-9-pm",
+    name: "Afnan 9 PM",
+    audience: "his",
+    family: "amber-vanilla",
+    tagline: "Fresh bergamot and cinnamon opening into warm orange blossom and a rich, spicy amber base.",
+    description:
+      "An amber vanilla fragrance built for evening wear. Fresh bergamot and cinnamon open into warm orange blossom, settling into a rich, spicy amber base confident and memorable after dark.",
+    notes: {
+      top: ["apple", "cinnamon", "lavender", "bergamot"],
+      heart: ["orange-blossom"],
+      base: ["vanilla", "tonka-bean", "amber", "patchouli"],
+    },
+    performance: { longevity: 5, sillage: 4, projection: 4 },
+    variants: [
+      {
+        sku: "A9PM-100",
+        size: 100,
+        unit: "ml",
+        price: 10000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/brand/products/afnan-9-pm.jpg",
+      heroLight: "/brand/products/afnan-9-pm.jpg",
+      gallery: ["/brand/products/afnan-9-pm.jpg"],
+    },
+    seo: {
+      title: "Afnan 9 PM Eau de Parfum",
+      description:
+        "An amber vanilla fragrance built for evening wear. Fresh bergamot and cinnamon over rich amber. 100ml.",
+      ogImage: "/brand/products/afnan-9-pm.jpg",
+    },
+    featured: false,
+    order: 20,
+  },
+  {
+    slug: "riggs-london",
+    name: "Riggs London",
+    audience: "his",
+    family: "amber-vanilla",
+    tagline: "Warm orange blossom and cinnamon settling into a rich, spicy amber base.",
+    description:
+      "An amber vanilla fragrance built for evening wear. Fresh bergamot and cinnamon open into warm orange blossom, settling into a rich, spicy amber base confident and memorable after dark.",
+    notes: {
+      top: ["bergamot", "cinnamon"],
+      heart: ["orange-blossom"],
+      base: ["amber", "vanilla"],
+    },
+    performance: { longevity: 4, sillage: 3, projection: 3 },
+    variants: [
+      {
+        sku: "RIGGS-100",
+        size: 100,
+        unit: "ml",
+        price: 10000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/brand/products/riggs-london.png",
+      heroLight: "/brand/products/riggs-london.png",
+      gallery: ["/brand/products/riggs-london.png"],
+    },
+    seo: {
+      title: "Riggs London Fragrance",
+      description:
+        "An amber vanilla fragrance built for evening wear. Bergamot, cinnamon, and warm orange blossom. 100ml.",
+      ogImage: "/brand/products/riggs-london.png",
+    },
+    featured: false,
     order: 30,
+  },
+  {
+    slug: "rave-now-men",
+    name: "Rave NOW (Men)",
+    audience: "his",
+    family: "woody-aromatic",
+    tagline: "Fruity top notes giving way to a floral, smoky heart and a warm, musky base.",
+    description:
+      "A woody aromatic fragrance built for presence. Fruity top notes give way to a floral, smoky heart, settling into a warm, musky base bold and confident for the man who stands out.",
+    notes: {
+      top: ["pineapple", "blackcurrant", "apple", "bergamot"],
+      heart: ["birch", "jasmine", "patchouli"],
+      base: ["ambergris", "musk", "oakmoss", "vanilla"],
+    },
+    performance: { longevity: 5, sillage: 4, projection: 4 },
+    variants: [
+      {
+        sku: "RN-100",
+        size: 100,
+        unit: "ml",
+        price: 45000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/brand/products/rave-now-men.png",
+      heroLight: "/brand/products/rave-now-men.png",
+      gallery: ["/brand/products/rave-now-men.png"],
+    },
+    seo: {
+      title: "Rave NOW (Men) Eau de Parfum",
+      description:
+        "A woody aromatic fragrance built for presence. Fruity pineapple, smoky birch and warm musk. 100ml.",
+      ogImage: "/brand/products/rave-now-men.png",
+    },
+    featured: false,
+    order: 40,
+  },
+  {
+    slug: "naseem-perfume-oils",
+    name: "Naseem Perfume Oils",
+    audience: "unisex",
+    family: "oriental-amber",
+    tagline: "A curated selection of premium alcohol-free concentrated perfume oils.",
+    description:
+      "A curated selection of premium perfume oils, offering a range of scents from sweet and fruity to rich and woody. Alcohol free and long lasting, suited for everyday wear or special occasions. Over 15 varieties available, including Be Sugar, Golden Woods, Amani, Mukhallat, Mufaddal, Oud Bushra, Lamsa, Jazi, Red Coral, Burhan, Romeo, Bushra, and Jazeelah.",
+    notes: {
+      top: ["sweet-orange", "saffron"],
+      heart: ["rose", "jasmine", "praline"],
+      base: ["oud", "amber", "cedarwood", "musk"],
+    },
+    performance: { longevity: 5, sillage: 4, projection: 4 },
+    variants: [
+      {
+        sku: "NAS-24",
+        size: 24,
+        unit: "ml",
+        price: 5000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/brand/products/naseem-perfume-oils.jpg",
+      heroLight: "/brand/products/naseem-perfume-oils.jpg",
+      gallery: ["/brand/products/naseem-perfume-oils.jpg"],
+    },
+    seo: {
+      title: "Naseem Concentrated Perfume Oils (Roll-On)",
+      description:
+        "Alcohol-free premium perfume oils in over 15 varieties. Long lasting roll-on bottle (24ml).",
+      ogImage: "/brand/products/naseem-perfume-oils.jpg",
+    },
+    featured: false,
+    order: 50,
+  },
+  {
+    slug: "lattafa-hayaati",
+    name: "Lattafa Hayaati",
+    audience: "his",
+    family: "woody-aromatic",
+    tagline: "Crisp apple and bergamot opening into a spiced heart and warm ambergris base.",
+    description:
+      "A fresh, woody aromatic fragrance built for commanding presence. Crisp apple and zesty bergamot open with vibrant energy, evolving into a spiced heart of cinnamon, lavender, and cardamom, before settling into a warm, lingering base of vanilla, cedarwood, and ambergris.",
+    notes: {
+      top: ["apple", "bergamot", "cinnamon"],
+      heart: ["lavender", "cardamom"],
+      base: ["vanilla", "ambergris", "cedarwood", "musk"],
+    },
+    performance: { longevity: 5, sillage: 4, projection: 4 },
+    variants: [
+      {
+        sku: "LH-100",
+        size: 100,
+        unit: "ml",
+        price: 25000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/brand/products/lattafa-hayaati.png",
+      heroLight: "/brand/products/lattafa-hayaati.png",
+      gallery: ["/brand/products/lattafa-hayaati.png"],
+    },
+    seo: {
+      title: "Lattafa Hayaati Eau de Parfum",
+      description:
+        "A fresh, woody aromatic fragrance with apple, bergamot, spiced cardamom, and warm ambergris. 100ml in Nigeria.",
+      ogImage: "/brand/products/lattafa-hayaati.png",
+    },
+    featured: false,
+    order: 60,
   },
 ] satisfies Fragrance[];
 

@@ -12,6 +12,14 @@ export function buildCloudinaryImageUrl(
   publicId: string,
   transformation = "f_auto,q_auto:good,c_limit,w_1200",
 ) {
+  if (
+    publicId.startsWith("/") ||
+    publicId.startsWith("http://") ||
+    publicId.startsWith("https://")
+  ) {
+    return publicId;
+  }
+
   if (!cloudName) {
     return undefined;
   }
@@ -23,6 +31,14 @@ export function buildCloudinaryVideoUrl(
   publicId: string,
   transformation = "f_auto,q_auto,vc_auto",
 ) {
+  if (
+    publicId.startsWith("/") ||
+    publicId.startsWith("http://") ||
+    publicId.startsWith("https://")
+  ) {
+    return publicId;
+  }
+
   if (!cloudName) {
     return undefined;
   }
@@ -31,6 +47,14 @@ export function buildCloudinaryVideoUrl(
 }
 
 export function buildCloudinaryVideoPosterUrl(publicId: string) {
+  if (
+    publicId.startsWith("/") ||
+    publicId.startsWith("http://") ||
+    publicId.startsWith("https://")
+  ) {
+    return publicId;
+  }
+
   return buildCloudinaryImageUrl(
     `${publicId}.jpg`,
     "f_auto,q_auto:good,c_limit,w_1440,so_0",

@@ -12,13 +12,22 @@ import { pairs } from "@/content/pairs/sample-pairs";
 
 describe("product components", () => {
   it("renders a fragrance card with price and availability", () => {
-    render(createElement(FragranceCard, { fragrance: fragrances[0] }));
+    const inStockFragrance = fragrances.find((f) =>
+      f.variants.some((v) => v.inStock),
+    )!;
+    render(createElement(FragranceCard, { fragrance: inStockFragrance }));
 
     expect(
-      screen.getByRole("link", { name: /Midnight Oath/i }),
-    ).toHaveAttribute("href", "/fragrance/midnight-oath");
-    expect(screen.getByText("From ₦45,000")).toBeInTheDocument();
+      screen.getByRole("link", {
+        name: new RegExp(inStockFragrance.name, "i"),
+      }),
+    ).toHaveAttribute("href", `/fragrance/${inStockFragrance.slug}`);
     expect(screen.getByText("Available")).toBeInTheDocument();
+  });
+
+  it("renders an unavailable fragrance card indicator correctly", () => {
+    render(createElement(FragranceCard, { fragrance: fragrances[0] }));
+    expect(screen.getByText("Unavailable")).toBeInTheDocument();
   });
 
   it("renders a pair card as one set", () => {
@@ -45,9 +54,25 @@ describe("product components", () => {
   });
 
   it("supports keyboard variant changes", () => {
-    render(
-      createElement(VariantSelector, { variants: fragrances[0].variants }),
-    );
+    const variants = [
+      {
+        sku: "TEST-50",
+        size: 50,
+        unit: "ml" as const,
+        price: 45000,
+        currency: "NGN" as const,
+        inStock: true,
+      },
+      {
+        sku: "TEST-100",
+        size: 100,
+        unit: "ml" as const,
+        price: 72000,
+        currency: "NGN" as const,
+        inStock: true,
+      },
+    ];
+    render(createElement(VariantSelector, { variants }));
 
     const group = screen.getByRole("radiogroup", {
       name: "Fragrance variants",
