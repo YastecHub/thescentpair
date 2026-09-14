@@ -185,15 +185,15 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/brand/products/club-de-nuit-intense-man.png",
-      heroLight: "/brand/products/club-de-nuit-intense-man.png",
-      gallery: ["/brand/products/club-de-nuit-intense-man.png"],
+      heroDark: "thescentpair/products/club-de-nuit-intense-man",
+      heroLight: "thescentpair/products/club-de-nuit-intense-man",
+      gallery: ["thescentpair/products/club-de-nuit-intense-man"],
     },
     seo: {
       title: "Club de Nuit Intense Man Eau de Parfum",
       description:
         "A bold, woody spicy fragrance that opens with sharp citrus and settles into smoky birch and musk. 105ml.",
-      ogImage: "/brand/products/club-de-nuit-intense-man.png",
+      ogImage: "thescentpair/products/club-de-nuit-intense-man",
     },
     featured: false,
     order: 10,
@@ -223,15 +223,15 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/brand/products/afnan-9-pm.jpg",
-      heroLight: "/brand/products/afnan-9-pm.jpg",
-      gallery: ["/brand/products/afnan-9-pm.jpg"],
+      heroDark: "thescentpair/products/afnan-9-pm",
+      heroLight: "thescentpair/products/afnan-9-pm",
+      gallery: ["thescentpair/products/afnan-9-pm"],
     },
     seo: {
       title: "Afnan 9 PM Eau de Parfum",
       description:
         "An amber vanilla fragrance built for evening wear. Fresh bergamot and cinnamon over rich amber. 100ml.",
-      ogImage: "/brand/products/afnan-9-pm.jpg",
+      ogImage: "thescentpair/products/afnan-9-pm",
     },
     featured: false,
     order: 20,
@@ -261,15 +261,15 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/brand/products/riggs-london.png",
-      heroLight: "/brand/products/riggs-london.png",
-      gallery: ["/brand/products/riggs-london.png"],
+      heroDark: "thescentpair/products/riggs-london",
+      heroLight: "thescentpair/products/riggs-london",
+      gallery: ["thescentpair/products/riggs-london"],
     },
     seo: {
       title: "Riggs London Fragrance",
       description:
         "An amber vanilla fragrance built for evening wear. Bergamot, cinnamon, and warm orange blossom. 100ml.",
-      ogImage: "/brand/products/riggs-london.png",
+      ogImage: "thescentpair/products/riggs-london",
     },
     featured: false,
     order: 30,
@@ -299,15 +299,15 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/brand/products/rave-now-men.png",
-      heroLight: "/brand/products/rave-now-men.png",
-      gallery: ["/brand/products/rave-now-men.png"],
+      heroDark: "thescentpair/products/rave-now-men",
+      heroLight: "thescentpair/products/rave-now-men",
+      gallery: ["thescentpair/products/rave-now-men"],
     },
     seo: {
       title: "Rave NOW (Men) Eau de Parfum",
       description:
         "A woody aromatic fragrance built for presence. Fruity pineapple, smoky birch and warm musk. 100ml.",
-      ogImage: "/brand/products/rave-now-men.png",
+      ogImage: "thescentpair/products/rave-now-men",
     },
     featured: false,
     order: 40,
@@ -337,15 +337,15 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/brand/products/naseem-perfume-oils.jpg",
-      heroLight: "/brand/products/naseem-perfume-oils.jpg",
-      gallery: ["/brand/products/naseem-perfume-oils.jpg"],
+      heroDark: "thescentpair/products/naseem-perfume-oils",
+      heroLight: "thescentpair/products/naseem-perfume-oils",
+      gallery: ["thescentpair/products/naseem-perfume-oils"],
     },
     seo: {
       title: "Naseem Concentrated Perfume Oils (Roll-On)",
       description:
         "Alcohol-free premium perfume oils in over 15 varieties. Long lasting roll-on bottle (24ml).",
-      ogImage: "/brand/products/naseem-perfume-oils.jpg",
+      ogImage: "thescentpair/products/naseem-perfume-oils",
     },
     featured: false,
     order: 50,
@@ -375,15 +375,15 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/brand/products/lattafa-hayaati.png",
-      heroLight: "/brand/products/lattafa-hayaati.png",
-      gallery: ["/brand/products/lattafa-hayaati.png"],
+      heroDark: "thescentpair/products/lattafa-hayaati",
+      heroLight: "thescentpair/products/lattafa-hayaati",
+      gallery: ["thescentpair/products/lattafa-hayaati"],
     },
     seo: {
       title: "Lattafa Hayaati Eau de Parfum",
       description:
         "A fresh, woody aromatic fragrance with apple, bergamot, spiced cardamom, and warm ambergris. 100ml in Nigeria.",
-      ogImage: "/brand/products/lattafa-hayaati.png",
+      ogImage: "thescentpair/products/lattafa-hayaati",
     },
     featured: false,
     order: 60,
