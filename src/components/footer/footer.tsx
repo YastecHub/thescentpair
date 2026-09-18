@@ -24,8 +24,7 @@ export function Footer() {
               Signature scents, made for two.
             </p>
             <p className="mt-5 max-w-readable text-sm text-parchment/62">
-              A premium fragrance experience prepared for WhatsApp ordering,
-              Cloudinary media and future commerce.
+              Fragrance for two people sharing one signature. Based in Lagos, Nigeria.
             </p>
           </div>
           <nav

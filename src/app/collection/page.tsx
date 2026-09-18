@@ -8,7 +8,7 @@ import { createPageMetadata } from "@/lib/seo/page-metadata";
 export const metadata = createPageMetadata({
   title: "Collection",
   description:
-    "Explore His, Her's and unisex demonstration fragrances prepared for paired scent discovery.",
+    "Explore His, Her's and unisex fragrances from His & Her's Scents. Each signature is built to be worn alone or alongside its pair.",
   path: "/collection",
 });
 

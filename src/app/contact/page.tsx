@@ -146,10 +146,7 @@ export default function ContactPage() {
               Fill in the form and we&apos;ll respond as quickly as possible.
               For time-sensitive questions, WhatsApp is faster.
             </BodyText>
-            <p className="mt-4 text-sm text-parchment/45 italic">
-              Note: the form endpoint is not yet connected. Validation is live
-              for review.
-            </p>
+
           </div>
           <div className="border border-onyx-700 bg-onyx-800 p-6 md:p-8">
             <ContactForm />

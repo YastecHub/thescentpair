@@ -10,7 +10,7 @@ const demoFragrances = [
     family: "woody-oriental",
     tagline: "Smoke, oud and a promise kept close.",
     description:
-      "Demonstration fragrance content for proving the content model. Replace before launch with client-approved copy and pricing.",
+      "Midnight Oath opens with an incisive burst of bergamot and pink pepper before settling into a heart of rich oud and smoked amber. The base is a clean, commanding musk that lingers with quiet authority. A fragrance for the man who says more by saying less.",
     notes: {
       top: ["bergamot", "pink-pepper"],
       heart: ["oud", "amber"],
@@ -52,7 +52,7 @@ const demoFragrances = [
     seo: {
       title: "Midnight Oath Eau de Parfum",
       description:
-        "Demonstration metadata for a His fragrance in the His & Her's Scents foundation.",
+        "Smoke, oud and a promise kept close. Midnight Oath is a woody oriental fragrance built for presence — bergamot and pink pepper over rich oud and musk.",
       ogImage: "hhs/og/midnight-oath",
     },
     featured: true,
@@ -66,7 +66,7 @@ const demoFragrances = [
     family: "floral-amber",
     tagline: "Rose, amber and the warmth after dusk.",
     description:
-      "Demonstration companion fragrance content for validating pair relationships and shared accord logic.",
+      "Velvet Vow opens with a breath of bergamot before unfolding into a warm heart of rose and amber. The musk base softens everything it touches, leaving a fragrance that is both present and intimate — something to be noticed close.",
     notes: {
       top: ["bergamot"],
       heart: ["rose", "amber"],
@@ -108,7 +108,7 @@ const demoFragrances = [
     seo: {
       title: "Velvet Vow Eau de Parfum",
       description:
-        "Demonstration metadata for a Her's fragrance in the His & Her's Scents foundation.",
+        "Rose, amber and the warmth after dusk. Velvet Vow is a floral amber fragrance built for intimacy — bergamot and rose over a lingering musk base.",
       ogImage: "hhs/og/velvet-vow",
     },
     featured: true,
@@ -121,7 +121,7 @@ const demoFragrances = [
     family: "warm-spiced",
     tagline: "A shared room of gold, skin and memory.",
     description:
-      "Demonstration unisex fragrance content used to exercise collection filtering without inventing a full catalogue.",
+      "Amber Room opens with a sharp pink pepper before giving way to a heart of rose and oud — two notes that rarely agree but find something true together here. The base of amber and musk settles into a warmth that belongs equally to anyone who wears it.",
     notes: {
       top: ["pink-pepper"],
       heart: ["rose", "oud"],
@@ -154,7 +154,7 @@ const demoFragrances = [
     seo: {
       title: "Amber Room Eau de Parfum",
       description:
-        "Demonstration metadata for a unisex fragrance in the His & Her's Scents foundation.",
+        "A shared room of gold, skin and memory. Amber Room is a warm, unisex fragrance — pink pepper and oud over a deep amber and musk base.",
       ogImage: "hhs/og/amber-room",
     },
     featured: false,

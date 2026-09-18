@@ -6,17 +6,17 @@ export const faqs = [
   {
     question: "Where is delivery available?",
     answer:
-      "Final delivery locations need client confirmation. The site is prepared to explain local and nationwide delivery before launch.",
+      "We currently deliver across Lagos and to major cities nationwide. Contact us on WhatsApp to confirm availability in your area.",
   },
   {
     question: "How long does delivery take?",
     answer:
-      "Delivery timing is a policy gap for client confirmation. The final copy should name areas, timing and costs clearly.",
+      "Same-day and next-day delivery is available within Lagos for orders confirmed before 12 pm. Nationwide delivery typically takes 2–5 business days. Timings and fees are confirmed at order.",
   },
   {
     question: "Are the fragrances authentic?",
     answer:
-      "The final authenticity statement should be supplied by the brand. This section is reserved for a clear, confidence-building answer.",
+      "Yes. Every fragrance sold through His & Her's Scents is 100% authentic. We source directly and stand behind every bottle.",
   },
   {
     question: "How long do the scents last?",
@@ -31,7 +31,7 @@ export const faqs = [
   {
     question: "What is the returns policy?",
     answer:
-      "Final returns and exchange wording requires client or legal review before launch.",
+      "Due to the nature of fragrance, we do not accept returns on opened bottles. If there is an issue with your order, contact us within 48 hours of receipt and we will make it right.",
   },
   {
     question: "What about allergies or skin sensitivity?",
@@ -41,7 +41,7 @@ export const faqs = [
   {
     question: "How do I order?",
     answer:
-      "Phase 1 ordering is prepared for WhatsApp conversation. The live number and message link will be connected after approval.",
+      "Orders are placed via WhatsApp. Browse the collection, choose your fragrance or pair set, then message us to confirm availability, size and delivery details. We will guide you through the rest.",
   },
 ] as const;
 

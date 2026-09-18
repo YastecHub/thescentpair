@@ -6,7 +6,7 @@ const demoPairs = [
     slug: "the-first-night",
     name: "The First Night",
     story:
-      "Demonstration pair content for the shared signature concept: one darker, one warmer, both joined by amber and musk.",
+      "Two people. Two signatures. One thread of amber and musk that runs between them. Midnight Oath is darker, more resinous — the kind of scent that lingers on a collar. Velvet Vow is warmer, closer to the skin. Together they tell the same story from two different sides.",
     hisFragranceSlug: "midnight-oath",
     hersFragranceSlug: "velvet-vow",
     sharedAccords: ["amber", "musk"],
@@ -34,7 +34,7 @@ const demoPairs = [
     seo: {
       title: "The First Night His and Her's Pair",
       description:
-        "Demonstration metadata for a paired fragrance set in the His & Her's Scents foundation.",
+        "Two signatures designed to be worn together. Midnight Oath and Velvet Vow share a base of amber and musk, keeping their own character while remaining unmistakably a pair.",
       ogImage: "hhs/og/the-first-night",
     },
   },
