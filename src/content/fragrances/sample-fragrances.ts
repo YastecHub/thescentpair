@@ -417,15 +417,18 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/products/ur-revolution.jpg",
-      heroLight: "/products/ur-revolution.jpg",
-      gallery: ["/products/ur-revolution.jpg"],
+      heroDark: "/products/ur-revolution.png",
+      heroLight: "/products/ur-revolution.png",
+      gallery: [
+        "/products/ur-revolution.png",
+        "/products/ur-revolution.jpg",
+      ],
     },
     seo: {
       title: "UR Revolution Eau de Toilette 100ml",
       description:
         "UR Revolution EDT — bold citrus and spice opening into a warm woody finish. 100ml natural spray.",
-      ogImage: "/products/ur-revolution.jpg",
+      ogImage: "/products/ur-revolution.png",
     },
     featured: false,
     order: 70,
@@ -528,7 +531,7 @@ const demoFragrances = [
         sku: "9PMNO-200",
         size: 200,
         unit: "ml",
-        price: 1,
+        price: 6000,
         currency: "NGN",
         inStock: true,
       },
@@ -584,6 +587,128 @@ const demoFragrances = [
     },
     featured: false,
     order: 110,
+  },
+  {
+    slug: "silver-oud",
+    name: "Silver Oud",
+    audience: "unisex",
+    family: "oriental-amber",
+    tagline: "Resinous oud meets sparkling spices and silver elegance.",
+    description:
+      "Silver Oud by HIA is an opulent Eau de Parfum built around precious oud wood, warm amber, and lingering musk, accented with a crystalline silver freshness. A regal fragrance designed to leave a lasting aura of prestige.",
+    notes: {
+      top: ["bergamot", "pink-pepper"],
+      heart: ["rose", "saffron", "oud"],
+      base: ["amber", "musk", "cedarwood"],
+    },
+    performance: { longevity: 5, sillage: 4, projection: 4 },
+    variants: [
+      {
+        sku: "SO-100",
+        size: 100,
+        unit: "ml",
+        price: 8000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/products/silver-oud.png",
+      heroLight: "/products/silver-oud.png",
+      gallery: ["/products/silver-oud.png"],
+    },
+    seo: {
+      title: "Silver Oud Eau de Parfum 100ml",
+      description:
+        "Silver Oud by HIA — an opulent oriental oud fragrance with amber, saffron, and musk. 100ml in Nigeria.",
+      ogImage: "/products/silver-oud.png",
+    },
+    featured: false,
+    order: 120,
+  },
+  {
+    slug: "nivea-men",
+    name: "Nivea Men Deodorant Spray",
+    audience: "his",
+    family: "fresh-aromatic",
+    tagline: "72-hour fresh protection in Cool Kick, Derma Control, and Dry Impact.",
+    description:
+      "Nivea Men Deodorant Body Spray delivers long-lasting 72-hour freshness and sweat protection. Available in Cool Kick, Derma Control, and Dry Impact formulations — reliable everyday confidence for the active modern man.",
+    notes: {
+      top: ["bergamot", "lemon"],
+      heart: ["lavender"],
+      base: ["musk", "cedarwood"],
+    },
+    performance: { longevity: 4, sillage: 3, projection: 3 },
+    variants: [
+      {
+        sku: "NM-150",
+        size: 150,
+        unit: "ml",
+        price: 6000,
+        currency: "NGN",
+        inStock: true,
+      },
+      {
+        sku: "NM-200",
+        size: 200,
+        unit: "ml",
+        price: 8000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/products/nivea-men.png",
+      heroLight: "/products/nivea-men.png",
+      gallery: ["/products/nivea-men.png"],
+    },
+    seo: {
+      title: "Nivea Men Deodorant Spray 150ml - 200ml",
+      description:
+        "Nivea Men 72h Deodorant Body Spray — Cool Kick, Derma Control, and Dry Impact. 150ml and 200ml.",
+      ogImage: "/products/nivea-men.png",
+    },
+    featured: false,
+    order: 130,
+  },
+  {
+    slug: "1-million-set",
+    name: "1 Million Fragrance Set",
+    audience: "his",
+    family: "warm-spiced",
+    tagline: "The golden duo — 50ml Eau de Parfum and matching 50ml roll-on.",
+    description:
+      "The 1 Million luxury gift set pairs an Eau de Parfum Natural Spray with a matching Roll-On Deodorant in a striking gold presentation box. Rich spiced sweetness, vibrant citrus, and warm amber create an unforgettable statement of charisma.",
+    notes: {
+      top: ["sweet-orange", "cinnamon"],
+      heart: ["rose", "cardamom"],
+      base: ["amber", "patchouli", "cedarwood"],
+    },
+    performance: { longevity: 4, sillage: 4, projection: 4 },
+    variants: [
+      {
+        sku: "1M-SET",
+        size: 50,
+        unit: "ml",
+        price: 10000,
+        currency: "NGN",
+        inStock: true,
+      },
+    ],
+    media: {
+      heroDark: "/products/1-million-set.png",
+      heroLight: "/products/1-million-set.png",
+      gallery: ["/products/1-million-set.png"],
+    },
+    seo: {
+      title: "1 Million EDP & Roll-On Fragrance Set 50ml",
+      description:
+        "1 Million luxury fragrance set — 50ml EDP natural spray and 50ml roll-on deodorant in gold presentation box.",
+      ogImage: "/products/1-million-set.png",
+    },
+    featured: false,
+    order: 140,
   },
 ] satisfies Fragrance[];
 
