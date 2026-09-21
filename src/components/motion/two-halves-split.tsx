@@ -124,7 +124,7 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
       >
         {/* Layer 1: Her World (Base Background) */}
         <div
-          className="absolute inset-0 flex items-center justify-end bg-[#221316] p-6 text-right md:p-12"
+          className="absolute inset-0 flex items-center justify-end bg-[#221316] p-4 text-right sm:p-6 md:p-12"
           aria-hidden={splitPos > 80}
         >
           {/* Her's ambient tint & pattern */}
@@ -132,14 +132,14 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,rgba(124,74,69,0.35),transparent_70%)]"
             aria-hidden="true"
           />
-          <div className="relative z-10 flex max-w-[420px] flex-col items-end">
-            <span className="type-eyebrow text-[#D9BC6A]">
+          <div className="relative z-10 flex w-[calc(50%-1.25rem)] max-w-[420px] flex-col items-end md:w-auto">
+            <span className="type-eyebrow text-[#D9BC6A] text-[10px] sm:text-xs">
               Her World
             </span>
-            <h3 className="mt-2 font-display text-4xl text-parchment md:text-5xl">
+            <h3 className="mt-1 font-display text-xl text-parchment sm:text-2xl md:mt-2 md:text-5xl">
               {hers?.name}
             </h3>
-            <p className="mt-3 text-sm text-parchment/75 md:text-base">
+            <p className="mt-1.5 text-xs leading-relaxed text-parchment/75 sm:mt-2 sm:text-sm md:mt-3 md:text-base">
               {hers?.tagline}
             </p>
             {hers ? (
@@ -149,10 +149,10 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
                   alt: `${hers.name} fragrance bottle`,
                 }}
                 ratio="4 / 5"
-                className="mt-6 h-56 w-36 md:h-72 md:w-44"
+                className="mt-3 h-40 w-28 max-w-full sm:mt-6 sm:h-56 sm:w-36 md:h-72 md:w-44"
               />
             ) : null}
-            <p className="mt-4 text-xs tracking-wider uppercase text-gold-300">
+            <p className="mt-2 text-[10px] tracking-wider uppercase text-gold-300 sm:mt-4 sm:text-xs">
               {hers?.family.replace("-", " ")}
             </p>
           </div>
@@ -160,7 +160,7 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
 
         {/* Layer 2: His World (Clipped Overlay via clipPath) */}
         <div
-          className="absolute inset-0 flex items-center justify-start bg-[#121A24] p-6 text-left md:p-12"
+          className="absolute inset-0 flex items-center justify-start bg-[#121A24] p-4 text-left sm:p-6 md:p-12"
           style={{
             clipPath: `polygon(0 0, ${splitPos}% 0, ${splitPos}% 100%, 0 100%)`,
           }}
@@ -171,12 +171,14 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(27,36,48,0.55),transparent_70%)]"
             aria-hidden="true"
           />
-          <div className="relative z-10 flex max-w-[420px] flex-col items-start">
-            <span className="type-eyebrow text-gold-300">His World</span>
-            <h3 className="mt-2 font-display text-4xl text-parchment md:text-5xl">
+          <div className="relative z-10 flex w-[calc(50%-1.25rem)] max-w-[420px] flex-col items-start md:w-auto">
+            <span className="type-eyebrow text-gold-300 text-[10px] sm:text-xs">
+              His World
+            </span>
+            <h3 className="mt-1 font-display text-xl text-parchment sm:text-2xl md:mt-2 md:text-5xl">
               {his?.name}
             </h3>
-            <p className="mt-3 text-sm text-parchment/75 md:text-base">
+            <p className="mt-1.5 text-xs leading-relaxed text-parchment/75 sm:mt-2 sm:text-sm md:mt-3 md:text-base">
               {his?.tagline}
             </p>
             {his ? (
@@ -186,27 +188,27 @@ export function TwoHalvesSplit({ pair }: TwoHalvesSplitProps) {
                   alt: `${his.name} fragrance bottle`,
                 }}
                 ratio="4 / 5"
-                className="mt-6 h-56 w-36 md:h-72 md:w-44"
+                className="mt-3 h-40 w-28 max-w-full sm:mt-6 sm:h-56 sm:w-36 md:h-72 md:w-44"
               />
             ) : null}
-            <p className="mt-4 text-xs tracking-wider uppercase text-gold-300">
+            <p className="mt-2 text-[10px] tracking-wider uppercase text-gold-300 sm:mt-4 sm:text-xs">
               {his?.family.replace("-", " ")}
             </p>
           </div>
         </div>
 
         {/* Center Shared Accord Banner (Always readable in DOM) */}
-        <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center justify-center rounded-none border border-gold-300/40 bg-onyx-900/90 px-6 py-3 text-center backdrop-blur-md">
+        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center justify-center rounded-none border border-gold-300/40 bg-onyx-900/90 px-4 py-2.5 text-center backdrop-blur-md sm:bottom-6 sm:px-6 sm:py-3">
           <p
             id="split-world-title"
-            className="type-eyebrow text-gold-300 text-xs"
+            className="type-eyebrow text-gold-300 text-[10px] sm:text-xs"
           >
             Shared Accord
           </p>
-          <p className="mt-1 font-display text-xl text-parchment md:text-2xl">
+          <p className="mt-0.5 font-display text-base text-parchment sm:mt-1 sm:text-xl md:text-2xl">
             {sharedNotes.map((note) => note.name).join(" + ")}
           </p>
-          <div className="pointer-events-auto mt-3">
+          <div className="pointer-events-auto mt-2 sm:mt-3">
             <ButtonLink href={`/pairs/${pair.slug}`} variant="secondary">
               Explore Pair
             </ButtonLink>
