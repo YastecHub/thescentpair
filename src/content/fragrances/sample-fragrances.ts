@@ -499,15 +499,18 @@ const demoFragrances = [
       },
     ],
     media: {
-      heroDark: "/products/boos-set.jpg",
-      heroLight: "/products/boos-set.jpg",
-      gallery: ["/products/boos-set.jpg"],
+      heroDark: "/products/boos-set.png",
+      heroLight: "/products/boos-set.png",
+      gallery: [
+        "/products/boos-set.png",
+        "/products/boos-set.jpg",
+      ],
     },
     seo: {
       title: "Boos Fragrance Set — Natural Spray and Roll-On",
       description:
         "Boos Set — a fresh floral natural spray and roll-on deodorant. Light, easy and everyday. 50ml.",
-      ogImage: "/products/boos-set.jpg",
+      ogImage: "/products/boos-set.png",
     },
     featured: false,
     order: 90,
