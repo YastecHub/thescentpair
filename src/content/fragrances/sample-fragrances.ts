@@ -572,7 +572,7 @@ const demoFragrances = [
         sku: "MOUSUF-200",
         size: 200,
         unit: "ml",
-        price: 1,
+        price: 5000,
         currency: "NGN",
         inStock: true,
       },
