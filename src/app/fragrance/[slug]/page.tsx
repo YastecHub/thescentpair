@@ -113,16 +113,17 @@ export default async function FragrancePage({
         >
           {/* Gallery */}
           <div className="grid gap-3">
-            <ProductImage
-              media={galleryImages[0]}
-              ratio="4 / 5"
-              className="lg:sticky lg:top-24"
-            />
+            <div className="lg:sticky lg:top-24">
+              <ProductImage
+                media={galleryImages[0]}
+                ratio="4 / 5"
+              />
+            </div>
             {galleryImages.length > 1 ? (
               <div className="grid grid-cols-3 gap-3">
-                {galleryImages.slice(1, 4).map((img) => (
+                {galleryImages.slice(1, 4).map((img, i) => (
                   <ProductImage
-                    key={img.publicId ?? img.alt}
+                    key={`${img.publicId ?? img.alt}-${i}`}
                     media={img}
                     ratio="1 / 1"
                   />

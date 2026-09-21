@@ -63,8 +63,22 @@ export function ProductImage(
     className?: string;
   }>,
 ) {
+  // Use a product-optimised transformation: fill the frame with smart-focus
+  // cropping, high quality, and auto format. Callers can override via
+  // media.transformation if they need a different crop for a specific context.
+  const productMedia: MediaReference = {
+    ...props.media,
+    transformation:
+      props.media.transformation ??
+      "f_auto,q_auto:best,c_fill,g_auto,ar_4:5,w_800",
+  };
+
   return (
-    <ResponsiveMedia {...props} placeholderLabel="Product media pending" />
+    <ResponsiveMedia
+      {...props}
+      media={productMedia}
+      placeholderLabel="Product media pending"
+    />
   );
 }
 

@@ -64,7 +64,12 @@ export function CollectionFilters({
         : undefined,
   };
 
-  const filtered = filterFragrances(fragrances, filters);
+  const filtered = filterFragrances(fragrances, filters).toSorted((a, b) => {
+    const aInStock = a.variants.some((v) => v.inStock);
+    const bInStock = b.variants.some((v) => v.inStock);
+    if (aInStock === bInStock) return 0;
+    return aInStock ? -1 : 1;
+  });
 
   function updateFilter(key: "for" | "family" | "availability", value: string) {
     const next = new URLSearchParams(searchParams.toString());
